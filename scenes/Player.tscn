@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/PlayerCameraTest.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.4
+
+[sub_resource type="CapsuleShape" id=1]
+margin = 0.05
+radius = 0.4
+height = 0.8
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Collision capsule" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="FP Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 0.534713, -0.0159784 )
+
+[node name="TP Camera" type="ClippedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.931056, 0.364877, 0, -0.364877, 0.931056, -5.96046e-08, 1.8624, 2.12117 )
+current = true
+size = 2.50965
+near = 0.01
+collision_mask = 0
