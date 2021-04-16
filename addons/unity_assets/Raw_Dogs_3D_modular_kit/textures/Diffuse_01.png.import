@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Diffuse_01.png-194d88f125b74bccd678677ecaa0e917.s3tc.stex"
+path.etc2="res://.import/Diffuse_01.png-194d88f125b74bccd678677ecaa0e917.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://addons/unity_assets/Raw_Dogs_3D_modular_kit/textures/Diffuse_01.png"
+dest_files=[ "res://.import/Diffuse_01.png-194d88f125b74bccd678677ecaa0e917.s3tc.stex", "res://.import/Diffuse_01.png-194d88f125b74bccd678677ecaa0e917.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
