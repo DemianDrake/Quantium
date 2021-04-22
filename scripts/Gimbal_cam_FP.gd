@@ -10,9 +10,9 @@ export var invert_y = false
 var mouse_sensitivity = 0.005
 
 # Called when the node enters the scene tree for the first time.
-func _process(delta):
+func _process(_delta):
 	$Gimbal_v_cam.rotation.x = clamp($Gimbal_v_cam.rotation.x, -1.4, 1.0)
-	pass # Replace with function body.
+# Replace with function body.
 
 #Mouse cam control
 func _unhandled_input(event):

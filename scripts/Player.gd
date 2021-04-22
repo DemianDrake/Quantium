@@ -9,10 +9,22 @@ var vel = Vector3(0, 0, 0)
 var speed = 10
 var jump_power = 40
 var gravity = -1.6
-
+var tpcamera = false #false: FP, true: TP
+var changecamerakey = KEY_F
+onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
+onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	fpc.make_current()
+func _unhandled_key_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == changecamerakey:
+			if tpcamera:
+				tpcamera = false
+				fpc.make_current()
+			else:
+				tpcamera = true
+				tpc.make_current()
 
 
 func _physics_process(delta):

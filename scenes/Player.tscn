@@ -7,9 +7,8 @@
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.4
 
-[sub_resource type="CylinderShape" id=2]
-radius = 0.386032
-height = 1.80247
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.4
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -20,10 +19,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Collision capsule" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+visible = false
 shape = SubResource( 2 )
 
 [node name="Gimbal_h_cam_TP" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
 script = ExtResource( 2 )
 
 [node name="Gimbal_v_cam" type="Spatial" parent="Gimbal_h_cam_TP"]
