@@ -39,6 +39,8 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(-lerp(0,spin,event.relative.x/10))
+
+#funcion de rotacion del modelo
+#func _unhandled_input(event):
+	#if event is InputEventMouseMotion:
+		#rotate_y(-lerp(0,spin,event.relative.x/10))
