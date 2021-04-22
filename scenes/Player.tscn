@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Gimbal_cam_TP.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Gimbal_cam_FP.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.4
@@ -20,12 +22,23 @@ material/0 = null
 [node name="Collision capsule" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
-[node name="FP Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 0.534713, -0.0159784 )
+[node name="Gimbal_h_cam_TP" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.5 )
+script = ExtResource( 2 )
 
-[node name="TP Camera" type="ClippedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.931056, 0.364877, 0, -0.364877, 0.931056, -5.96046e-08, 1.8624, 2.12117 )
-current = true
+[node name="Gimbal_v_cam" type="Spatial" parent="Gimbal_h_cam_TP"]
+
+[node name="TP Camera" type="ClippedCamera" parent="Gimbal_h_cam_TP/Gimbal_v_cam"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.6 )
 size = 2.50965
 near = 0.01
 collision_mask = 0
+
+[node name="Gimbal_h_cam_FP" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+script = ExtResource( 3 )
+
+[node name="Gimbal_v_cam" type="Spatial" parent="Gimbal_h_cam_FP"]
+
+[node name="FP Camera" type="Camera" parent="Gimbal_h_cam_FP/Gimbal_v_cam"]
+current = true
