@@ -23,6 +23,5 @@ func on_body_exited(body: Node):
 func _physics_process(_delta):
 	for body in bodies: 
 		if "up" in body and "gravity" in body:
-			#print_debug("player in area")
 			body.up = -self.gravity_vec
 			body.gravity = self.gravity
