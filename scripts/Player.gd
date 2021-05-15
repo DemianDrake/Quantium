@@ -15,6 +15,7 @@ var tpcamera = true #false: FP, true: TP
 var changecamerakey = KEY_F
 
 onready var angulo = 0
+onready var axis = Vector3.UP
 
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
 onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
@@ -45,7 +46,17 @@ func ongrav_movement(delta):
 	
 	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	var horizontal_vel = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
+	var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
+	var x_cam = h_node.transform.basis.x * dir_x
+	var z_cam = h_node.transform.basis.z * dir_z
+	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
+	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+	var horizontal_vel = x_comp + z_comp
+	
+	print(h_node.transform.basis.x)
+	#if horizontal_vel.length() > 0:
+	#	print(horizontal_vel, horizontal_vel2)
+	
 	var vertical_vel = up.normalized()
 	
 	if Input.is_action_just_pressed("ui_jump") and on_floor:
@@ -61,16 +72,17 @@ func ongrav_movement(delta):
 
 func ongrav_rotation_quat(delta):
 	var basisQuat = Quat(self.transform.basis)
-	var rotBasisQuat = Quat(self.transform.basis.rotated(self.transform.basis.x,angulo))
+	var rotBasisQuat = Quat(self.transform.basis.rotated(axis,angulo))
 	basisQuat = basisQuat.slerp(rotBasisQuat, 0.1)
 	self.transform.basis = Basis(basisQuat)
-	print(basisQuat.is_normalized())
+	# print(basisQuat.is_normalized())
 
 func ongrav_rotation(delta):
 	self.transform.basis = self.transform.basis.rotated(self.transform.basis.x,angulo)
 
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
+	axis = self.transform.basis.y.cross(up).normalized()
 	ongrav_movement(delta)
 	ongrav_rotation_quat(delta)
 	

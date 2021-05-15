@@ -50,6 +50,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 mesh = SubResource( 2 )
 material/0 = null
 
+[node name="Piso3" type="StaticBody" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 4, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Piso3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1 )
+shape = SubResource( 1 )
+
+[node name="Mesh piso" type="MeshInstance" parent="Piso3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh = SubResource( 2 )
+material/0 = null
+
 [node name="StaticBody2" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -2.5 )
 __meta__ = {
@@ -141,6 +153,20 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
 shape = SubResource( 6 )
 
+[node name="Area4" type="Area" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 4, -2 )
+space_override = 3
+gravity_vec = Vector3( -1, 0, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Area4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+shape = SubResource( 6 )
+
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.774481, 0, 0.632598, 0, 1, 0, -0.632598, 0, 0.774481, 7.85394, 5, 1.31996 )
+transform = Transform( -0.0614672, 0, 0.998109, 0, 1, 0, -0.998109, 0, -0.0614672, 14.9889, 5, -1.98285 )
+fov = 73.4269
 script = ExtResource( 3 )
