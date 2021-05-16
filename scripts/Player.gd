@@ -1,25 +1,34 @@
 extends KinematicBody
 
+# Atributos Player
+const SPIN = 0.1
+const SPEED = 10
+const RUN_SPEED = 15
+const JUMP_POWER = 40
+const PLAYER_GRAVITY_DEFAULT = 9.8
+const GRAVITY_FACTOR = 1.6/9.8
+
 # Vars de movimiento
-var spin = 0.1
 var vel = Vector3(0, 0, 0)
-var speed = 10
-var jump_power = 40
 var gravity = 9.8
 var up = Vector3.UP
-const gravity_factor = 1.6/9.8
+var current_speed = SPEED
+var insideArea = false
 
 onready var angulo = 0
-onready var axis = Vector3.UP
+onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
 
-# Raycasts
+# Raycasts y Areas
 onready var downRC = get_node("downRC")
 onready var FPmiddleRC = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP RC")
 onready var TPmiddleRC = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP RC")
+onready var AreaDetector = get_node("Area")
 
 # Controllers
 var E_hold = 0
 const HOLD_TIME = 0.3 # Tiempo en segundos para que se considere mantener presionado
+var Click_Hold = 1
+const MAX_CLICK_HOLD_TIME = 2.0
 
 # Variables de cámara
 var tpcamera = true #false: FP, true: TP
@@ -47,10 +56,12 @@ func _unhandled_key_input(event):
 				h_node = get_node("Gimbal_h_cam_TP")
 		elif event.pressed and event.scancode == KEY_R:
 			get_tree().reload_current_scene()
+		elif event.pressed and event.scancode == KEY_ESCAPE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func ongrav_movement(_delta):
 	vel = move_and_slide(vel, up)
-	var vel_g = gravity*gravity_factor*up
+	var vel_g = gravity*GRAVITY_FACTOR*up
 	
 	var on_floor = downRC.is_colliding()
 	
@@ -70,14 +81,58 @@ func ongrav_movement(_delta):
 	var vertical_vel = up.normalized()
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
-		vertical_vel *= jump_power
-			
-	if on_floor:
-		horizontal_vel = lerp(vel, horizontal_vel * speed, 0.4)
+		vertical_vel *= JUMP_POWER
 	else:
-		horizontal_vel = lerp(vel, horizontal_vel * speed, 0.1)
+		vertical_vel *= 0
+	
+	if on_floor and Input.is_action_pressed("run"):
+		current_speed = RUN_SPEED
+	else:
+		current_speed = SPEED
+	
+	if on_floor:
+		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
+	else:
+		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
 		
 	vel = horizontal_vel + vertical_vel - vel_g
+
+func nograv_movement(delta):
+	vel = move_and_slide(vel, up)
+	
+	var on_floor = downRC.is_colliding()
+	
+	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
+	var forward = -h_node.transform.basis.z.normalized()
+	if Input.is_action_just_pressed("throw"):
+		Click_Hold = 1
+	elif Input.is_action_pressed("throw"):
+		Click_Hold += delta/2
+		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
+		#print(Click_Hold)
+	elif Input.is_action_just_released("throw"):
+		vel -= forward * Click_Hold
+		Click_Hold = 1
+	var x_cam = h_node.transform.basis.x * dir_x
+	var z_cam = h_node.transform.basis.z * dir_z
+	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
+	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+	
+	
+	#print(h_node.transform.basis.x)
+	#if horizontal_vel.length() > 0:
+	#	print(horizontal_vel, horizontal_vel2)
+	
+	var vertical_vel = up.normalized()
+	
+	if Input.is_action_just_pressed("jump") and on_floor:
+		vertical_vel *= JUMP_POWER
+	else:
+		vertical_vel *= 0
+		
+	vel += vertical_vel
 
 func ongrav_rotation_quat(_delta):
 	var basisQuat = Quat(self.transform.basis)
@@ -95,13 +150,21 @@ func get_raycast_elem(group):
 		if obj.is_in_group(group):
 			return obj
 
+func gravity_area_detector():
+	if AreaDetector.get_overlapping_areas().empty():
+		#print("Nadap")
+		self.set_gravity(PLAYER_GRAVITY_DEFAULT)
+		self.set_up_vector(Vector3.UP)
+	else:
+		#print("Area")
+		pass
 
-func _physics_process(delta):
-	angulo = self.transform.basis.y.angle_to(up)
-	if angulo != 0:
-		axis = self.transform.basis.y.cross(up).normalized()
-	ongrav_movement(delta)
-	ongrav_rotation_quat(delta)
+func set_gravity(newGravity):
+	gravity = newGravity
+
+func set_up_vector(newUpVector):
+	if gravity > 0:
+		up = newUpVector
 	
 func interact():
 	if Input.is_action_just_pressed("interact"):
@@ -124,7 +187,19 @@ func pickup(delta):
 	else:
 		E_hold = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _physics_process(delta):
+	angulo = self.transform.basis.y.angle_to(up)
+	if angulo != 0:
+		axis = self.transform.basis.y.cross(up).normalized()
+	if gravity > 0:
+		ongrav_movement(delta)
+		ongrav_rotation_quat(delta)
+	else:
+		nograv_movement(delta)
+	gravity_area_detector()
+
+
 func _process(delta):
 	interact()
 	pickup(delta)

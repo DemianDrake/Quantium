@@ -1,11 +1,6 @@
 extends Area
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var bodies = []
-var player_gravity_default = 9.8
 
 func _ready():
 	connect("body_entered", self, "on_body_entered")
@@ -15,13 +10,14 @@ func on_body_entered(body: Node):
 	bodies.append(body)
 	
 func on_body_exited(body: Node):
-	if "up" in body and "gravity" in body:
-		body.up = Vector3.UP
-		body.gravity = player_gravity_default
+	#if body.is_in_group("Player"):
+		#body.set_gravity(PLAYER_GRAVITY_DEFAULT)
+		#body.set_up_vector(Vector3.UP)
 	bodies.erase(body)
 
 func _physics_process(_delta):
 	for body in bodies: 
-		if "up" in body and "gravity" in body:
-			body.up = -self.gravity_vec
-			body.gravity = self.gravity
+		if body.is_in_group("Player"):
+			if not self.gravity==0:
+				body.set_up_vector(-self.gravity_vec)
+			body.set_gravity(self.gravity)
