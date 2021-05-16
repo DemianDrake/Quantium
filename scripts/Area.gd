@@ -8,7 +8,10 @@ func _ready():
 	
 func on_body_entered(body: Node):
 	bodies.append(body)
-	
+	if body.is_in_group("Player"):
+		body.set_floor(get_parent().has_node("Piso"))
+
+
 func on_body_exited(body: Node):
 	#if body.is_in_group("Player"):
 		#body.set_gravity(PLAYER_GRAVITY_DEFAULT)

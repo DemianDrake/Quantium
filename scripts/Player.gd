@@ -7,6 +7,7 @@ const RUN_SPEED = 15
 const JUMP_POWER = 40
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
+const FLOAT_EPSILON = 1e-5
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
@@ -17,6 +18,7 @@ var insideArea = false
 
 onready var angulo = 0
 onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
+onready var has_floor = true
 
 # Raycasts y Areas
 onready var downRC = get_node("downRC")
@@ -37,11 +39,13 @@ var changecamerakey = KEY_F
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
 onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
 onready var h_node = get_node("Gimbal_h_cam_FP")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tpc.make_current()
 	TPmiddleRC.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _unhandled_key_input(event):
 	if event is InputEventKey:
@@ -58,6 +62,7 @@ func _unhandled_key_input(event):
 			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 func ongrav_movement(_delta):
 	vel = move_and_slide(vel, up)
@@ -97,6 +102,7 @@ func ongrav_movement(_delta):
 		
 	vel = horizontal_vel + vertical_vel - vel_g
 
+
 func nograv_movement(delta):
 	vel = move_and_slide(vel, up)
 	
@@ -134,11 +140,13 @@ func nograv_movement(delta):
 		
 	vel += vertical_vel
 
+
 func ongrav_rotation_quat(_delta):
 	var basisQuat = Quat(self.transform.basis)
 	var rotBasisQuat = Quat(self.transform.basis.rotated(axis,angulo))
 	basisQuat = basisQuat.slerp(rotBasisQuat, 0.1)
 	self.transform.basis = Basis(basisQuat)
+
 
 func get_raycast_elem(group):
 	if not tpcamera and FPmiddleRC.is_colliding():
@@ -150,27 +158,37 @@ func get_raycast_elem(group):
 		if obj.is_in_group(group):
 			return obj
 
+
 func gravity_area_detector():
 	if AreaDetector.get_overlapping_areas().empty():
 		#print("Nadap")
 		self.set_gravity(PLAYER_GRAVITY_DEFAULT)
-		self.set_up_vector(Vector3.UP)
+		self.set_up_vector((Vector3.UP + Vector3(0.001,0,0)).normalized())
+		self.set_floor(true)
 	else:
 		#print("Area")
 		pass
 
+
+func set_floor(has_floor):
+	self.has_floor = has_floor
+
+
 func set_gravity(newGravity):
 	gravity = newGravity
+
 
 func set_up_vector(newUpVector):
 	if gravity > 0:
 		up = newUpVector
-	
+
+
 func interact():
 	if Input.is_action_just_pressed("interact"):
 		var casted_interactable = get_raycast_elem("Interactable")
 		if is_instance_valid(casted_interactable):
 			casted_interactable.interact()
+
 
 func pickup(delta):
 	if Input.is_action_pressed("interact"):
@@ -190,11 +208,12 @@ func pickup(delta):
 
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
-	if angulo != 0:
+	if not compare_floats(angulo, 0):
 		axis = self.transform.basis.y.cross(up).normalized()
 	if gravity > 0:
 		ongrav_movement(delta)
-		ongrav_rotation_quat(delta)
+		if has_floor:
+			ongrav_rotation_quat(delta)
 	else:
 		nograv_movement(delta)
 	gravity_area_detector()
@@ -203,6 +222,10 @@ func _physics_process(delta):
 func _process(delta):
 	interact()
 	pickup(delta)
+
+static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
+	return abs(a - b) <= epsilon
+
 
 #funcion de rotacion del modelo
 #func _unhandled_input(event):
