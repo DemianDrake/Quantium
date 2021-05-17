@@ -4,10 +4,9 @@ extends KinematicBody
 const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
-const JUMP_POWER = 40
+const JUMP_POWER = 20
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
-const FLOAT_EPSILON = 1e-5
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
@@ -15,6 +14,7 @@ var gravity = 9.8
 var up = Vector3.UP
 var current_speed = SPEED
 var insideArea = false
+var airborne_time = 0
 
 onready var angulo = 0
 onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
@@ -32,6 +32,9 @@ const HOLD_TIME = 0.3 # Tiempo en segundos para que se considere mantener presio
 var Click_Hold = 1
 const MAX_CLICK_HOLD_TIME = 2.0
 
+# Extra
+const FLOAT_EPSILON = 1e-5
+
 # Variables de cámara
 var tpcamera = true #false: FP, true: TP
 var changecamerakey = KEY_F
@@ -39,6 +42,7 @@ var changecamerakey = KEY_F
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
 onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
 onready var h_node = get_node("Gimbal_h_cam_FP")
+onready var v_node = h_node.get_node("Gimbal_v_cam")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,19 +58,21 @@ func _unhandled_key_input(event):
 				tpcamera = false
 				fpc.make_current()
 				h_node = get_node("Gimbal_h_cam_FP")
+				v_node = h_node.get_node("Gimbal_v_cam")
 			else:
 				tpcamera = true
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
+				v_node = h_node.get_node("Gimbal_v_cam")
 		elif event.pressed and event.scancode == KEY_R:
 			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func ongrav_movement(_delta):
+func ongrav_movement(delta):
 	vel = move_and_slide(vel, up)
-	var vel_g = gravity*GRAVITY_FACTOR*up
+	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time #+ gravity*GRAVITY_FACTOR*up
 	
 	var on_floor = downRC.is_colliding()
 	
@@ -78,7 +84,12 @@ func ongrav_movement(_delta):
 	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
 	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
 	var horizontal_vel = x_comp + z_comp
-	
+#	var looking_at = -h_node.transform.basis.z
+#	var angle
+#	if not compare_floats(horizontal_vel.length(),0):
+#		angle = looking_at.angle_to(horizontal_vel)
+#	else:
+#		angle = 0
 	#print(h_node.transform.basis.x)
 	#if horizontal_vel.length() > 0:
 	#	print(horizontal_vel, horizontal_vel2)
@@ -97,10 +108,13 @@ func ongrav_movement(_delta):
 	
 	if on_floor:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
+		airborne_time = 0
 	else:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
+		airborne_time += delta
 		
 	vel = horizontal_vel + vertical_vel - vel_g
+#	self.get_node("MeshInstance").rotate_y(angle*delta)
 
 
 func nograv_movement(delta):
@@ -111,21 +125,23 @@ func nograv_movement(delta):
 	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
-	var forward = -h_node.transform.basis.z.normalized()
+	var backward = v_node.transform.basis.z.normalized()
+	var y_comp = backward.y * Vector3.UP
+	var x_cam = h_node.transform.basis.x #* dir_x
+	var z_cam = h_node.transform.basis.z #* dir_z
+	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
+	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+	backward = (z_cam + y_comp).normalized()
+	
 	if Input.is_action_just_pressed("throw"):
 		Click_Hold = 1
 	elif Input.is_action_pressed("throw"):
-		Click_Hold += delta/2
+		Click_Hold += delta
 		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
 		#print(Click_Hold)
 	elif Input.is_action_just_released("throw"):
-		vel -= forward * Click_Hold
+		vel += backward * Click_Hold
 		Click_Hold = 1
-	var x_cam = h_node.transform.basis.x * dir_x
-	var z_cam = h_node.transform.basis.z * dir_z
-	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
-	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
-	
 	
 	#print(h_node.transform.basis.x)
 	#if horizontal_vel.length() > 0:
@@ -133,10 +149,10 @@ func nograv_movement(delta):
 	
 	var vertical_vel = up.normalized()
 	
-	if Input.is_action_just_pressed("jump") and on_floor:
-		vertical_vel *= JUMP_POWER
-	else:
-		vertical_vel *= 0
+	#if Input.is_action_just_pressed("jump") and on_floor:
+	#	vertical_vel *= JUMP_POWER
+	#else:
+	vertical_vel *= 0
 		
 	vel += vertical_vel
 
