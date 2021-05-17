@@ -83,17 +83,8 @@ func ongrav_movement(delta):
 	var z_cam = h_node.transform.basis.z * dir_z
 	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
 	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
-	var horizontal_vel = x_comp + z_comp
-#	var looking_at = -h_node.transform.basis.z
-#	var angle
-#	if not compare_floats(horizontal_vel.length(),0):
-#		angle = looking_at.angle_to(horizontal_vel)
-#	else:
-#		angle = 0
-	#print(h_node.transform.basis.x)
-	#if horizontal_vel.length() > 0:
-	#	print(horizontal_vel, horizontal_vel2)
 	
+	var horizontal_vel = x_comp + z_comp
 	var vertical_vel = up.normalized()
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
@@ -114,7 +105,8 @@ func ongrav_movement(delta):
 		airborne_time += delta
 		
 	vel = horizontal_vel + vertical_vel - vel_g
-#	self.get_node("MeshInstance").rotate_y(angle*delta)
+	var horizontal_dir = to_global(horizontal_vel.normalized())
+	self.get_node("Model/RotationTest").look_at(horizontal_dir, up)
 
 
 func nograv_movement(delta):

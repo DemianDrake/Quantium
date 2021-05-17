@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Gimbal_cam_TP.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Gimbal_cam_FP.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleMesh" id=3]
+[sub_resource type="CapsuleMesh" id=1]
 radius = 0.4
 
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="PrismMesh" id=2]
+size = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.196078, 0.803922, 0.196078, 1 )
+
+[sub_resource type="CapsuleShape" id=3]
 radius = 0.4
 
 [node name="Player" type="KinematicBody"]
@@ -17,14 +23,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Model" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model"]
 transform = Transform( -1, 1.50996e-07, -6.60024e-15, 0, -4.37114e-08, -1, -1.50996e-07, -1, 4.37114e-08, 0.00165343, -0.0092963, 0.00056839 )
-mesh = SubResource( 3 )
+mesh = SubResource( 1 )
 material/0 = null
+
+[node name="RotationTest" type="Spatial" parent="Model"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model/RotationTest"]
+transform = Transform( 1, -8.35187e-23, -3.65072e-30, 0, -4.37114e-08, 1, -8.35187e-23, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
 
 [node name="Collision capsule" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Gimbal_h_cam_TP" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
@@ -71,4 +86,4 @@ cast_to = Vector3( 0, -0.45, 0 )
 
 [node name="Collision capsule" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
