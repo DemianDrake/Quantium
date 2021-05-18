@@ -105,8 +105,11 @@ func ongrav_movement(delta):
 		airborne_time += delta
 		
 	vel = horizontal_vel + vertical_vel - vel_g
-	var horizontal_dir = to_global(horizontal_vel.normalized())
-	self.get_node("Model/RotationTest").look_at(horizontal_dir, up)
+	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+		var horizontal_dir = horizontal_vel - horizontal_vel.project(up*15)
+		horizontal_dir = self.transform.basis.xform_inv(horizontal_dir)
+		horizontal_dir = to_global(horizontal_dir.normalized())
+		self.get_node("Model/RotationTest").look_at(horizontal_dir, up)
 
 
 func nograv_movement(delta):
