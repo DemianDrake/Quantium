@@ -27,10 +27,12 @@ extents = Vector3( 1.01563, 0.0602794, 0.751054 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282322, -0.0605318, 0.645752 )
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.282, -0.0631859, 0.646 )
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 0.5
+spot_range = 0.891621
+spot_angle = 84.2
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
