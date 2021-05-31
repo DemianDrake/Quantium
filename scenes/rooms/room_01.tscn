@@ -308,11 +308,11 @@ transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0
 ] instance=ExtResource( 20 )]
 transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.2674, -0.828599 )
 mode = 1
-axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+linear_damp = 0.0
 script = ExtResource( 27 )
 
 [node name="Frame2" parent="Room Right/Door" instance=ExtResource( 21 )]
@@ -399,7 +399,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265064, 0 )
 transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -1.47551, 0.5577, 0.764386 )
 
 [node name="Box 5" parent="Room Right/Props" instance=ExtResource( 24 )]
-transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -4.19035, 0.297282, 4.41799 )
+transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -3.19035, -0.258271, 4.41799 )
+
+[node name="Box 6" parent="Room Right/Props" instance=ExtResource( 24 )]
+transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -5.26225, 1.23291, 3.19207 )
+mode = 1
 
 [node name="Room Left" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195144, 0, 0 )
