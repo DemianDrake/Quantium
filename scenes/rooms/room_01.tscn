@@ -1,0 +1,106 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/assets/tunnel/intersection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/assets/tunnel/mid_section.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/assets/floor/floor1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/assets/tunnel/window_section.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/assets/tunnel/end_section.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/assets/floor/side_floor2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/assets/wall/wall_frame.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/assets/lights/light_1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/assets/wall/wall4.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/assets/ceiling/ceiling_wall_intersection.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/assets/wall/wall2.tscn" type="PackedScene" id=17]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.867285, 0 )
+
+[node name="Entrance" type="Spatial" parent="."]
+
+[node name="Entrance Tunnel" parent="Entrance" instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="Dead End" parent="Entrance" instance=ExtResource( 6 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, -2.97229 )
+
+[node name="Light" parent="Entrance" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.08299, -0.664243 )
+
+[node name="Floor Tile" type="Spatial" parent="Entrance"]
+
+[node name="Floor Side" parent="Entrance/Floor Tile" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Entrance/Floor Tile" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Entrance/Floor Tile" instance=ExtResource( 5 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Floor Tile2" type="Spatial" parent="Entrance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25 )
+
+[node name="Floor Side" parent="Entrance/Floor Tile2" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Entrance/Floor Tile2" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Entrance/Floor Tile2" instance=ExtResource( 5 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Intersection" type="Spatial" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 4.445 )
+
+[node name="Frame" parent="Intersection" instance=ExtResource( 2 )]
+
+[node name="Floor Tile" parent="Intersection" instance=ExtResource( 10 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.24, 0.030714 )
+
+[node name="Dead End" type="Spatial" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 4.445 )
+
+[node name="Dead End" parent="Dead End" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.00264 )
+
+[node name="Light" parent="Dead End" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03797, 2.42585 )
+
+[node name="Barrier" parent="Dead End" instance=ExtResource( 9 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.20731, 1.56845 )
+
+[node name="Room Right" type="Spatial" parent="."]
+
+[node name="Frame" parent="Room Right" instance=ExtResource( 11 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.06825, -0.0258554, 4.49593 )
+
+[node name="Wall" parent="Room Right" instance=ExtResource( 13 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.54857, 0.0303986, 0.696226 )
+
+[node name="Ceiling" type="Spatial" parent="Room Right"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.548176 )
+
+[node name="Ceiling" parent="Room Right/Ceiling" instance=ExtResource( 14 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 1.67272, 4.22687 )
+
+[node name="Ceiling2" parent="Room Right/Ceiling" instance=ExtResource( 14 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 1.67272, 1.18735 )
+
+[node name="Complex Wall" type="Spatial" parent="Room Right"]
+
+[node name="Top Wall" parent="Room Right/Complex Wall" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -4.821, 1.221, 6.4 )
+
+[node name="Mid Wall" parent="Room Right/Complex Wall" instance=ExtResource( 16 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Bottom Wall" parent="Room Right/Complex Wall" instance=ExtResource( 17 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.327835, 6.517 )
