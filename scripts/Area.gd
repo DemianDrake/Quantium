@@ -10,7 +10,7 @@ func _ready():
 func on_body_entered(body: Node):
 	bodies.append(body)
 	if body.is_in_group("Player"):
-		body.set_floor(get_parent().has_node("Piso"))
+		body.set_floor(self.is_in_group("floor_area"))
 		body.airborne_time = 0
 
 

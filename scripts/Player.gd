@@ -66,6 +66,8 @@ func _unhandled_key_input(event):
 				v_node = h_node.get_node("Gimbal_v_cam")
 		elif event.pressed and event.scancode == KEY_R:
 			get_tree().reload_current_scene()
+		elif event.pressed and event.scancode == KEY_Y:
+			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
