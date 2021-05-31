@@ -80,7 +80,7 @@ cast_to = Vector3( 0, 0, -2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 
 [node name="FP Camera" type="Camera" parent="Gimbal_h_cam_FP/Gimbal_v_cam"]
-cull_mask = 1048574
+cull_mask = 1048573
 current = true
 
 [node name="downRC" type="RayCast" parent="."]

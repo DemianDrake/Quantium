@@ -83,7 +83,7 @@ transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.06825, -0.0258554, 4.49593 )
 
 [node name="Wall" parent="Room Right" instance=ExtResource( 13 )]
-transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -2.54857, 0.0303986, 0.696226 )
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
 
 [node name="Ceiling" type="Spatial" parent="Room Right"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.548176 )
@@ -135,6 +135,21 @@ transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -
 [node name="Bottom Wall" parent="Room Right/Complex Wall" instance=ExtResource( 15 )]
 transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -4.821, -1.30459, 6.62372 )
 
+[node name="Complex Wall2" type="Spatial" parent="Room Right"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49814, 0, -0.0941446 )
+
+[node name="Top Wall" parent="Room Right/Complex Wall2" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -4.821, 1.221, 6.4 )
+
+[node name="Mid-Top Wall" parent="Room Right/Complex Wall2" instance=ExtResource( 16 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Room Right/Complex Wall2" instance=ExtResource( 17 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Bottom Wall" parent="Room Right/Complex Wall2" instance=ExtResource( 15 )]
+transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -4.821, -1.30459, 6.62372 )
+
 [node name="Floor" type="Spatial" parent="Room Right"]
 
 [node name="Floor Tile" type="Spatial" parent="Room Right/Floor"]
@@ -160,3 +175,30 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
 
 [node name="Floor" parent="Room Right/Floor/Floor Tile2" instance=ExtResource( 5 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Floor Tile3" type="Spatial" parent="Room Right/Floor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.01388, 0.209206, 4.52808 )
+
+[node name="Floor Side" parent="Room Right/Floor/Floor Tile3" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Room Right/Floor/Floor Tile3" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Room Right/Floor/Floor Tile3" instance=ExtResource( 5 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Floor Tile4" type="Spatial" parent="Room Right/Floor"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.26203, 0.209206, 4.52808 )
+
+[node name="Floor Side" parent="Room Right/Floor/Floor Tile4" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Room Right/Floor/Floor Tile4" instance=ExtResource( 1 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Room Right/Floor/Floor Tile4" instance=ExtResource( 5 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Big Floor Tile" parent="Room Right/Floor" instance=ExtResource( 10 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.36045, -6.77693, -1.61836, 0.259643 )
