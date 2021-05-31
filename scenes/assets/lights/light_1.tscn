@@ -71,5 +71,6 @@ shape = SubResource( 4 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138376, 0.0307778, -0.0770481 )
+visible = false
 light_energy = 3.0
 omni_range = 10.0
