@@ -28,7 +28,7 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282322, -0.0771052, 0.645752 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282322, -0.0605318, 0.645752 )
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 0.5
 
