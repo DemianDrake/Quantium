@@ -88,10 +88,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499918, 0 )
 enabled = true
 cast_to = Vector3( 0, -0.45, 0 )
 
-[node name="rotationRC" type="RayCast" parent="."]
-enabled = true
-cast_to = Vector3( 0, -4, 0 )
-
 [node name="Area" type="Area" parent="."]
 
 [node name="Collision capsule" type="CollisionShape" parent="Area"]

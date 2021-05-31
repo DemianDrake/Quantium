@@ -7,7 +7,6 @@ const RUN_SPEED = 15
 const JUMP_POWER = 20
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
-const ROTATION_HEIGHT = 1
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
@@ -19,10 +18,10 @@ var airborne_time = 0
 
 onready var angulo = 0
 onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
+onready var has_floor = true
 
 # Raycasts y Areas
 onready var downRC = get_node("downRC")
-onready var rotationRC = get_node("rotationRC")
 onready var FPmiddleRC = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP RC")
 onready var TPmiddleRC = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP RC")
 onready var AreaDetector = get_node("Area")
@@ -79,7 +78,7 @@ func ongrav_movement(delta):
 	
 	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
+	
 	var x_cam = h_node.transform.basis.x * dir_x
 	var z_cam = h_node.transform.basis.z * dir_z
 	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
@@ -176,9 +175,14 @@ func gravity_area_detector():
 		#print("Nadap")
 		self.set_gravity(PLAYER_GRAVITY_DEFAULT)
 		self.set_up_vector((Vector3.UP + Vector3(0.001,0,0)).normalized())
+		self.set_floor(true)
 	else:
 		#print("Area")
 		pass
+
+
+func set_floor(has_floor):
+	self.has_floor = has_floor
 
 
 func set_gravity(newGravity):
@@ -216,12 +220,10 @@ func pickup(delta):
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
 	if not compare_floats(angulo, 0):
-		rotationRC.set_cast_to( - up * ROTATION_HEIGHT)
 		axis = self.transform.basis.y.cross(up).normalized()
 	if gravity > 0:
 		ongrav_movement(delta)
-		var can_rotate = rotationRC.is_colliding()
-		if can_rotate:
+		if has_floor:
 			ongrav_rotation_quat(delta)
 	else:
 		nograv_movement(delta)
