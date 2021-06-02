@@ -1,10 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/astronauta/astro/Suit.material" type="Material" id=1]
 [ext_resource path="res://addons/astronauta/astro/astro_player.gltf" type="PackedScene" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "T-Pose-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=3]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Hips", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightUpLeg" ]
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+graph_offset = Vector2( -277.783, 2.70288 )
+nodes/Animation/node = SubResource( 2 )
+nodes/Animation/position = Vector2( 0, 213.333 )
+"nodes/Animation 2/node" = SubResource( 1 )
+"nodes/Animation 2/position" = Vector2( 0, 80 )
+nodes/Blend2/node = SubResource( 3 )
+nodes/Blend2/position = Vector2( 186.667, 106.667 )
+nodes/output/position = Vector2( 400, 106.667 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation 2", "Blend2", 1, "Animation" ]
 
 [node name="astro_player" instance=ExtResource( 2 )]
 
 [node name="Astronaut" parent="Armature/Skeleton" index="0"]
 layers = 2
 material/0 = ExtResource( 1 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Blend2/blend_amount = 0.75
