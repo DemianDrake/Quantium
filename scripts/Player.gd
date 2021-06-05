@@ -5,14 +5,21 @@ const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
 const JUMP_POWER = 20
-const THROW_STRENGTH = 50
+const THROW_STRENGTH = 15
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
+
+# Nodos
+onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
+onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
+onready var h_node = get_node("Gimbal_h_cam_FP")
+onready var v_node = h_node.get_node("Gimbal_v_cam")
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
 var gravity = 9.8
 var up = Vector3.UP
+var backward =	self.transform.basis.z.normalized()
 var current_speed = SPEED
 var insideArea = false
 var airborne_time = 0
@@ -30,7 +37,7 @@ onready var AreaDetector = get_node("Area")
 # Controllers
 var E_hold = 0
 const HOLD_TIME = 0.3 # Tiempo en segundos para que se considere mantener presionado
-var Click_Hold = 1
+var Click_Hold = 0
 const MAX_CLICK_HOLD_TIME = 2.0
 
 # Extra
@@ -46,11 +53,6 @@ var held_item = null
 
 # VARIABLES EXPERIMENTALES
 var floating = false
-
-onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
-onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
-onready var h_node = get_node("Gimbal_h_cam_FP")
-onready var v_node = h_node.get_node("Gimbal_v_cam")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -130,7 +132,7 @@ func nograv_movement(delta):
 	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
-	var backward = v_node.transform.basis.z.normalized()
+	backward = v_node.transform.basis.z.normalized()
 	var y_comp = backward.y * Vector3.UP
 	var x_cam = h_node.transform.basis.x #* dir_x
 	var z_cam = h_node.transform.basis.z #* dir_z
@@ -139,14 +141,14 @@ func nograv_movement(delta):
 	backward = (z_cam + y_comp).normalized()
 	
 	if Input.is_action_just_pressed("throw"):
-		Click_Hold = 1
+		Click_Hold = 0
 	elif Input.is_action_pressed("throw"):
 		Click_Hold += delta
 		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
 		#print(Click_Hold)
 	elif Input.is_action_just_released("throw"):
 		vel += backward * Click_Hold
-		Click_Hold = 1
+		Click_Hold = 0
 		
 	#print(h_node.transform.basis.x)
 	#if horizontal_vel.length() > 0:
@@ -253,12 +255,13 @@ func throw(delta):
 			get_node("Gimbal_h_cam_FP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
 		)
 		
-		held_item.add_central_force(direction.normalized() * Click_Hold * THROW_STRENGTH)
+		#held_item.add_central_force(direction.normalized() * Click_Hold * THROW_STRENGTH)
+		held_item.apply_central_impulse(direction.normalized() * Click_Hold * THROW_STRENGTH)
 		held_item = null
 		holding_item = false
 		if floating:
 			pass
-		Click_Hold = 1
+		Click_Hold = 0
 		return
 
 func _physics_process(delta):
