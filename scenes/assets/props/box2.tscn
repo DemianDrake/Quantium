@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/materials/Box3.tres" type="Material" id=1]
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/meshes/DefaultMaterial.material" type="Material" id=2]
+[ext_resource path="res://scripts/Item.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.416603, 0.319467, 0.339228 )
@@ -21,7 +22,10 @@ surfaces/0 = {
 "vertex_count": 23062
 }
 
-[node name="RigidBody" type="RigidBody"]
+[node name="Box Small" type="RigidBody" groups=[
+"Item",
+]]
+script = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190029, 0.670917, 0.175748 )

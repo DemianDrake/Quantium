@@ -43,6 +43,9 @@ visible = false
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
+[node name="Placeholder" type="Spatial" parent="Model/RotationTest"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.260137, -0.866229 )
+
 [node name="Collision capsule" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 4 )

@@ -1087,7 +1087,6 @@ transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, 12.
 "Interactable",
 ] instance=ExtResource( 23 )]
 transform = Transform( 0.151106, 0, 0.988518, 0, 1, 0, -0.988518, 0, 0.151106, 37.1131, -1.41662, 4.99178 )
-script = ExtResource( 27 )
 
 [node name="Corridor2" type="Spatial" parent="Room Left"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9.07994 )

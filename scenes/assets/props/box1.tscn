@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/materials/Box1.material" type="Material" id=1]
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/meshes/DefaultMaterial.material" type="Material" id=2]
+[ext_resource path="res://scripts/Item.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.631958, 0.370153, 0.369687 )
@@ -21,7 +22,10 @@ surfaces/0 = {
 "vertex_count": 368
 }
 
-[node name="RigidBody" type="RigidBody"]
+[node name="Box Large" type="RigidBody" groups=[
+"Item",
+]]
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.0112571 )

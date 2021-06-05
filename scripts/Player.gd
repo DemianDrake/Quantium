@@ -5,6 +5,7 @@ const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
 const JUMP_POWER = 20
+const THROW_STRENGTH = 50
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 
@@ -38,6 +39,13 @@ const FLOAT_EPSILON = 1e-5
 # Variables de cámara
 var tpcamera = true #false: FP, true: TP
 var changecamerakey = KEY_F
+
+# Variables de interacción
+var holding_item = false
+var held_item = null
+
+# VARIABLES EXPERIMENTALES
+var floating = false
 
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
 onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
@@ -139,7 +147,7 @@ func nograv_movement(delta):
 	elif Input.is_action_just_released("throw"):
 		vel += backward * Click_Hold
 		Click_Hold = 1
-	
+		
 	#print(h_node.transform.basis.x)
 	#if horizontal_vel.length() > 0:
 	#	print(horizontal_vel, horizontal_vel2)
@@ -210,14 +218,48 @@ func pickup(delta):
 			E_hold += delta
 			print(E_hold)
 			if E_hold >= HOLD_TIME:
-				print("Item should be picked up now")
-				casted_item.queue_free()
-				E_hold = 0
+				if not holding_item:
+					print("Item should be picked up now")
+					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))
+					held_item = casted_item
+					holding_item = true
+					E_hold = 0
+				else:
+					# TODO: Place held item to inventory
+					# Place picked up item to placeholder
+					pass
 		else:
 			E_hold = 0
 	else:
 		E_hold = 0
-
+		
+func throw(delta):
+	if not holding_item:
+		return
+	
+	if Input.is_action_pressed("throw"):
+		Click_Hold += delta
+		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
+		return
+	elif Input.is_action_just_released("throw"):
+		#vel += backward * Click_Hold
+		held_item.release()
+		
+		var direction = TPmiddleRC.get_global_transform().origin.direction_to(
+			get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
+		)
+		if not tpcamera:
+			direction = FPmiddleRC.get_global_transform().origin.direction_to(
+			get_node("Gimbal_h_cam_FP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
+		)
+		
+		held_item.add_central_force(direction.normalized() * Click_Hold * THROW_STRENGTH)
+		held_item = null
+		holding_item = false
+		if floating:
+			pass
+		Click_Hold = 1
+		return
 
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
@@ -235,6 +277,7 @@ func _physics_process(delta):
 func _process(delta):
 	interact()
 	pickup(delta)
+	throw(delta)
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
