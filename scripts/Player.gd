@@ -250,12 +250,10 @@ func throw(delta):
 		var direction = TPmiddleRC.get_global_transform().origin.direction_to(
 			get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
 		)
-		if not tpcamera:
-			direction = FPmiddleRC.get_global_transform().origin.direction_to(
-			get_node("Gimbal_h_cam_FP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
-		)
 		
-		#held_item.add_central_force(direction.normalized() * Click_Hold * THROW_STRENGTH)
+		#Alternativa
+		#direction = -1 * get_node("Model/RotationTest").transform.basis.z;
+		
 		held_item.apply_central_impulse(direction.normalized() * Click_Hold * THROW_STRENGTH)
 		held_item = null
 		holding_item = false
