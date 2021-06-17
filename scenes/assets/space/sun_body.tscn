@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/sun/scene.gltf" type="PackedScene" id=1]
+
+[node name="scene" instance=ExtResource( 1 )]
+
+[node name="UnstableStarCore_1_0" parent="RootNode (gltf orientation matrix)/RootNode (model correction matrix)/3a2aaa22fb3d4b329318a980ad1bf6d1fbx/Node/RootNode/UnstableStarCore" index="0"]
+use_in_baked_light = true
+lightmap_scale = 3
+
+[node name="UnstableStarref_2_0" parent="RootNode (gltf orientation matrix)/RootNode (model correction matrix)/3a2aaa22fb3d4b329318a980ad1bf6d1fbx/Node/RootNode/UnstableStarref" index="0"]
+use_in_baked_light = true
+lightmap_scale = 3

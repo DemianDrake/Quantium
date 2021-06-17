@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/station02_ring.obj-b87e7cac150b918ca236cd45e3dbe102.mesh"
+
+[deps]
+
+files=[ "res://.import/station02_ring.obj-b87e7cac150b918ca236cd45e3dbe102.mesh" ]
+
+source_file="res://addons/Viktor Hahn/spacestation 02/ring/station02_ring.obj"
+dest_files=[ "res://.import/station02_ring.obj-b87e7cac150b918ca236cd45e3dbe102.mesh", "res://.import/station02_ring.obj-b87e7cac150b918ca236cd45e3dbe102.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

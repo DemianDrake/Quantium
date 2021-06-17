@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/station02_base.obj-20cc6fd225930d53999d079ed2c73512.mesh"
+
+[deps]
+
+files=[ "res://.import/station02_base.obj-20cc6fd225930d53999d079ed2c73512.mesh" ]
+
+source_file="res://addons/Viktor Hahn/spacestation 02/base/station02_base.obj"
+dest_files=[ "res://.import/station02_base.obj-20cc6fd225930d53999d079ed2c73512.mesh", "res://.import/station02_base.obj-20cc6fd225930d53999d079ed2c73512.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

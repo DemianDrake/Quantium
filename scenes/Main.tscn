@@ -1,12 +1,74 @@
-[gd_scene format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/assets/space/sun_body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/assets/space/spacestation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=3]
+[ext_resource path="res://scenes/assets/space/planet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/SpaceBody.gd" type="Script" id=5]
+[ext_resource path="res://scenes/assets/space/wind_planet.tscn" type="PackedScene" id=6]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_depth_curve = 0.435275
+glow_enabled = true
+glow_intensity = 0.5
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+adjustment_enabled = true
+adjustment_brightness = 0.95
+adjustment_saturation = 1.2
 
 [node name="Spatial" type="Spatial"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+script = ExtResource( 5 )
+speed = -0.005
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.498185, 0, 0.867071, 0, 1, 0, -0.867071, 0, 0.498185, 0.875249, -0.775127, 2.31856 )
+far = 534.4
+
+[node name="Space Station" type="Spatial" parent="."]
+transform = Transform( 1, 2.98023e-08, 0, -1.49012e-08, 1, -1.49012e-08, 5.96046e-08, -1.49012e-08, 1, -1.75658, -1.69476, -0.750816 )
+script = ExtResource( 5 )
+
+[node name="The Ark" parent="Space Station" instance=ExtResource( 2 )]
+transform = Transform( 0.0837189, -0.0373426, -0.0399586, 0.0277224, 0.091955, -0.0278525, 0.0471447, 0.0122403, 0.0873358, 0, 0, 0 )
+script = ExtResource( 5 )
+speed = -0.07
+
+[node name="Solar System" type="Spatial" parent="."]
+
+[node name="The Sun" parent="Solar System" instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 25, -80 )
+script = ExtResource( 5 )
+speed = 0.01
+
+[node name="OmniLight" type="OmniLight" parent="Solar System/The Sun"]
+light_energy = 2.0
+omni_range = 300.0
+
+[node name="Orbit 01" type="Spatial" parent="Solar System"]
+transform = Transform( 0.293847, -0.312576, -0.256808, 0.364299, 0.342471, 0, 0.175898, -0.18711, 0.42901, 0, 25, -80 )
+script = ExtResource( 5 )
+speed = -0.005
+
+[node name="Planet" parent="Solar System/Orbit 01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9056, -49.1167, 148.535 )
+script = ExtResource( 5 )
+
+[node name="Orbit 02" type="Spatial" parent="Solar System"]
+transform = Transform( 4.82699, 1.29239, -0.173014, -1.29239, 4.65397, -1.29239, -0.173014, 1.29239, 4.82699, -28.069, 25, -51.931 )
+script = ExtResource( 5 )
+speed = 0.005
+
+[node name="Planet" parent="Solar System/Orbit 02" instance=ExtResource( 6 )]
+transform = Transform( 0.999998, -4.47035e-08, 2.98023e-08, 1.49012e-08, 0.999998, 0, 1.19209e-07, 1.49012e-08, 0.999999, 17.0471, 2.41988, 15.2591 )
+script = ExtResource( 5 )
+speed = -0.015
