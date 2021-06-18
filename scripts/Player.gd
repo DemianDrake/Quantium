@@ -14,6 +14,8 @@ onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
 onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
 onready var h_node = get_node("Gimbal_h_cam_FP")
 onready var v_node = h_node.get_node("Gimbal_v_cam")
+onready var anim_tree = get_node("Model/RotationTest/astro_player/AnimationTree")
+onready var state_machine = anim_tree["parameters/playback"]
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
@@ -27,6 +29,10 @@ var airborne_time = 0
 onready var angulo = 0
 onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
 onready var has_floor = true
+
+# AnimationTree
+var anim_state = "Idle"
+#const ESTADOS = ["Idle","Walking","Running","Jumping","Landing","Interact","PickUp1","PickUp2","Holding Idle","Floating","Dancing"]
 
 # Raycasts y Areas
 onready var downRC = get_node("downRC")
@@ -99,15 +105,24 @@ func ongrav_movement(delta):
 	var horizontal_vel = x_comp + z_comp
 	var vertical_vel = up.normalized()
 	
-	if Input.is_action_just_pressed("jump") and on_floor:
-		vertical_vel *= JUMP_POWER
-	else:
-		vertical_vel *= 0
-	
 	if on_floor and Input.is_action_pressed("run"):
 		current_speed = RUN_SPEED
+		anim_state = "Running"
 	else:
 		current_speed = SPEED
+		anim_state = "Walking"
+	
+	if dir_x == 0 and dir_z == 0:
+		anim_state = "Idle"
+	
+#	if vel_g > 0:
+#		anim_state = "Falling"
+	
+	if Input.is_action_just_pressed("jump") and on_floor:
+		vertical_vel *= JUMP_POWER
+		anim_state = "Jumping"
+	else:
+		vertical_vel *= 0
 	
 	if on_floor:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
@@ -115,7 +130,8 @@ func ongrav_movement(delta):
 	else:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
 		airborne_time += delta
-		
+	
+	
 	vel = horizontal_vel + vertical_vel - vel_g
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		var horizontal_dir = horizontal_vel - horizontal_vel.project(up*15)
@@ -210,6 +226,7 @@ func interact():
 	if Input.is_action_just_pressed("interact"):
 		var casted_interactable = get_raycast_elem("Interactable")
 		if is_instance_valid(casted_interactable):
+			anim_state = "Interact"
 			casted_interactable.interact()
 
 
@@ -217,11 +234,11 @@ func pickup(delta):
 	if Input.is_action_pressed("interact"):
 		var casted_item = get_raycast_elem("Item")
 		if is_instance_valid(casted_item):
+			anim_state = "PickUp1"
 			E_hold += delta
 			print(E_hold)
 			if E_hold >= HOLD_TIME:
 				if not holding_item:
-					print("Item should be picked up now")
 					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))
 					held_item = casted_item
 					holding_item = true
@@ -257,6 +274,8 @@ func throw(delta):
 		held_item.apply_central_impulse(direction.normalized() * Click_Hold * THROW_STRENGTH)
 		held_item = null
 		holding_item = false
+#		anim_state = "Throwing"
+		
 		if floating:
 			pass
 		Click_Hold = 0
@@ -274,11 +293,14 @@ func _physics_process(delta):
 		nograv_movement(delta)
 	gravity_area_detector()
 
-
 func _process(delta):
 	interact()
 	pickup(delta)
 	throw(delta)
+	set_anim(anim_state)
+
+func set_anim(state):
+	state_machine.travel(state)
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
