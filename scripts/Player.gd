@@ -8,6 +8,7 @@ const JUMP_POWER = 20
 const THROW_STRENGTH = 15
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
+const HOTBAR_KEYS = [KEY_1, KEY_2, KEY_3, KEY_4]
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -29,6 +30,7 @@ var airborne_time = 0
 onready var angulo = 0
 onready var axis = (Vector3.UP + Vector3(0.001,0,0)).normalized()
 onready var has_floor = true
+onready var inventory = hotbar_dict()
 
 # AnimationTree
 var anim_state = "Idle"
@@ -86,6 +88,8 @@ func _unhandled_key_input(event):
 			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		elif event.pressed and event.scancode in HOTBAR_KEYS:
+			hotbar_input_handler(event.scancode)
 
 
 func ongrav_movement(delta):
@@ -251,7 +255,47 @@ func pickup(delta):
 			E_hold = 0
 	else:
 		E_hold = 0
+
+func hotbar_input_handler(key):
+	if holding_item:
+		store(key)
+	else:
+		retrieve(key)
+
+func retrieve(key):
+	var slot = inventory[key]
+	
+	if slot['amount'] > 0:
+		var item = load('res://scenes/assets/props/'+slot['name']+'.tscn').instance()
+		item.grab(self.get_node("Model/RotationTest/Placeholder"))
 		
+		slot['amount'] -= 1
+		if slot['amount'] == 0:
+			slot['name'] = 'empty'
+		held_item = item
+		holding_item = true
+		print(inventory)
+
+
+func store(key):
+	var slot = inventory[key]
+	var is_stored = false
+	var item_name = held_item.get_item_name()
+	
+	if slot['name'] == 'empty':
+		slot['name'] = item_name
+		is_stored = true
+	
+	elif item_name == slot['name']:
+		is_stored = true
+	
+	if is_stored:
+		slot['amount'] += 1
+		held_item.queue_free()
+		held_item = null
+		holding_item = false
+	print(inventory)
+
 func throw(delta):
 	if not holding_item:
 		return
@@ -304,6 +348,15 @@ func set_anim(state):
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
+
+static func slot_dict():
+	return {'amount':0, 'name':'empty'}
+
+static func hotbar_dict():
+	var dict = {}
+	for i in HOTBAR_KEYS:
+		dict[i] = slot_dict()
+	return dict
 
 
 #funcion de rotacion del modelo
