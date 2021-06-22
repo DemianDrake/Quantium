@@ -83,7 +83,8 @@ func _unhandled_key_input(event):
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
 		elif event.pressed and event.scancode == KEY_R:
-			get_tree().reload_current_scene()
+			set_anim("Dying")
+#			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_Y:
 			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_ESCAPE:
@@ -159,6 +160,11 @@ func nograv_movement(delta):
 	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
 	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
 	backward = (z_cam + y_comp).normalized()
+	
+	if vel.length() < 10.5:
+		anim_state = "Floating_A"
+	else:
+		anim_state = "Floating_B"
 	
 	if Input.is_action_just_pressed("throw"):
 		Click_Hold = 0
