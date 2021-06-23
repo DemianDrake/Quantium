@@ -272,7 +272,7 @@ func retrieve(key):
 	var slot = inventory[key]
 	
 	if slot['amount'] > 0:
-		var item = load(slot['item_path']).instance()
+		var item = load(slot['scene_path']).instance()
 		item.grab(self.get_node("Model/RotationTest/Placeholder"))
 		
 		slot['amount'] -= 1
@@ -289,7 +289,7 @@ func can_store():
 	var has_space = false
 	var is_stored = false
 	
-	for i in range(0, len(HOTBAR_KEYS), -1):
+	for i in range(len(HOTBAR_KEYS)-1, -1, -1):
 		k = HOTBAR_KEYS[i]
 		slot = inventory[k]
 		if slot['item_name']=='empty':
