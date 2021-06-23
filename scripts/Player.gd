@@ -267,6 +267,8 @@ func hotbar_input_handler(key):
 		store(key)
 	else:
 		retrieve(key)
+	print(inventory)
+	get_node("CanvasLayer/InGameGUI/Hotbar/Inventory").update_hotbar(inventory)
 
 func retrieve(key):
 	var slot = inventory[key]
@@ -371,6 +373,9 @@ func _process(delta):
 
 func set_anim(state):
 	state_machine.travel(state)
+
+func get_inventory():
+	return inventory
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
