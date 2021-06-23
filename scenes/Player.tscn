@@ -102,4 +102,3 @@ shape = SubResource( 4 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InGameGUI" parent="CanvasLayer" instance=ExtResource( 5 )]
-visible = false

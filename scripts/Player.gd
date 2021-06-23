@@ -321,7 +321,6 @@ func store(key):
 		
 		if key != store_key:
 			retrieve(key)
-		print(inventory)
 
 func throw(delta):
 	if not holding_item:
