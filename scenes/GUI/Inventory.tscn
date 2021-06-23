@@ -34,8 +34,8 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 258.0
-margin_bottom = 64.0
+margin_right = 256.0
+margin_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
@@ -72,6 +72,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Slot2" type="ColorRect" parent="ColorRect/MarginContainer/GridContainer"]
 margin_left = 64.0

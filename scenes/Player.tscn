@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Gimbal_cam_TP.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Gimbal_cam_FP.gd" type="Script" id=3]
 [ext_resource path="res://scenes/assets/char/astro_player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/GUI/InGameGUI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.4
@@ -97,3 +98,7 @@ cast_to = Vector3( 0, -0.45, 0 )
 [node name="Collision capsule" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGameGUI" parent="CanvasLayer" instance=ExtResource( 5 )]

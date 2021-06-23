@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://addons/astronauta/astro/Suit.material" type="Material" id=1]
 [ext_resource path="res://addons/astronauta/astro/astro_player.gltf" type="PackedScene" id=2]
@@ -676,6 +676,31 @@ animation = "Floating_B-loop"
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Floating_C-loop"
 
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "Holding_Idle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=71]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Hips", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightUpLeg" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=72]
+
+[sub_resource type="AnimationNodeBlendTree" id=73]
+graph_offset = Vector2( -82, -4 )
+nodes/Animation/node = SubResource( 70 )
+nodes/Animation/position = Vector2( 140, 120 )
+"nodes/Animation 2/node" = SubResource( 69 )
+"nodes/Animation 2/position" = Vector2( 140, 220 )
+nodes/Blend2/node = SubResource( 71 )
+nodes/Blend2/position = Vector2( 440, 120 )
+nodes/TimeScale/node = SubResource( 72 )
+nodes/TimeScale/position = Vector2( 640, 120 )
+nodes/output/position = Vector2( 800, 120 )
+node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2" ]
+
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle-loop"
 
@@ -710,7 +735,7 @@ nodes/Blend2/position = Vector2( 400, 80 )
 nodes/TimeScale/node = SubResource( 15 )
 nodes/TimeScale/position = Vector2( 920, -60 )
 nodes/output/position = Vector2( 1180, -60 )
-node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2 2", "Blend2 2", 0, "Animation 3", "Blend2 2", 1, "Blend2" ]
+node_connections = [ "output", 0, "TimeScale", "Blend2 2", 0, "Animation 3", "Blend2 2", 1, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2 2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=17]
 animation = "T-Pose-loop"
@@ -789,6 +814,12 @@ nodes/TimeScale/position = Vector2( 740, 100 )
 nodes/output/position = Vector2( 900, 100 )
 node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2" ]
 
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "Push_A-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "Pushing-loop"
+
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "Running-loop"
 
@@ -803,43 +834,33 @@ nodes/TimeScale/position = Vector2( 140, 140 )
 nodes/output/position = Vector2( 300, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=67]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "Throw_1H-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=68]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "Throw_2H-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "Walking-loop"
 
-[sub_resource type="AnimationNodeTimeScale" id=37]
+[sub_resource type="AnimationNodeTimeScale" id=39]
 
-[sub_resource type="AnimationNodeBlendTree" id=38]
+[sub_resource type="AnimationNodeBlendTree" id=40]
 graph_offset = Vector2( -525, 58 )
-nodes/Animation/node = SubResource( 36 )
+nodes/Animation/node = SubResource( 38 )
 nodes/Animation/position = Vector2( -40, 140 )
-nodes/TimeScale/node = SubResource( 37 )
+nodes/TimeScale/node = SubResource( 39 )
 nodes/TimeScale/position = Vector2( 140, 140 )
 nodes/output/position = Vector2( 300, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
-xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=41]
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
-switch_mode = 2
-auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=43]
-switch_mode = 2
-auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=44]
@@ -858,45 +879,49 @@ auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
-xfade_time = 0.05
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
 switch_mode = 2
 auto_advance = true
-advance_condition = "land"
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+advance_condition = "land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=50]
-switch_mode = 1
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=51]
-switch_mode = 1
-xfade_time = 0.2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 1
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 1
 xfade_time = 0.2
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 xfade_time = 0.2
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 xfade_time = 0.2
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
-xfade_time = 0.1
+xfade_time = 0.2
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
-xfade_time = 0.1
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=58]
 xfade_time = 0.1
@@ -905,6 +930,12 @@ xfade_time = 0.1
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=60]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
 xfade_time = 0.1
 priority = 0
 
@@ -924,7 +955,7 @@ priority = 0
 xfade_time = 0.05
 priority = 0
 
-[sub_resource type="AnimationNodeStateMachine" id=61]
+[sub_resource type="AnimationNodeStateMachine" id=67]
 states/Dancing/node = SubResource( 5 )
 states/Dancing/position = Vector2( 415, 205 )
 states/Dancing-2/node = SubResource( 3 )
@@ -939,6 +970,8 @@ states/Floating_B/node = SubResource( 9 )
 states/Floating_B/position = Vector2( 813, 38 )
 states/Floating_B-loop/node = SubResource( 8 )
 states/Floating_B-loop/position = Vector2( 1332, 109 )
+states/Holding_idle/node = SubResource( 73 )
+states/Holding_idle/position = Vector2( 985, 109 )
 states/Idle/node = SubResource( 16 )
 states/Idle/position = Vector2( 667, 205 )
 states/Interact/node = SubResource( 21 )
@@ -949,22 +982,24 @@ states/Landing/node = SubResource( 27 )
 states/Landing/position = Vector2( 813, 459 )
 states/PickUp1/node = SubResource( 32 )
 states/PickUp1/position = Vector2( 985, 205 )
+states/Push_A-loop/node = SubResource( 74 )
+states/Push_A-loop/position = Vector2( 1322, 255 )
+states/Pushing-loop/node = SubResource( 75 )
+states/Pushing-loop/position = Vector2( 1332, 61 )
 states/Running/node = SubResource( 35 )
 states/Running/position = Vector2( 270, 351 )
-states/Throw_1H-loop/node = SubResource( 67 )
+states/Throw_1H-loop/node = SubResource( 36 )
 states/Throw_1H-loop/position = Vector2( 1332, 157 )
-states/Throw_2H-loop/node = SubResource( 68 )
+states/Throw_2H-loop/node = SubResource( 37 )
 states/Throw_2H-loop/position = Vector2( 1332, 205 )
-states/Walking/node = SubResource( 38 )
+states/Walking/node = SubResource( 40 )
 states/Walking/position = Vector2( 415, 459 )
-transitions = [ "Idle", "Dancing", SubResource( 39 ), "Idle", "Interact", SubResource( 40 ), "Idle", "PickUp1", SubResource( 41 ), "PickUp1", "Idle", SubResource( 42 ), "Interact", "Idle", SubResource( 43 ), "Dancing", "Dancing-2", SubResource( 44 ), "Dancing-2", "Dancing-3", SubResource( 45 ), "Dancing-3", "Idle", SubResource( 46 ), "Idle", "Jumping", SubResource( 47 ), "Jumping", "Landing", SubResource( 48 ), "Landing", "Idle", SubResource( 49 ), "Walking", "Running", SubResource( 50 ), "Running", "Walking", SubResource( 51 ), "Walking", "Idle", SubResource( 52 ), "Idle", "Walking", SubResource( 53 ), "Idle", "Running", SubResource( 54 ), "Running", "Idle", SubResource( 55 ), "Idle", "Floating_A", SubResource( 56 ), "Floating_A", "Idle", SubResource( 57 ), "Idle", "Floating_B", SubResource( 58 ), "Floating_B", "Idle", SubResource( 59 ), "Idle", "Dying", SubResource( 60 ), "Walking", "Jumping", SubResource( 63 ), "Running", "Jumping", SubResource( 64 ), "Landing", "Walking", SubResource( 65 ), "Landing", "Running", SubResource( 66 ) ]
+transitions = [ "Idle", "Dancing", SubResource( 41 ), "Idle", "Interact", SubResource( 42 ), "Idle", "PickUp1", SubResource( 43 ), "PickUp1", "Idle", SubResource( 44 ), "Interact", "Idle", SubResource( 45 ), "Dancing", "Dancing-2", SubResource( 46 ), "Dancing-2", "Dancing-3", SubResource( 47 ), "Dancing-3", "Idle", SubResource( 48 ), "Idle", "Jumping", SubResource( 49 ), "Jumping", "Landing", SubResource( 50 ), "Landing", "Idle", SubResource( 51 ), "Walking", "Running", SubResource( 52 ), "Running", "Walking", SubResource( 53 ), "Walking", "Idle", SubResource( 54 ), "Idle", "Walking", SubResource( 55 ), "Idle", "Running", SubResource( 56 ), "Running", "Idle", SubResource( 57 ), "Idle", "Floating_A", SubResource( 58 ), "Floating_A", "Idle", SubResource( 59 ), "Idle", "Floating_B", SubResource( 60 ), "Floating_B", "Idle", SubResource( 61 ), "Idle", "Dying", SubResource( 62 ), "Walking", "Jumping", SubResource( 63 ), "Running", "Jumping", SubResource( 64 ), "Landing", "Walking", SubResource( 65 ), "Landing", "Running", SubResource( 66 ) ]
 start_node = "Idle"
 end_node = "Dying"
-graph_offset = Vector2( 257, 24 )
+graph_offset = Vector2( 221, -18 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=62]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=69]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
 
 [node name="astro_player" instance=ExtResource( 2 )]
 
@@ -977,29 +1012,13 @@ anims/Jumping = SubResource( 1 )
 anims/Landing = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource( 61 )
+tree_root = SubResource( 67 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 62 )
+parameters/playback = SubResource( 68 )
 parameters/conditions/land = false
-parameters/Idle/Blend2/blend_amount = 0.75
-"parameters/Idle/Blend2 2/blend_amount" = 0.75
-parameters/Idle/TimeScale/scale = 1.0
-parameters/Interact/Blend2/blend_amount = 0.75
-parameters/Interact/TimeScale/scale = 1.0
-parameters/Jumping/TimeScale/scale = 1.0
-parameters/Landing/TimeScale/scale = 1.0
-parameters/PickUp1/Blend2/blend_amount = 0.75
-parameters/PickUp1/TimeScale/scale = 1.0
-parameters/Running/TimeScale/scale = 1.0
-parameters/Walking/TimeScale/scale = 1.0
-
-[node name="AnimationTree2" type="AnimationTree" parent="." index="3"]
-tree_root = SubResource( 61 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 69 )
-parameters/conditions/land = false
+parameters/Holding_idle/Blend2/blend_amount = 0
+parameters/Holding_idle/TimeScale/scale = 1.0
 parameters/Idle/Blend2/blend_amount = 0.75
 "parameters/Idle/Blend2 2/blend_amount" = 0.75
 parameters/Idle/TimeScale/scale = 1.0

@@ -107,7 +107,7 @@ func ongrav_movement(delta):
 	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
 	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
 	
-	var horizontal_vel = x_comp + z_comp
+	var horizontal_vel = (x_comp + z_comp).normalized()
 	var vertical_vel = up.normalized()
 	
 	if on_floor and Input.is_action_pressed("run"):
