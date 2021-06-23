@@ -11,7 +11,10 @@ func _ready():
 	set_sleeping(true)
 	
 func grab(node):
-	get_parent().remove_child(self)
+	var parent = get_parent()
+	
+	if is_instance_valid(parent):
+		parent.remove_child(self)
 	node.add_child(self)
 	#set_translation(Vector3(0, 0, 0))
 	set_transform(Transform.IDENTITY)
