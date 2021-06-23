@@ -272,35 +272,56 @@ func retrieve(key):
 	var slot = inventory[key]
 	
 	if slot['amount'] > 0:
-		var item = load('res://scenes/assets/props/'+slot['name']+'.tscn').instance()
+		var item = load(slot['item_path']).instance()
 		item.grab(self.get_node("Model/RotationTest/Placeholder"))
 		
 		slot['amount'] -= 1
 		if slot['amount'] == 0:
-			slot['name'] = 'empty'
+			inventory[key] = slot_dict()
 		held_item = item
 		holding_item = true
-		print(inventory)
 
+
+func can_store():
+	var slot
+	var k
+	var store_key
+	var has_space = false
+	var is_stored = false
+	
+	for i in range(0, len(HOTBAR_KEYS), -1):
+		k = HOTBAR_KEYS[i]
+		slot = inventory[k]
+		if slot['item_name']=='empty':
+			store_key = k
+			has_space = true
+		elif slot['item_name']==held_item.get_item_name():
+			if slot['amount'] < held_item.get_max_amount():
+				store_key = k
+				has_space = true
+				is_stored = true
+			else:
+				has_space = false
+			break
+	return {'store_key':store_key, 'has_space':has_space, 'is_stored':is_stored}
 
 func store(key):
-	var slot = inventory[key]
-	var is_stored = false
-	var item_name = held_item.get_item_name()
+	var store_dict = can_store()
 	
-	if slot['name'] == 'empty':
-		slot['name'] = item_name
-		is_stored = true
-	
-	elif item_name == slot['name']:
-		is_stored = true
-	
-	if is_stored:
+	if store_dict['has_space']:
+		var store_key = store_dict['store_key']
+		var slot = inventory[store_key]
+		
+		if not store_dict['is_stored']:
+			held_item.item_data_to_dict(slot)
 		slot['amount'] += 1
 		held_item.queue_free()
 		held_item = null
 		holding_item = false
-	print(inventory)
+		
+		if key != store_key:
+			retrieve(key)
+		print(inventory)
 
 func throw(delta):
 	if not holding_item:
@@ -356,7 +377,7 @@ static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
 
 static func slot_dict():
-	return {'amount':0, 'name':'empty'}
+	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':''}
 
 static func hotbar_dict():
 	var dict = {}

@@ -8,10 +8,11 @@ extends "res://scripts/Item.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	item_name = 'Small Box'
+	max_amount = 10
+	scene_path = 'res://scenes/assets/props/box1.tscn'
+	texture_path = 'res://addons/item_textures/box1.png'
 
-func get_item_name():
-	return 'box1'
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
