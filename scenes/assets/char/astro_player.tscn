@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://addons/astronauta/astro/Suit.material" type="Material" id=1]
 [ext_resource path="res://addons/astronauta/astro/astro_player.gltf" type="PackedScene" id=2]
@@ -803,6 +803,12 @@ nodes/TimeScale/position = Vector2( 140, 140 )
 nodes/output/position = Vector2( 300, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "Throw_1H-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "Throw_2H-loop"
+
 [sub_resource type="AnimationNodeAnimation" id=36]
 animation = "Walking-loop"
 
@@ -877,9 +883,11 @@ xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=53]
 xfade_time = 0.2
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 xfade_time = 0.2
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 xfade_time = 0.2
@@ -890,16 +898,33 @@ xfade_time = 0.1
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
 xfade_time = 0.1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+xfade_time = 0.1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=60]
 xfade_time = 0.1
+priority = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-xfade_time = 0.1
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+xfade_time = 0.05
+priority = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-xfade_time = 0.1
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+xfade_time = 0.05
+priority = 0
 
-[sub_resource type="AnimationNodeStateMachine" id=58]
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachine" id=61]
 states/Dancing/node = SubResource( 5 )
 states/Dancing/position = Vector2( 415, 205 )
 states/Dancing-2/node = SubResource( 3 )
@@ -913,27 +938,33 @@ states/Floating_A/position = Vector2( 667, 38 )
 states/Floating_B/node = SubResource( 9 )
 states/Floating_B/position = Vector2( 813, 38 )
 states/Floating_B-loop/node = SubResource( 8 )
-states/Floating_B-loop/position = Vector2( 1145, 101 )
+states/Floating_B-loop/position = Vector2( 1332, 109 )
 states/Idle/node = SubResource( 16 )
 states/Idle/position = Vector2( 667, 205 )
 states/Interact/node = SubResource( 21 )
-states/Interact/position = Vector2( 563, 351 )
+states/Interact/position = Vector2( 985, 351 )
 states/Jumping/node = SubResource( 24 )
-states/Jumping/position = Vector2( 930, 205 )
+states/Jumping/position = Vector2( 667, 351 )
 states/Landing/node = SubResource( 27 )
-states/Landing/position = Vector2( 930, 351 )
+states/Landing/position = Vector2( 813, 459 )
 states/PickUp1/node = SubResource( 32 )
-states/PickUp1/position = Vector2( 764, 351 )
+states/PickUp1/position = Vector2( 985, 205 )
 states/Running/node = SubResource( 35 )
-states/Running/position = Vector2( 161, 351 )
+states/Running/position = Vector2( 270, 351 )
+states/Throw_1H-loop/node = SubResource( 67 )
+states/Throw_1H-loop/position = Vector2( 1332, 157 )
+states/Throw_2H-loop/node = SubResource( 68 )
+states/Throw_2H-loop/position = Vector2( 1332, 205 )
 states/Walking/node = SubResource( 38 )
-states/Walking/position = Vector2( 415, 351 )
-transitions = [ "Idle", "Dancing", SubResource( 39 ), "Idle", "Interact", SubResource( 40 ), "Idle", "PickUp1", SubResource( 41 ), "PickUp1", "Idle", SubResource( 42 ), "Interact", "Idle", SubResource( 43 ), "Dancing", "Dancing-2", SubResource( 44 ), "Dancing-2", "Dancing-3", SubResource( 45 ), "Dancing-3", "Idle", SubResource( 46 ), "Idle", "Jumping", SubResource( 47 ), "Jumping", "Landing", SubResource( 48 ), "Landing", "Idle", SubResource( 49 ), "Walking", "Running", SubResource( 50 ), "Running", "Walking", SubResource( 51 ), "Walking", "Idle", SubResource( 52 ), "Idle", "Walking", SubResource( 53 ), "Idle", "Running", SubResource( 54 ), "Running", "Idle", SubResource( 55 ), "Idle", "Floating_A", SubResource( 56 ), "Floating_A", "Idle", SubResource( 57 ), "Idle", "Floating_B", SubResource( 60 ), "Floating_B", "Idle", SubResource( 61 ), "Idle", "Dying", SubResource( 62 ) ]
+states/Walking/position = Vector2( 415, 459 )
+transitions = [ "Idle", "Dancing", SubResource( 39 ), "Idle", "Interact", SubResource( 40 ), "Idle", "PickUp1", SubResource( 41 ), "PickUp1", "Idle", SubResource( 42 ), "Interact", "Idle", SubResource( 43 ), "Dancing", "Dancing-2", SubResource( 44 ), "Dancing-2", "Dancing-3", SubResource( 45 ), "Dancing-3", "Idle", SubResource( 46 ), "Idle", "Jumping", SubResource( 47 ), "Jumping", "Landing", SubResource( 48 ), "Landing", "Idle", SubResource( 49 ), "Walking", "Running", SubResource( 50 ), "Running", "Walking", SubResource( 51 ), "Walking", "Idle", SubResource( 52 ), "Idle", "Walking", SubResource( 53 ), "Idle", "Running", SubResource( 54 ), "Running", "Idle", SubResource( 55 ), "Idle", "Floating_A", SubResource( 56 ), "Floating_A", "Idle", SubResource( 57 ), "Idle", "Floating_B", SubResource( 58 ), "Floating_B", "Idle", SubResource( 59 ), "Idle", "Dying", SubResource( 60 ), "Walking", "Jumping", SubResource( 63 ), "Running", "Jumping", SubResource( 64 ), "Landing", "Walking", SubResource( 65 ), "Landing", "Running", SubResource( 66 ) ]
 start_node = "Idle"
 end_node = "Dying"
-graph_offset = Vector2( -107, -2 )
+graph_offset = Vector2( 257, 24 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=59]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=62]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=69]
 
 [node name="astro_player" instance=ExtResource( 2 )]
 
@@ -946,10 +977,28 @@ anims/Jumping = SubResource( 1 )
 anims/Landing = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource( 58 )
+tree_root = SubResource( 61 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 59 )
+parameters/playback = SubResource( 62 )
+parameters/conditions/land = false
+parameters/Idle/Blend2/blend_amount = 0.75
+"parameters/Idle/Blend2 2/blend_amount" = 0.75
+parameters/Idle/TimeScale/scale = 1.0
+parameters/Interact/Blend2/blend_amount = 0.75
+parameters/Interact/TimeScale/scale = 1.0
+parameters/Jumping/TimeScale/scale = 1.0
+parameters/Landing/TimeScale/scale = 1.0
+parameters/PickUp1/Blend2/blend_amount = 0.75
+parameters/PickUp1/TimeScale/scale = 1.0
+parameters/Running/TimeScale/scale = 1.0
+parameters/Walking/TimeScale/scale = 1.0
+
+[node name="AnimationTree2" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource( 61 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 69 )
 parameters/conditions/land = false
 parameters/Idle/Blend2/blend_amount = 0.75
 "parameters/Idle/Blend2 2/blend_amount" = 0.75
