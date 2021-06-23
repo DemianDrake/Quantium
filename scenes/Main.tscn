@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/assets/space/sun_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/space/spacestation.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/assets/space/wind_planet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/GUI/TitleScreenGUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/GUI/MainMenuGUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/TitleScreenCamera.gd" type="Script" id=9]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
@@ -24,6 +25,168 @@ adjustment_enabled = true
 adjustment_brightness = 0.95
 adjustment_saturation = 1.2
 
+[sub_resource type="Animation" id=3]
+resource_name = "CameraIntro"
+length = 2.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.875249, -1.32356, -0.00109267, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.676436, -0.00390321, -0.775127, -1.04833, 0.00872141, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:translation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 2.31856, -0.25, 0, 0.25, 0, 2.31856, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:rotation_degrees:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath(".:rotation_degrees:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 135.12, -0.25, 0, 0.685766, -0.517212, 60.12, -1.37022, 0.470295, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath(".:rotation_degrees:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Appear"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Transition"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("CanvasLayer/MainMenuGUI:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.2, 2 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/TitleScreenGUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/MainMenuGUI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="Spatial" type="Spatial"]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
 script = ExtResource( 5 )
@@ -33,8 +196,12 @@ speed = -0.005
 environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.498185, 0, 0.867071, 0, 1, 0, -0.867071, 0, 0.498185, 0.875249, -0.775127, 2.31856 )
+transform = Transform( -0.708586, 0, 0.705624, 0, 1, 0, -0.705624, 0, -0.708586, 0, 0, 2.31856 )
 far = 534.4
+script = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+anims/CameraIntro = SubResource( 3 )
 
 [node name="Space Station" type="Spatial" parent="."]
 transform = Transform( 1, 2.98023e-08, 0, -1.49012e-08, 1, -1.49012e-08, 5.96046e-08, -1.49012e-08, 1, -1.75658, -1.69476, -0.750816 )
@@ -78,6 +245,11 @@ speed = -0.015
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenuGUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
 
 [node name="TitleScreenGUI" parent="CanvasLayer" instance=ExtResource( 7 )]
-visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Appear"
+anims/Appear = SubResource( 4 )
+anims/Transition = SubResource( 5 )
