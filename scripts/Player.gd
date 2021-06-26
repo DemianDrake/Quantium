@@ -9,6 +9,8 @@ const THROW_STRENGTH = 15
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 const HOTBAR_KEYS = [KEY_1, KEY_2, KEY_3, KEY_4]
+const MAX_HEALTH = 100
+const MAX_O2 = 100
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -58,6 +60,10 @@ var changecamerakey = KEY_F
 # Variables de interacción
 var holding_item = false
 var held_item = null
+
+# Variables UI
+var current_hp = MAX_HEALTH
+var current_o2 = MAX_O2
 
 # VARIABLES EXPERIMENTALES
 var floating = false
@@ -262,13 +268,14 @@ func pickup(delta):
 	else:
 		E_hold = 0
 
+
 func hotbar_input_handler(key):
 	if holding_item:
 		store(key)
 	else:
 		retrieve(key)
-	print(inventory)
 	get_node("CanvasLayer/InGameGUI/Hotbar/Inventory").update_hotbar(inventory)
+
 
 func retrieve(key):
 	var slot = inventory[key]
@@ -307,6 +314,7 @@ func can_store():
 			break
 	return {'store_key':store_key, 'has_space':has_space, 'is_stored':is_stored}
 
+
 func store(key):
 	var store_dict = can_store()
 	
@@ -323,6 +331,7 @@ func store(key):
 		
 		if key != store_key:
 			retrieve(key)
+
 
 func throw(delta):
 	if not holding_item:
@@ -353,6 +362,21 @@ func throw(delta):
 		Click_Hold = 0
 		return
 
+
+func updateO2(delta):
+	var rate = delta
+	if Input.is_action_pressed("run"):
+		rate *= 2
+	current_o2 -= rate
+	current_o2 = clamp(current_o2, 0, MAX_O2)
+
+
+func update_bars(delta):
+	updateO2(delta)
+	get_node("CanvasLayer/InGameGUI/Bar/HP").update_bar(current_hp/MAX_HEALTH)
+	get_node("CanvasLayer/InGameGUI/Bar/O2").update_bar(current_o2/MAX_O2)
+
+
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
 	if not compare_floats(angulo, 0):
@@ -365,23 +389,30 @@ func _physics_process(delta):
 		nograv_movement(delta)
 	gravity_area_detector()
 
+
 func _process(delta):
 	interact()
 	pickup(delta)
 	throw(delta)
+	update_bars(delta)
 	set_anim(anim_state)
+
 
 func set_anim(state):
 	state_machine.travel(state)
 
+
 func get_inventory():
 	return inventory
+
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
 
+
 static func slot_dict():
 	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':''}
+
 
 static func hotbar_dict():
 	var dict = {}
