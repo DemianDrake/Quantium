@@ -10,7 +10,7 @@ extends RigidBody
 func _ready() -> void:
 	pass # Replace with function body.
 
-func interact():
+func interact(body: Node):
 	print(self.mode)
 	if self.mode == RigidBody.MODE_RIGID:
 		self.mode = RigidBody.MODE_STATIC

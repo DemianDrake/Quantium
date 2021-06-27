@@ -11,7 +11,7 @@ onready var closed_rotation = rotation_degrees                   # Cerrada
 #func _ready() -> void:
 #	pass # Replace with function body.
 
-func interact():
+func interact(body: Node):
 	if open:
 		$Tween.interpolate_property(self, "rotation_degrees", opened_rotation, closed_rotation, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	else:

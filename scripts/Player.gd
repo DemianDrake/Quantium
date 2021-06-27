@@ -243,7 +243,7 @@ func interact():
 		var casted_interactable = get_raycast_elem("Interactable")
 		if is_instance_valid(casted_interactable):
 			anim_state = "Interact"
-			casted_interactable.interact()
+			casted_interactable.interact(self)
 
 
 func pickup(delta):
@@ -368,6 +368,11 @@ func get_o2_depletion_rate(delta):
 	if Input.is_action_pressed("run"):
 		rate *= 2
 	return rate
+
+
+func add_o2(amount: int):
+	self.current_o2 += amount
+	self.current_o2 = clamp(self.current_o2, 0, MAX_HEALTH)
 
 
 func updateO2(delta):
