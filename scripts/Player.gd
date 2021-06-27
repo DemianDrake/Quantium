@@ -363,12 +363,21 @@ func throw(delta):
 		return
 
 
-func updateO2(delta):
+func get_o2_depletion_rate(delta):
 	var rate = delta
 	if Input.is_action_pressed("run"):
 		rate *= 2
-	current_o2 -= rate
-	current_o2 = clamp(current_o2, 0, MAX_O2)
+	return rate
+
+
+func updateO2(delta):
+	var rate = get_o2_depletion_rate(delta)
+	if current_o2 > 0:
+		current_o2 -= rate
+		current_o2 = clamp(current_o2, 0, MAX_O2)
+	else:
+		current_hp -= 10*rate
+		current_hp = clamp(current_hp, 0, MAX_HEALTH)
 
 
 func update_bars(delta):
