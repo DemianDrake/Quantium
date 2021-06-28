@@ -1,15 +1,9 @@
 extends KinematicBody
 
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
-var open = false
+export var open = false
 onready var opened_rotation = rotation_degrees - Vector3(0,90,0) # Abierta
 onready var closed_rotation = rotation_degrees                   # Cerrada
-# Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-#	pass # Replace with function body.
 
 func interact(body: Node):
 	if open:
@@ -19,6 +13,6 @@ func interact(body: Node):
 	$Tween.start()
 	open = not open
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func button_pressed(pressed):
+	if open != pressed:
+		interact(self)

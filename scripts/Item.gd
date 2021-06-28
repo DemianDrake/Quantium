@@ -7,12 +7,12 @@ var item_name = 'Empty'
 var max_amount = '0'
 var scene_path = ''
 var texture_path = ''
-
+export var sleeping_mode = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tmp_transform = get_global_transform()
-	set_sleeping(true)
+	set_sleeping(sleeping_mode)
 	
 func grab(node):
 	var parent = get_parent()
