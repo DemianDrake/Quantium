@@ -3,6 +3,8 @@ extends Spatial
 # variables
 export(Array, NodePath) var targets_path
 export var items_needed = 1
+export var should_lock = true
+export var resetable = false
 onready var tween = $BaseButton/Button/Tween
 onready var off_position = $BaseButton/Button.get_translation() # Off
 onready var  on_position = off_position - Vector3(0,0.1,0)      # On
@@ -24,11 +26,21 @@ func on_body_entered(body: Node):
 		bodies_qty = len(bodies)
 		if bodies_qty >= items_needed and not pressed:
 			pressed = true
-			tween.interpolate_property($BaseButton/Button, "translation", off_position, on_position, 0.5, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
-			tween.start()
+			press_anim()
 			for target in targets:
-				target.button_pressed(pressed)
+				target.button_pressed(should_lock)
 
 func on_body_exited(body: Node):
 	bodies.erase(body)
+	bodies_qty = len(bodies)
+	if bodies_qty < items_needed and resetable:
+		pressed = false
+		release_anim()
 
+func press_anim():
+	tween.interpolate_property($BaseButton/Button, "translation", off_position, on_position, 0.5, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+	tween.start()
+
+func release_anim():
+	tween.interpolate_property($BaseButton/Button, "translation", on_position, off_position, 0.5, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+	tween.start()

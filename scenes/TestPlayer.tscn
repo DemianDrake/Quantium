@@ -619,12 +619,13 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.117596, -13 )
 script = ExtResource( 6 )
 targets_path = [ NodePath("../Door"), NodePath("../Door2") ]
-items_needed = 2
 
 [node name="SwitchButton" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -13 )
 script = ExtResource( 10 )
 targets_path = [ NodePath("../Door"), NodePath("../Door2") ]
+should_lock = false
+resetable = true
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11, 0, -21 )
@@ -633,3 +634,4 @@ script = ExtResource( 8 )
 [node name="Door2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9, 0, -21 )
 script = ExtResource( 8 )
+open = true
