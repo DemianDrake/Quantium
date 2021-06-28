@@ -4,6 +4,8 @@ extends Spatial
 export(Array, NodePath) var targets_path
 export var items_needed = 1
 onready var tween = $BaseButton/Button/Tween
+onready var off_position = $BaseButton/Button.get_translation() # Off
+onready var  on_position = off_position - Vector3(0,0.1,0)      # On
 onready var area  = $BaseButton/Area
 var pressed = false
 var targets = []
@@ -22,6 +24,8 @@ func on_body_entered(body: Node):
 		bodies_qty = len(bodies)
 		if bodies_qty >= items_needed and not pressed:
 			pressed = true
+			tween.interpolate_property($BaseButton/Button, "translation", off_position, on_position, 0.5, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+			tween.start()
 			for target in targets:
 				target.button_pressed(pressed)
 

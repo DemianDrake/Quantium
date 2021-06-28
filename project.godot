@@ -8,8 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "ImageTexture",
+"class": "CustomGradientTexture",
+"language": "GDScript",
+"path": "res://assets/maujoe.custom_gradient_texture/custom_gradient_texture.gd"
+} ]
 _global_script_class_icons={
+"CustomGradientTexture": ""
 }
 
 [application]
