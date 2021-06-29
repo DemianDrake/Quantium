@@ -4,7 +4,6 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var map = {KEY_1:'Slot1', KEY_2:'Slot2', KEY_3:'Slot3', KEY_4:'Slot4'}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +18,7 @@ func update_hotbar(inventory):
 	
 	for key in inventory.keys():
 		slot = inventory[key]
-		slot_node = get_node("ColorRect/MarginContainer/GridContainer/"+map[key])
+		slot_node = get_node("ColorRect/MarginContainer/GridContainer/"+key)
 		if slot['item_name'] != 'empty':
 			text = str(slot['amount']) + '/' + str(slot['max_amount'])
 			texture = ImageTexture.new()

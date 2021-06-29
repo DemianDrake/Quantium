@@ -8,7 +8,6 @@ const JUMP_POWER = 20
 const THROW_STRENGTH = 15
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
-const HOTBAR_KEYS = [KEY_1, KEY_2, KEY_3, KEY_4]
 const MAX_HEALTH = 100
 const MAX_O2 = 100
 
@@ -99,8 +98,6 @@ func _unhandled_key_input(event):
 			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		elif event.pressed and event.scancode in HOTBAR_KEYS:
-			hotbar_input_handler(event.scancode)
 
 
 func ongrav_movement(delta):
@@ -279,12 +276,27 @@ func pickup(delta):
 		E_hold = 0
 
 
-func hotbar_input_handler(key):
-	if holding_item:
-		store(key)
-	else:
-		retrieve(key)
-	get_node("CanvasLayer/InGameGUI/Hotbar/Inventory").update_hotbar(inventory)
+func get_slot_key():
+	var key
+	if Input.is_action_just_pressed("hotbar_1"):
+		key = 'Slot1'
+	elif Input.is_action_just_pressed("hotbar_2"):
+		key = 'Slot2'
+	elif Input.is_action_just_pressed("hotbar_3"):
+		key = 'Slot3'
+	elif Input.is_action_just_pressed("hotbar_4"):
+		key = 'Slot4'
+	return key
+
+
+func hotbar_input_handler():
+	if Input.is_action_just_pressed("hotbar_key"):
+		var key = get_slot_key()
+		if holding_item:
+			store(key)
+		else:
+			retrieve(key)
+		get_node("CanvasLayer/InGameGUI/Hotbar/Inventory").update_hotbar(inventory)
 
 
 func retrieve(key):
@@ -303,13 +315,13 @@ func retrieve(key):
 
 func can_store():
 	var slot
-	var k
 	var store_key
 	var has_space = false
 	var is_stored = false
+	var keys = inventory.keys()
+	keys.invert()
 	
-	for i in range(len(HOTBAR_KEYS)-1, -1, -1):
-		k = HOTBAR_KEYS[i]
+	for k in keys:
 		slot = inventory[k]
 		if slot['item_name']=='empty':
 			store_key = k
@@ -422,6 +434,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	interact()
+	hotbar_input_handler()
 	pickup(delta)
 	throw(delta)
 	update_bars(delta)
@@ -446,8 +459,8 @@ static func slot_dict():
 
 static func hotbar_dict():
 	var dict = {}
-	for i in HOTBAR_KEYS:
-		dict[i] = slot_dict()
+	for i in range(1,5):
+		dict['Slot' + str(i)] = slot_dict()
 	return dict
 
 
