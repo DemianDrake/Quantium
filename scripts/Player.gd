@@ -57,7 +57,6 @@ const FLOAT_EPSILON = 1e-5
 
 # Variables de cámara
 var tpcamera = true #false: FP, true: TP
-var changecamerakey = KEY_F
 
 # Variables de interacción
 var holding_item = false
@@ -76,10 +75,9 @@ func _ready():
 	TPmiddleRC.add_exception(self)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
-func _unhandled_key_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == changecamerakey:
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		if event.is_action_pressed("change_camera"):
 			if tpcamera:
 				tpcamera = false
 				fpc.make_current()
@@ -90,7 +88,11 @@ func _unhandled_key_input(event):
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
-		elif event.pressed and event.scancode == KEY_R:
+			
+
+func _unhandled_key_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_R:
 #			set_anim("Dying")
 			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_Y:
