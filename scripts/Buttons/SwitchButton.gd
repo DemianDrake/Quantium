@@ -3,7 +3,7 @@ extends Spatial
 # variables
 export(Array, NodePath) var targets_path
 export var items_needed = 1
-export var should_lock = true
+export var mode = true
 export var resetable = false
 onready var tween = $BaseButton/Button/Tween
 onready var off_position = $BaseButton/Button.get_translation() # Off
@@ -28,7 +28,7 @@ func on_body_entered(body: Node):
 			pressed = true
 			press_anim()
 			for target in targets:
-				target.button_pressed(should_lock)
+				target.button_pressed(mode)
 
 func on_body_exited(body: Node):
 	bodies.erase(body)

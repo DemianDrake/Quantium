@@ -130,23 +130,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+gravities = [ [ Vector3( 0, 1, 0 ), 9.8 ], [ Vector3( 0, 0, -1 ), 9.8 ] ]
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityFloors/GravityFloor_3/Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.78814e-07, -3 )
-shape = SubResource( 4 )
-
-[node name="Area2" type="Area" parent="GravityZones/GravityFloors/GravityFloor_3" groups=[
-"floor_area",
-]]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 24, 0 )
-gravity_vec = Vector3( 0, 0, -1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-enabled = false
-
-[node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityFloors/GravityFloor_3/Area2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.78814e-07, -3 )
 shape = SubResource( 4 )
 
@@ -724,14 +710,13 @@ targets_path = [ NodePath("../Door"), NodePath("../Door2") ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.118, -13 )
 script = ExtResource( 10 )
 targets_path = [ NodePath("../Door"), NodePath("../Door2") ]
-should_lock = false
 resetable = true
 
 [node name="SwitchButton2" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -7, 25.9084, -2 )
 script = ExtResource( 10 )
-targets_path = [ NodePath("../GravityZones/GravityFloors/GravityFloor_3/Area"), NodePath("../GravityZones/GravityFloors/GravityFloor_3/Area2") ]
-should_lock = false
+targets_path = [ NodePath("../GravityZones/GravityFloors/GravityFloor_3/Area") ]
+mode = false
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11, 0, -21 )
