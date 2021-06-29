@@ -53,9 +53,7 @@ adjustment_saturation = 1.2
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Player" parent="." groups=[
-"Player",
-] instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.867285, 0 )
 
 [node name="Entrance" type="Spatial" parent="."]

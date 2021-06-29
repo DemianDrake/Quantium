@@ -41,7 +41,9 @@ var anim_state = "Idle"
 # Raycasts y Areas
 onready var downRC = get_node("downRC")
 onready var FPmiddleRC = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP RC")
+onready var FPmiddleRP = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/RaycastPointer")
 onready var TPmiddleRC = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP RC")
+onready var TPmiddleRP = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer")
 onready var AreaDetector = get_node("Area")
 
 # Controllers
@@ -89,8 +91,8 @@ func _unhandled_key_input(event):
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
 		elif event.pressed and event.scancode == KEY_R:
-			set_anim("Dying")
-#			get_tree().reload_current_scene()
+#			set_anim("Dying")
+			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_Y:
 			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_ESCAPE:
@@ -215,14 +217,20 @@ func get_raycast_elem(group):
 
 
 func gravity_area_detector():
-	if AreaDetector.get_overlapping_areas().empty():
-		#print("Nadap")
+	var overlapping = AreaDetector.get_overlapping_areas()
+	var exists = false
+	if overlapping.empty():
+		exists = false
+	else:
+		for area in overlapping:
+			if 'enabled' in area:
+				if area.enabled:
+					exists = true #Se está en un área con gravedad
+					return
+	if not exists:
 		self.set_gravity(PLAYER_GRAVITY_DEFAULT)
 		self.set_up_vector((Vector3.UP + Vector3(0.001,0,0)).normalized())
 		self.set_floor(true)
-	else:
-		#print("Area")
-		pass
 
 
 func set_floor(has_floor):
@@ -345,12 +353,18 @@ func throw(delta):
 		#vel += backward * Click_Hold
 		held_item.release()
 		
-		var direction = TPmiddleRC.get_global_transform().origin.direction_to(
-			get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin
-		)
+#		var direction = TPmiddleRC.get_global_transform().origin.direction_to(
+#			get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin)
 		
 		#Alternativa
 		#direction = -1 * get_node("Model/RotationTest").transform.basis.z;
+		
+		#Alternativa
+		var direction
+		if tpcamera:
+			direction = TPmiddleRP.get_global_transform().origin - tpc.get_global_transform().origin
+		else:
+			direction = FPmiddleRP.get_global_transform().origin - fpc.get_global_transform().origin
 		
 		held_item.apply_central_impulse(direction.normalized() * Click_Hold * THROW_STRENGTH)
 		held_item = null

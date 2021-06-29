@@ -24,6 +24,7 @@ surfaces/0 = {
 
 [node name="Box Small" type="RigidBody" groups=[
 "Item",
+"canPressButton",
 ]]
 script = ExtResource( 3 )
 

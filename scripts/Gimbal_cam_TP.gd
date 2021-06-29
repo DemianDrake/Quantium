@@ -11,7 +11,7 @@ var mouse_sensitivity = 0.005
 
 # Called when the node enters the scene tree for the first time.
 func _process(_delta):
-	$Gimbal_v_cam.rotation.x = clamp($Gimbal_v_cam.rotation.x, -1.4, 0.1)
+	$Gimbal_v_cam.rotation.x = clamp($Gimbal_v_cam.rotation.x, -1.4, 0.8)
 
 #Mouse cam control
 func _unhandled_input(event):
