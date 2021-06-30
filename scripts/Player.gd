@@ -249,8 +249,12 @@ func interact():
 	if Input.is_action_just_pressed("interact"):
 		var casted_interactable = get_raycast_elem("Interactable")
 		if is_instance_valid(casted_interactable):
-			anim_state = "Interact"
-			casted_interactable.interact(self)
+			if casted_interactable.is_in_group("Item"):
+				if held_item == casted_interactable:
+					casted_interactable.interact(self)
+			else:
+				anim_state = "Interact"
+				casted_interactable.interact(self)
 
 
 func pickup(delta):

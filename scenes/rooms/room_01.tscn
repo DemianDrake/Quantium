@@ -399,7 +399,9 @@ mode = 1
 [node name="O2Tank" parent="Room Right/Props" instance=ExtResource( 28 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21485, 0.398246, 0 )
 
-[node name="Medkit" parent="Room Right/Props" instance=ExtResource( 29 )]
+[node name="Medkit" parent="Room Right/Props" groups=[
+"Item",
+] instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922122, 0.256413, -1.54533 )
 
 [node name="Room Left" type="Spatial" parent="."]

@@ -7,7 +7,7 @@ var item_name = 'Empty'
 var max_amount = '0'
 var scene_path = ''
 var texture_path = ''
-export var sleeping_mode = true
+#export var sleeping_mode = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
