@@ -5,7 +5,7 @@ export var enabled = true
 export(Array, Array) var gravities
 var gravities_qty:int
 var actual_grav = 0
-#onready var default_grav = self.gravity
+var should_reload = false
 
 func _ready():
 	connect("body_entered", self, "on_body_entered")
@@ -22,12 +22,20 @@ func on_body_entered(body: Node):
 func on_body_exited(body: Node):
 	bodies.erase(body)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	for body in bodies: 
 		if body.is_in_group("Player") and enabled:
 			if not self.gravity==0:
 				body.set_up_vector(-self.gravity_vec)
 			body.set_gravity(self.gravity)
+	#Trucazo para recargar los bodies que ya están dentro del área
+	if should_reload:
+		should_reload = false
+		var tmp_transform = get_global_transform()
+		set_global_transform(Transform.IDENTITY)
+		yield(get_tree().create_timer(2*delta), "timeout")
+		set_global_transform(tmp_transform)
+	
 
 func set_override():
 	if enabled:
@@ -42,6 +50,8 @@ func set_grav(index):
 		set_gravity_vector(new_vector)
 		set_gravity(new_scalar)
 
+
+
 func button_pressed(mode):
 	if not mode: #false = toggle
 		enabled = not enabled
@@ -49,3 +59,4 @@ func button_pressed(mode):
 	else: #true = cycle through gravities
 		actual_grav = (actual_grav + 1) % gravities_qty
 		set_grav(actual_grav)
+		should_reload = true

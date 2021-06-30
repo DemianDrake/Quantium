@@ -106,7 +106,7 @@ shape = SubResource( 3 )
 [node name="GravityFloor_3" type="Node" parent="GravityZones/GravityFloors"]
 
 [node name="Piso" type="StaticBody" parent="GravityZones/GravityFloors/GravityFloor_3"]
-transform = Transform( 1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, -7, 26, -1 )
+transform = Transform( 1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, -7, 25, -1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -174,6 +174,7 @@ shape = SubResource( 5 )
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 8.15475, -2.70651 )
+can_sleep = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -192,6 +193,7 @@ material/0 = null
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945411, 8.15475, -2.70651 )
+can_sleep = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -210,6 +212,7 @@ material/0 = null
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945411, 8.15475, -4.70651 )
+can_sleep = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -228,6 +231,7 @@ material/0 = null
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05459, 8.15475, -4.70651 )
+can_sleep = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -263,6 +267,7 @@ material/0 = null
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945411, 8.15475, -6.70651 )
+can_sleep = false
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -713,10 +718,10 @@ targets_path = [ NodePath("../Door"), NodePath("../Door2") ]
 resetable = true
 
 [node name="SwitchButton2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -7, 25.9084, -2 )
+transform = Transform( 1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -7, 24.9084, -2 )
 script = ExtResource( 10 )
 targets_path = [ NodePath("../GravityZones/GravityFloors/GravityFloor_3/Area") ]
-mode = false
+resetable = true
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11, 0, -21 )

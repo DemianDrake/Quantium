@@ -26,6 +26,7 @@ surfaces/0 = {
 "Item",
 "canPressButton",
 ]]
+can_sleep = false
 script = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
