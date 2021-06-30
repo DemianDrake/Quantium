@@ -398,19 +398,30 @@ func get_o2_depletion_rate(delta):
 	return rate
 
 
-func add_o2(amount: int):
+func add_o2(amount):
 	self.current_o2 += amount
-	self.current_o2 = clamp(self.current_o2, 0, MAX_HEALTH)
+	self.current_o2 = clamp(self.current_o2, 0, MAX_O2)
+
+
+func decrease_o2(amount):
+	add_o2(-amount)
 
 
 func updateO2(delta):
 	var rate = get_o2_depletion_rate(delta)
 	if current_o2 > 0:
-		current_o2 -= rate
-		current_o2 = clamp(current_o2, 0, MAX_O2)
+		decrease_o2(rate)
 	else:
-		current_hp -= 10*rate
-		current_hp = clamp(current_hp, 0, MAX_HEALTH)
+		decrease_hp(10*rate)
+
+
+func add_hp(amount):
+	self.current_hp += amount
+	self.current_hp = clamp(self.current_hp, 0, MAX_HEALTH)
+
+
+func decrease_hp(amount):
+	add_hp(-amount)
 
 
 func update_bars(delta):
