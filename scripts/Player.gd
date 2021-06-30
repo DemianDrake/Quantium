@@ -259,7 +259,7 @@ func pickup(delta):
 		if is_instance_valid(casted_item):
 			anim_state = "PickUp1"
 			E_hold += delta
-			print(E_hold)
+			#print(E_hold)
 			if E_hold >= HOLD_TIME:
 				if not holding_item:
 					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))

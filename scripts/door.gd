@@ -10,7 +10,7 @@ func _ready() -> void:
 	if open:
 		anim_open()
 
-func interact(body: Node):
+func interact(_body: Node):
 	if open:
 		anim_close()
 	else:

@@ -12,7 +12,7 @@ export var sleeping_mode = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tmp_transform = get_global_transform()
-	set_sleeping(sleeping_mode)
+	set_sleeping(false)
 	
 func grab(node):
 	var parent = get_parent()

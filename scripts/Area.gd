@@ -28,14 +28,13 @@ func _physics_process(delta):
 			if not self.gravity==0:
 				body.set_up_vector(-self.gravity_vec)
 			body.set_gravity(self.gravity)
-	#Trucazo para recargar los bodies que ya están dentro del área
+	#Trucazo para recargar los bodies que ya están dentro del área - método 1
 	if should_reload:
 		should_reload = false
 		var tmp_transform = get_global_transform()
 		set_global_transform(Transform.IDENTITY)
 		yield(get_tree().create_timer(2*delta), "timeout")
 		set_global_transform(tmp_transform)
-	
 
 func set_override():
 	if enabled:
@@ -50,13 +49,25 @@ func set_grav(index):
 		set_gravity_vector(new_vector)
 		set_gravity(new_scalar)
 
-
+#método 2: recargar cada item. No funcionó
+func update_items():
+	for body in bodies:
+		if body.is_in_group("Items"):
+			var velocity = body.linear_velocity
+			body.mode = RigidBody.MODE_RIGID
+			body.linear_velocity = velocity
+#método 3: recargar el physicsserver. No funcionó
+func update_server():
+	var space = PhysicsServer.area_get_space(get_rid())
+	PhysicsServer.area_set_space(get_rid(), space)
 
 func button_pressed(mode):
 	if not mode: #false = toggle
 		enabled = not enabled
 		set_override()
 	else: #true = cycle through gravities
+		should_reload = true #método 1: tp
 		actual_grav = (actual_grav + 1) % gravities_qty
 		set_grav(actual_grav)
-		should_reload = true
+#		update_items()
+#		update_server()
