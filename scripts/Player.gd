@@ -18,6 +18,7 @@ onready var h_node = get_node("Gimbal_h_cam_FP")
 onready var v_node = h_node.get_node("Gimbal_v_cam")
 onready var anim_tree = get_node("Model/RotationTest/astro_player/AnimationTree")
 onready var state_machine = anim_tree["parameters/playback"]
+onready var inventory_node = get_node("CanvasLayer/InGameGUI/Hotbar/Inventory")
 
 # Vars de movimiento
 var vel = Vector3(0, 0, 0)
@@ -300,7 +301,7 @@ func hotbar_input_handler():
 			store(key)
 		else:
 			retrieve(key)
-		get_node("CanvasLayer/InGameGUI/Hotbar/Inventory").update_hotbar(inventory)
+		inventory_node.update_hotbar(inventory)
 
 
 func retrieve(key):
