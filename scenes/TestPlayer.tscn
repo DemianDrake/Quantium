@@ -179,7 +179,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-sleeping_mode = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody"]
 shape = SubResource( 6 )
@@ -198,7 +197,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-sleeping_mode = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody2"]
 shape = SubResource( 6 )
@@ -217,7 +215,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-sleeping_mode = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody3"]
 shape = SubResource( 6 )
@@ -236,7 +233,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-sleeping_mode = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody4"]
 shape = SubResource( 6 )
@@ -272,7 +268,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-sleeping_mode = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody6"]
 shape = SubResource( 6 )

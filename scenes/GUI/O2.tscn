@@ -7,6 +7,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -704.0
 margin_bottom = -582.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,18 +16,21 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.0588235, 0.168627, 0.0117647, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer"]
-margin_right = 320.0
-margin_bottom = 18.0
+margin_right = 576.0
+margin_bottom = 138.0
+mouse_filter = 2
 color = Color( 0, 0.494118, 0.054902, 1 )
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/ColorRect"]

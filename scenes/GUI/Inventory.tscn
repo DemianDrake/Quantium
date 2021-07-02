@@ -8,6 +8,7 @@ anchor_bottom = 1.0
 margin_left = 384.0
 margin_right = -384.0
 margin_bottom = -536.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -16,6 +17,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.156863, 0.14902, 0.14902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 1.12247
 margin_bottom = 1.12247
+mouse_filter = 2
 custom_constants/margin_right = 0
 custom_constants/margin_top = 2
 custom_constants/margin_left = 2
@@ -37,8 +40,9 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 256.0
-margin_bottom = 63.0
+margin_right = 512.0
+margin_bottom = 184.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
@@ -47,6 +51,7 @@ columns = 4
 margin_right = 60.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 60, 58 )
+mouse_filter = 2
 color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot1"]
@@ -56,6 +61,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
+mouse_filter = 2
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -85,6 +91,7 @@ margin_left = 64.0
 margin_right = 124.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 60, 58 )
+mouse_filter = 2
 color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot2"]
@@ -94,6 +101,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
+mouse_filter = 2
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -120,6 +128,7 @@ margin_left = 128.0
 margin_right = 188.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 60, 58 )
+mouse_filter = 2
 color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot3"]
@@ -129,6 +138,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
+mouse_filter = 2
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,6 +148,9 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Amount" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot3/TextureRect"]
 anchor_left = 1.0
@@ -152,6 +165,7 @@ margin_left = 192.0
 margin_right = 252.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 60, 58 )
+mouse_filter = 2
 color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot4"]
@@ -161,6 +175,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
+mouse_filter = 2
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
