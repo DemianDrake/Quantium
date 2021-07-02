@@ -16,3 +16,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		$AnimationPlayer.play("CameraIntro", -1, 1)
 		Started = true
 		$"../AnimationPlayer".play("Transition")
+		yield($"../AnimationPlayer", "animation_finished")
+		get_parent().get_node("CanvasLayer/MainMenuGUI/VBoxContainer/Button/NewGame").grab_focus()
