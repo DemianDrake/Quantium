@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/tunnel/intersection.tscn" type="PackedScene" id=2]
@@ -29,22 +29,63 @@
 [ext_resource path="res://scripts/door.gd" type="Script" id=27]
 [ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/assets/props/Medkit.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=30]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3, 3, 3 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="ParticlesMaterial" id=2]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=3]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 13, 3, 3 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="ParticlesMaterial" id=5]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 9, 3, 3 )
 
-[sub_resource type="PanoramaSky" id=4]
+[sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="PanoramaSky" id=8]
 panorama = ExtResource( 26 )
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=9]
 background_mode = 2
-background_sky = SubResource( 4 )
+background_sky = SubResource( 8 )
 fog_depth_curve = 0.435275
 glow_enabled = true
 glow_intensity = 1.0
@@ -424,6 +465,9 @@ script = ExtResource( 25 )
 [node name="CollisionShape" type="CollisionShape" parent="Room Left/GravityFloors/LeftGrav"]
 shape = SubResource( 1 )
 
+[node name="GravityParticles" parent="Room Left/GravityFloors/LeftGrav" instance=ExtResource( 30 )]
+process_material = SubResource( 2 )
+
 [node name="UpGrav" type="Area" parent="Room Left/GravityFloors" groups=[
 "floor_area",
 ]]
@@ -436,6 +480,9 @@ script = ExtResource( 25 )
 [node name="CollisionShape" type="CollisionShape" parent="Room Left/GravityFloors/UpGrav"]
 shape = SubResource( 1 )
 
+[node name="GravityParticles" parent="Room Left/GravityFloors/UpGrav" instance=ExtResource( 30 )]
+process_material = SubResource( 3 )
+
 [node name="RightGrav" type="Area" parent="Room Left/GravityFloors" groups=[
 "floor_area",
 ]]
@@ -446,7 +493,10 @@ priority = 1.0
 script = ExtResource( 25 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Room Left/GravityFloors/RightGrav"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
+
+[node name="GravityParticles" parent="Room Left/GravityFloors/RightGrav" instance=ExtResource( 30 )]
+process_material = SubResource( 5 )
 
 [node name="RightGrav2" type="Area" parent="Room Left/GravityFloors" groups=[
 "floor_area",
@@ -458,7 +508,10 @@ priority = 1.0
 script = ExtResource( 25 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Room Left/GravityFloors/RightGrav2"]
-shape = SubResource( 3 )
+shape = SubResource( 6 )
+
+[node name="GravityParticles" parent="Room Left/GravityFloors/RightGrav2" instance=ExtResource( 30 )]
+process_material = SubResource( 7 )
 
 [node name="Corridor" type="Spatial" parent="Room Left"]
 
@@ -1730,4 +1783,4 @@ transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 5 )
+environment = SubResource( 9 )

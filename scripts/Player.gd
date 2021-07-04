@@ -68,6 +68,7 @@ var current_o2 = MAX_O2
 
 # VARIABLES EXPERIMENTALES
 var floating = false
+var debug_gravitometro = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -97,6 +98,9 @@ func _unhandled_key_input(event):
 			get_tree().reload_current_scene()
 		elif event.pressed and event.scancode == KEY_Y:
 			OS.window_fullscreen = not OS.window_fullscreen
+		elif event.pressed and event.scancode == KEY_G:
+			debug_gravitometro = not debug_gravitometro
+			get_tree().call_group("GravityParticles", "set_emitting", debug_gravitometro)
 		elif event.pressed and event.scancode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

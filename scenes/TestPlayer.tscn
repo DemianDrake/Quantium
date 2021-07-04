@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scripts/Buttons/SwitchButton.gd" type="Script" id=10]
 [ext_resource path="res://scripts/Buttons/LogicBool.gd" type="Script" id=11]
 [ext_resource path="res://scripts/Buttons/LogicCheck.gd" type="Script" id=12]
+[ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=13]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 4, 1, 4 )
@@ -22,16 +23,56 @@ size = Vector2( 8, 8 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 4, 4, 3 )
 
+[sub_resource type="ParticlesMaterial" id=9]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=10]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 7, 6, 5 )
 
-[sub_resource type="SphereShape" id=5]
+[sub_resource type="ParticlesMaterial" id=11]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=12]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="SphereShape" id=6]
 radius = 4.0
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=7]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=8]
 size = Vector3( 1, 1, 1 )
 
 [node name="TestPlayer" type="Spatial"]
@@ -73,6 +114,9 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
 shape = SubResource( 3 )
 
+[node name="GravityParticles" parent="GravityZones/GravityFloors/GravityFloor_1/Area" instance=ExtResource( 13 )]
+process_material = SubResource( 9 )
+
 [node name="GravityFloor_2" type="Node" parent="GravityZones/GravityFloors"]
 
 [node name="Piso" type="StaticBody" parent="GravityZones/GravityFloors/GravityFloor_2"]
@@ -104,6 +148,9 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityFloors/GravityFloor_2/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
 shape = SubResource( 3 )
+
+[node name="GravityParticles" parent="GravityZones/GravityFloors/GravityFloor_2/Area" instance=ExtResource( 13 )]
+process_material = SubResource( 10 )
 
 [node name="GravityFloor_3" type="Node" parent="GravityZones/GravityFloors"]
 
@@ -138,6 +185,9 @@ gravities = [ [ Vector3( 0, 1, 0 ), 9.8 ], [ Vector3( 0, 0, -1 ), 9.8 ] ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.78814e-07, -3 )
 shape = SubResource( 4 )
 
+[node name="GravityParticles" parent="GravityZones/GravityFloors/GravityFloor_3/Area" instance=ExtResource( 13 )]
+process_material = SubResource( 11 )
+
 [node name="GravityAreas" type="Node" parent="GravityZones"]
 
 [node name="Area7" type="Area" parent="GravityZones/GravityAreas"]
@@ -153,6 +203,9 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.78814e-07, -3 )
 shape = SubResource( 4 )
 
+[node name="GravityParticles" parent="GravityZones/GravityAreas/Area7" instance=ExtResource( 13 )]
+process_material = SubResource( 12 )
+
 [node name="Area" type="Area" parent="GravityZones/GravityAreas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -12 )
 space_override = 3
@@ -163,7 +216,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityAreas/Area"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -183,10 +236,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="RigidBody2" type="RigidBody" parent="Objects/Items" groups=[
@@ -201,10 +254,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody2"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody2"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="RigidBody3" type="RigidBody" parent="Objects/Items" groups=[
@@ -219,10 +272,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody3"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody3"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="RigidBody4" type="RigidBody" parent="Objects/Items" groups=[
@@ -237,10 +290,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody4"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody4"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="RigidBody5" type="RigidBody" parent="Objects/Items" groups=[
@@ -254,10 +307,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody5"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody5"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="RigidBody6" type="RigidBody" parent="Objects/Items" groups=[
@@ -272,10 +325,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody6"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody6"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Others" type="Node" parent="Objects"]
@@ -287,10 +340,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Others/RigidBody2"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Others/RigidBody2"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Objects/Others"]
@@ -300,10 +353,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Others/StaticBody2"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Objects/Others/StaticBody2"]
-mesh = SubResource( 7 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Piso" type="StaticBody" parent="."]

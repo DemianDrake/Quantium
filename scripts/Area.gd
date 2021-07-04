@@ -1,17 +1,33 @@
 extends Area
 
-var bodies = []
 export var enabled = true
 export(Array, Array) var gravities
+
+onready var particles: ParticlesMaterial
+
+var bodies = []
 var gravities_qty:int
 var actual_grav = 0
 var should_reload = false
+var has_particles = false
+
+const PARTICLE_VRATIO = 7
 
 func _ready():
 	connect("body_entered", self, "on_body_entered")
 	connect("body_exited", self, "on_body_exited")
 	set_override()
 	gravities_qty = len(gravities)
+	if get_node_or_null("GravityParticles"):
+		var box_size = $CollisionShape.shape.extents
+		var volume = box_size.x * box_size.y * box_size.z
+		has_particles = true
+		$GravityParticles.emitting = enabled
+		$GravityParticles.amount = volume * PARTICLE_VRATIO
+		particles = $GravityParticles.process_material
+		particles.gravity = self.gravity_vec * self.gravity
+		particles.emission_box_extents = box_size
+		$GravityParticles.set_visibility_aabb(AABB(- box_size, 2 * box_size))
 	
 func on_body_entered(body: Node):
 	bodies.append(body)
@@ -48,6 +64,8 @@ func set_grav(index):
 		var new_scalar = gravities[index][1]
 		set_gravity_vector(new_vector)
 		set_gravity(new_scalar)
+		if has_particles:
+			particles.gravity = new_vector * new_scalar
 
 #método 2: recargar cada item. No funcionó
 func update_items():
@@ -64,6 +82,8 @@ func update_server():
 func button_pressed(mode):
 	if not mode: #false = toggle
 		enabled = not enabled
+		if has_particles:
+			$GravityParticles.emitting = enabled
 		set_override()
 	else: #true = cycle through gravities
 		should_reload = true #método 1: tp
