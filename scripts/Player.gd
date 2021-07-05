@@ -69,12 +69,15 @@ var current_o2 = MAX_O2
 # VARIABLES EXPERIMENTALES
 var floating = false
 var debug_gravitometro = true
+var mouse_captured
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tpc.make_current()
 	TPmiddleRC.add_exception(self)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	capture_mouse()
+	mouse_captured = true
+	LevelManager.start_position = get_global_transform().origin
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -89,20 +92,20 @@ func _input(event: InputEvent) -> void:
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
-			
+		elif event.is_action_pressed("pause"):
+			release_mouse()
+			$PauseMenu.toggle()
 
 func _unhandled_key_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_R:
 #			set_anim("Dying")
-			get_tree().reload_current_scene()
+			LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", self)
 		elif event.pressed and event.scancode == KEY_Y:
 			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_G:
 			debug_gravitometro = not debug_gravitometro
 			get_tree().call_group("GravityParticles", "set_emitting", debug_gravitometro)
-		elif event.pressed and event.scancode == KEY_ESCAPE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func ongrav_movement(delta):
@@ -468,6 +471,16 @@ func set_anim(state):
 func get_inventory():
 	return inventory
 
+func teleport(new_pos):
+	global_transform.origin = new_pos
+
+func capture_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_captured = true
+
+func release_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	mouse_captured = false
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon

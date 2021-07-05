@@ -16,3 +16,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):			
 	rotate_object_local(up, delta * speed)
+
+
+func _on_NewGame_pressed() -> void:
+	LevelManager.next()
+
+func _on_LoadGame_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_Credits_pressed() -> void:
+	pass # Se hace algo para los créditos.
+
+func _on_Exit_pressed() -> void:
+	LevelManager.Game.fade.fade_in()
+	yield(LevelManager.Game.fade, "faded")
+	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
