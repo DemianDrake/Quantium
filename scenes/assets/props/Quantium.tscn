@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/proto-CRONOS/energy_reactor/Material_009.material" type="Material" id=1]
 [ext_resource path="res://addons/proto-CRONOS/energy_reactor/Material_043.material" type="Material" id=2]
+[ext_resource path="res://scripts/items/quantium_core.gd" type="Script" id=3]
+[ext_resource path="res://scripts/SpaceBody.gd" type="Script" id=4]
+
+[sub_resource type="SphereShape" id=3]
+radius = 1.15532
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Icosphere005_Material043_0"
@@ -35,8 +40,14 @@ surfaces/0 = {
 
 [node name="Quantium" type="Spatial"]
 
+[node name="Quantium Effect" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Quantium Effect"]
+shape = SubResource( 3 )
+
 [node name="Quantium Surface" type="Spatial" parent="."]
-transform = Transform( 15.2325, 0, 0, 0, -2.48169e-06, 15.2325, 0, -15.2325, -2.48169e-06, 0, 0, 0 )
+transform = Transform( 0.762, 0, 0, 0, 0.762, 0, 0, 0, 0.762, 0, 0, 0 )
+script = ExtResource( 4 )
 
 [node name="Icosphere005_Material043_0" type="MeshInstance" parent="Quantium Surface"]
 cast_shadow = 0
@@ -44,10 +55,16 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Quantium Core" type="Spatial" parent="."]
-transform = Transform( 100, 0, 0, 0, -1.62921e-05, 100, 0, -100, -1.62921e-05, 0, 0, 0 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="Quantium Core"]
+transform = Transform( 0.2, 1.35308e-17, 2.42144e-09, 4.18139e-23, 0.2, -1.11759e-09, -2.42144e-09, 1.11759e-09, 0.2, 0, -0.0782013, -6.77626e-22 )
+light_energy = 5.0
+omni_range = 23.5
 
 [node name="Icosphere001_Material009_0" type="MeshInstance" parent="Quantium Core"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 cast_shadow = 0
 mesh = SubResource( 2 )
 material/0 = null
+script = ExtResource( 3 )
