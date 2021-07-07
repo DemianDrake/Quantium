@@ -96,16 +96,15 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 2 )
 }
 
-[sub_resource type="DynamicFontData" id=2212]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=2213]
+[sub_resource type="DynamicFont" id=5]
 resource_local_to_scene = true
 size = 40
-font_data = SubResource( 2212 )
+font_data = SubResource( 4 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Appear"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:r")
 tracks/0/interp = 1
@@ -147,8 +146,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Transition"
+[sub_resource type="Animation" id=7]
 length = 2.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("CanvasLayer/TitleScreenGUI:modulate:a")
@@ -256,23 +254,23 @@ speed = -0.015
 visible = false
 
 [node name="NewGame" parent="CanvasLayer/MainMenuGUI/VBoxContainer/Button" index="0"]
-custom_fonts/font = SubResource( 2213 )
+custom_fonts/font = SubResource( 5 )
 
 [node name="LoadGame" parent="CanvasLayer/MainMenuGUI/VBoxContainer/Button2" index="0"]
-custom_fonts/font = SubResource( 2213 )
+custom_fonts/font = SubResource( 5 )
 
 [node name="Credits" parent="CanvasLayer/MainMenuGUI/VBoxContainer/Button3" index="0"]
-custom_fonts/font = SubResource( 2213 )
+custom_fonts/font = SubResource( 5 )
 
 [node name="Exit" parent="CanvasLayer/MainMenuGUI/VBoxContainer/Button4" index="0"]
-custom_fonts/font = SubResource( 2213 )
+custom_fonts/font = SubResource( 5 )
 
 [node name="TitleScreenGUI" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Appear"
-anims/Appear = SubResource( 4 )
-anims/Transition = SubResource( 5 )
+anims/Appear = SubResource( 6 )
+anims/Transition = SubResource( 7 )
 
 [connection signal="pressed" from="CanvasLayer/MainMenuGUI/VBoxContainer/Button/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuGUI/VBoxContainer/Button2/LoadGame" to="." method="_on_LoadGame_pressed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
+[ext_resource path="res://addons/proto-CRONOS/energy_reactor/scene.gltf" type="PackedScene" id=2]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_color = Color( 0.501961, 0.6, 0.701961, 0.109804 )
+fog_sun_color = Color( 1, 0.901961, 0.701961, 1 )
+fog_depth_curve = 0.435275
+auto_exposure_scale = 3.42
+auto_exposure_min_luma = 0.9
+auto_exposure_max_luma = 7.71
+auto_exposure_speed = 64.0
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[node name="scene" instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="Icosphere001_Material009_0" parent="Sketchfab_model/dc7215ee38f9438b987cb9f67cbb4eb6fbx/RootNode/Icosphere001" index="0"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+cast_shadow = 0
+
+[node name="Icosphere005_Material043_0" parent="Sketchfab_model/dc7215ee38f9438b987cb9f67cbb4eb6fbx/RootNode/Icosphere005" index="0"]
+cast_shadow = 0
+
+[node name="Plane009" parent="Sketchfab_model/dc7215ee38f9438b987cb9f67cbb4eb6fbx/RootNode" index="61"]
+visible = false
+
+[node name="OmniLight" type="OmniLight" parent="." index="1"]
+transform = Transform( 2, 1.35308e-16, 2.42144e-08, 4.23516e-22, 2, -1.11759e-08, -2.42144e-08, 1.11759e-08, 2, 0, 140.391, 3.11732e-14 )
+light_energy = 5.0
+omni_range = 84.9109
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+environment = SubResource( 2 )
+
+[node name="SpotLight" type="SpotLight" parent="." index="3"]
+transform = Transform( 2, 0, 0, 0, 2.38498e-08, 2, 0, -2, 2.38498e-08, 0, 449.126, 0 )
+spot_range = 351.014
+spot_angle = 75.5263
