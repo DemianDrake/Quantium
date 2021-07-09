@@ -5,7 +5,7 @@ const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
 const JUMP_POWER = 20
-const THROW_STRENGTH = 15
+const THROW_STRENGTH = 30.0
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 const MAX_HEALTH = 100
@@ -49,8 +49,8 @@ onready var AreaDetector = get_node("Area")
 # Controllers
 var E_hold = 0
 const HOLD_TIME = 0.3 # Tiempo en segundos para que se considere mantener presionado
-var Click_Hold = 0
-const MAX_CLICK_HOLD_TIME = 2.0
+var Click_Hold = 1.0
+const MAX_CLICK_HOLD_TIME = 1.8
 
 # Extra
 const FLOAT_EPSILON = 1e-5
@@ -182,14 +182,14 @@ func nograv_movement(delta):
 		anim_state = "Floating_B"
 	
 	if Input.is_action_just_pressed("throw"):
-		Click_Hold = 0
+		Click_Hold = 1.0
 	elif Input.is_action_pressed("throw"):
 		Click_Hold += delta
 		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
 		#print(Click_Hold)
 	elif Input.is_action_just_released("throw"):
 		vel += backward * Click_Hold
-		Click_Hold = 0
+		Click_Hold = 1.0
 		
 	#print(h_node.transform.basis.x)
 	#if horizontal_vel.length() > 0:
@@ -371,19 +371,9 @@ func throw(delta):
 	if not holding_item:
 		return
 	
-	if Input.is_action_pressed("throw"):
-		Click_Hold += delta
-		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
-		return
 	elif Input.is_action_just_released("throw"):
 		#vel += backward * Click_Hold
 		held_item.release()
-		
-#		var direction = TPmiddleRC.get_global_transform().origin.direction_to(
-#			get_node("Gimbal_h_cam_TP/Gimbal_v_cam/RaycastPointer").get_global_transform().origin)
-		
-		#Alternativa
-		#direction = -1 * get_node("Model/RotationTest").transform.basis.z;
 		
 		#Alternativa
 		var direction
@@ -392,14 +382,13 @@ func throw(delta):
 		else:
 			direction = FPmiddleRP.get_global_transform().origin - fpc.get_global_transform().origin
 		
-		held_item.apply_central_impulse(direction.normalized() * Click_Hold * THROW_STRENGTH)
+		held_item.apply_central_impulse(direction.normalized() * THROW_STRENGTH)
 		held_item = null
 		holding_item = false
 #		anim_state = "Throwing"
 		
 		if floating:
 			pass
-		Click_Hold = 0
 		return
 
 
