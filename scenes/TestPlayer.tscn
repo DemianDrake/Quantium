@@ -302,7 +302,6 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="RigidBody5" type="RigidBody" parent="Objects/Items" groups=[
-"Item",
 "canPressButton",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94541, 21.525, 1.29349 )

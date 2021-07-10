@@ -14,8 +14,8 @@ var has_particles = false
 const PARTICLE_VRATIO = 7
 
 func _ready():
-	connect("body_entered", self, "on_body_entered")
-	connect("body_exited", self, "on_body_exited")
+	var _entered_signal = connect("body_entered", self, "on_body_entered")
+	var _exited_signal  = connect("body_exited", self, "on_body_exited")
 	set_override()
 	gravities_qty = len(gravities)
 	if get_node_or_null("GravityParticles"):

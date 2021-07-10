@@ -3,9 +3,9 @@ extends CanvasLayer
 onready var player = get_parent()
 
 func _ready() -> void:
-	$PauseMenu/VBoxContainer/Button/Resume.connect("pressed", self, "_on_resume_pressed")
-	$PauseMenu/VBoxContainer/Button2/Retry.connect("pressed", self, "_on_retry_pressed")
-	$PauseMenu/VBoxContainer/Button_3/Exit.connect("pressed", self, "_on_exit_pressed")
+	var _button1connection = $PauseMenu/VBoxContainer/Button/Resume.connect("pressed", self, "_on_resume_pressed")
+	var _button2connection = $PauseMenu/VBoxContainer/Button2/Retry.connect("pressed", self, "_on_retry_pressed")
+	var _button3connection = $PauseMenu/VBoxContainer/Button_3/Exit.connect("pressed", self, "_on_exit_pressed")
 
 func _on_resume_pressed():
 	hide()

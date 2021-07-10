@@ -17,6 +17,12 @@ func _ready():
 	$World.add_child(current_world)
 	
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		if event.is_action_pressed("toggle_fullscreen"):
+			OS.window_fullscreen = not OS.window_fullscreen
+
+
 func change_scene(scene):
 	var s = load(scene).instance()
 	$World.remove_child(current_world)

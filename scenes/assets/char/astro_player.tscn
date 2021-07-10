@@ -676,225 +676,192 @@ animation = "Floating_B-loop"
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Floating_C-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=69]
-animation = "Idle-loop"
-
-[sub_resource type="AnimationNodeAnimation" id=70]
-animation = "Holding_Idle-loop"
-
-[sub_resource type="AnimationNodeBlend2" id=71]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Hips", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightUpLeg" ]
-
-[sub_resource type="AnimationNodeTimeScale" id=72]
-
-[sub_resource type="AnimationNodeBlendTree" id=73]
-graph_offset = Vector2( -82, -4 )
-nodes/Animation/node = SubResource( 70 )
-nodes/Animation/position = Vector2( 140, 120 )
-"nodes/Animation 2/node" = SubResource( 69 )
-"nodes/Animation 2/position" = Vector2( 140, 220 )
-nodes/Blend2/node = SubResource( 71 )
-nodes/Blend2/position = Vector2( 440, 120 )
-nodes/TimeScale/node = SubResource( 72 )
-nodes/TimeScale/position = Vector2( 640, 120 )
-nodes/output/position = Vector2( 800, 120 )
-node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2" ]
-
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Holding_Idle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=12]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Hips", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightUpLeg" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=13]
+
+[sub_resource type="AnimationNodeBlendTree" id=14]
+graph_offset = Vector2( -82, -4 )
+nodes/Animation/node = SubResource( 11 )
+nodes/Animation/position = Vector2( 140, 120 )
+"nodes/Animation 2/node" = SubResource( 10 )
+"nodes/Animation 2/position" = Vector2( 140, 220 )
+nodes/Blend2/node = SubResource( 12 )
+nodes/Blend2/position = Vector2( 440, 120 )
+nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/position = Vector2( 640, 120 )
+nodes/output/position = Vector2( 800, 120 )
+node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Idle-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "T-Pose-loop"
-
-[sub_resource type="AnimationNodeBlend2" id=13]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:RightUpLeg", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
-
-[sub_resource type="AnimationNodeBlend2" id=14]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
-
-[sub_resource type="AnimationNodeTimeScale" id=15]
-
-[sub_resource type="AnimationNodeBlendTree" id=16]
-graph_offset = Vector2( 81, -99 )
-nodes/Animation/node = SubResource( 12 )
-nodes/Animation/position = Vector2( 180, 60 )
-"nodes/Animation 2/node" = SubResource( 10 )
-"nodes/Animation 2/position" = Vector2( 180, 180 )
-"nodes/Animation 3/node" = SubResource( 11 )
-"nodes/Animation 3/position" = Vector2( 180, -40 )
-nodes/Blend2/node = SubResource( 14 )
-nodes/Blend2/position = Vector2( 400, 80 )
-"nodes/Blend2 2/node" = SubResource( 13 )
-"nodes/Blend2 2/position" = Vector2( 640, -60 )
-nodes/TimeScale/node = SubResource( 15 )
-nodes/TimeScale/position = Vector2( 920, -60 )
-nodes/output/position = Vector2( 1180, -60 )
-node_connections = [ "output", 0, "TimeScale", "Blend2 2", 0, "Animation 3", "Blend2 2", 1, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2 2" ]
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Idle-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
 animation = "T-Pose-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
-animation = "Interact-loop"
+[sub_resource type="AnimationNodeBlend2" id=18]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftFoot", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftLeg", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:LeftUpLeg", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightFoot", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightLeg", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:RightUpLeg", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
 
 [sub_resource type="AnimationNodeBlend2" id=19]
 filter_enabled = true
-filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
 
 [sub_resource type="AnimationNodeTimeScale" id=20]
 
 [sub_resource type="AnimationNodeBlendTree" id=21]
-graph_offset = Vector2( -103, 69 )
-nodes/Animation/node = SubResource( 18 )
-nodes/Animation/position = Vector2( 300, 200 )
-"nodes/Animation 2/node" = SubResource( 17 )
-"nodes/Animation 2/position" = Vector2( 300, 100 )
+graph_offset = Vector2( 81, -99 )
+nodes/Animation/node = SubResource( 17 )
+nodes/Animation/position = Vector2( 180, 60 )
+"nodes/Animation 2/node" = SubResource( 15 )
+"nodes/Animation 2/position" = Vector2( 180, 180 )
+"nodes/Animation 3/node" = SubResource( 16 )
+"nodes/Animation 3/position" = Vector2( 180, -40 )
 nodes/Blend2/node = SubResource( 19 )
-nodes/Blend2/position = Vector2( 540, 120 )
+nodes/Blend2/position = Vector2( 400, 80 )
+"nodes/Blend2 2/node" = SubResource( 18 )
+"nodes/Blend2 2/position" = Vector2( 640, -60 )
 nodes/TimeScale/node = SubResource( 20 )
+nodes/TimeScale/position = Vector2( 920, -60 )
+nodes/output/position = Vector2( 1180, -60 )
+node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2 2", "Blend2 2", 0, "Animation 3", "Blend2 2", 1, "Blend2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "T-Pose-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Interact-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=24]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=25]
+
+[sub_resource type="AnimationNodeBlendTree" id=26]
+graph_offset = Vector2( -103, 69 )
+nodes/Animation/node = SubResource( 23 )
+nodes/Animation/position = Vector2( 300, 200 )
+"nodes/Animation 2/node" = SubResource( 22 )
+"nodes/Animation 2/position" = Vector2( 300, 100 )
+nodes/Blend2/node = SubResource( 24 )
+nodes/Blend2/position = Vector2( 540, 120 )
+nodes/TimeScale/node = SubResource( 25 )
 nodes/TimeScale/position = Vector2( 720, 120 )
 nodes/output/position = Vector2( 880, 120 )
 node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation 2", "Blend2", 1, "Animation", "TimeScale", 0, "Blend2" ]
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "Jumping"
 
-[sub_resource type="AnimationNodeTimeScale" id=23]
+[sub_resource type="AnimationNodeTimeScale" id=28]
 
-[sub_resource type="AnimationNodeBlendTree" id=24]
-nodes/Animation/node = SubResource( 22 )
+[sub_resource type="AnimationNodeBlendTree" id=29]
+nodes/Animation/node = SubResource( 27 )
 nodes/Animation/position = Vector2( 520, 60 )
-nodes/TimeScale/node = SubResource( 23 )
+nodes/TimeScale/node = SubResource( 28 )
 nodes/TimeScale/position = Vector2( 680, 60 )
 nodes/output/position = Vector2( 840, 60 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "Landing"
-
-[sub_resource type="AnimationNodeTimeScale" id=26]
-
-[sub_resource type="AnimationNodeBlendTree" id=27]
-graph_offset = Vector2( -704, 79 )
-nodes/Animation/node = SubResource( 25 )
-nodes/Animation/position = Vector2( -20, 140 )
-nodes/TimeScale/node = SubResource( 26 )
-nodes/TimeScale/position = Vector2( 140, 140 )
-nodes/output/position = Vector2( 300, 140 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "Pick-up_1H-loop"
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "T-Pose-loop"
-
-[sub_resource type="AnimationNodeBlend2" id=30]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
 
 [sub_resource type="AnimationNodeTimeScale" id=31]
 
 [sub_resource type="AnimationNodeBlendTree" id=32]
-graph_offset = Vector2( -100, 61 )
-nodes/Animation/node = SubResource( 29 )
-nodes/Animation/position = Vector2( 340, 120 )
-"nodes/Animation 2/node" = SubResource( 28 )
-"nodes/Animation 2/position" = Vector2( 340, 220 )
-nodes/Blend2/node = SubResource( 30 )
-nodes/Blend2/position = Vector2( 560, 120 )
+graph_offset = Vector2( -704, 79 )
+nodes/Animation/node = SubResource( 30 )
+nodes/Animation/position = Vector2( -20, 140 )
 nodes/TimeScale/node = SubResource( 31 )
+nodes/TimeScale/position = Vector2( 140, 140 )
+nodes/output/position = Vector2( 300, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Pick-up_1H-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "T-Pose-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=35]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:LeftArm", "Armature/Skeleton:LeftForeArm", "Armature/Skeleton:LeftHand", "Armature/Skeleton:LeftHandIndex1", "Armature/Skeleton:LeftHandIndex2", "Armature/Skeleton:LeftHandIndex3", "Armature/Skeleton:LeftHandMiddle1", "Armature/Skeleton:LeftHandMiddle2", "Armature/Skeleton:LeftHandMiddle3", "Armature/Skeleton:LeftHandRing1", "Armature/Skeleton:LeftHandRing2", "Armature/Skeleton:LeftHandRing3", "Armature/Skeleton:LeftHandThumb1", "Armature/Skeleton:LeftHandThumb2", "Armature/Skeleton:LeftHandThumb3", "Armature/Skeleton:LeftShoulder", "Armature/Skeleton:Neck", "Armature/Skeleton:RightArm", "Armature/Skeleton:RightForeArm", "Armature/Skeleton:RightHand", "Armature/Skeleton:RightHandIndex1", "Armature/Skeleton:RightHandIndex2", "Armature/Skeleton:RightHandIndex3", "Armature/Skeleton:RightHandMiddle1", "Armature/Skeleton:RightHandMiddle2", "Armature/Skeleton:RightHandMiddle3", "Armature/Skeleton:RightHandRing1", "Armature/Skeleton:RightHandRing2", "Armature/Skeleton:RightHandRing3", "Armature/Skeleton:RightHandThumb1", "Armature/Skeleton:RightHandThumb2", "Armature/Skeleton:RightHandThumb3", "Armature/Skeleton:RightShoulder", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=36]
+
+[sub_resource type="AnimationNodeBlendTree" id=37]
+graph_offset = Vector2( -100, 61 )
+nodes/Animation/node = SubResource( 34 )
+nodes/Animation/position = Vector2( 340, 120 )
+"nodes/Animation 2/node" = SubResource( 33 )
+"nodes/Animation 2/position" = Vector2( 340, 220 )
+nodes/Blend2/node = SubResource( 35 )
+nodes/Blend2/position = Vector2( 560, 120 )
+nodes/TimeScale/node = SubResource( 36 )
 nodes/TimeScale/position = Vector2( 740, 100 )
 nodes/output/position = Vector2( 900, 100 )
 node_connections = [ "output", 0, "TimeScale", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "TimeScale", 0, "Blend2" ]
 
-[sub_resource type="AnimationNodeAnimation" id=74]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "Push_A-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=75]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "Pushing-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "Running-loop"
 
-[sub_resource type="AnimationNodeTimeScale" id=34]
+[sub_resource type="AnimationNodeTimeScale" id=41]
 
-[sub_resource type="AnimationNodeBlendTree" id=35]
+[sub_resource type="AnimationNodeBlendTree" id=42]
 graph_offset = Vector2( -602, 75 )
-nodes/Animation/node = SubResource( 33 )
+nodes/Animation/node = SubResource( 40 )
 nodes/Animation/position = Vector2( -60, 140 )
-nodes/TimeScale/node = SubResource( 34 )
+nodes/TimeScale/node = SubResource( 41 )
 nodes/TimeScale/position = Vector2( 140, 140 )
 nodes/output/position = Vector2( 300, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=43]
 animation = "Throw_1H-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=44]
 animation = "Throw_2H-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=45]
 animation = "Walking-loop"
 
-[sub_resource type="AnimationNodeTimeScale" id=39]
+[sub_resource type="AnimationNodeTimeScale" id=46]
 
-[sub_resource type="AnimationNodeBlendTree" id=40]
+[sub_resource type="AnimationNodeBlendTree" id=47]
 graph_offset = Vector2( -525, 58 )
-nodes/Animation/node = SubResource( 38 )
+nodes/Animation/node = SubResource( 45 )
 nodes/Animation/position = Vector2( -40, 140 )
-nodes/TimeScale/node = SubResource( 39 )
+nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 140, 140 )
 nodes/output/position = Vector2( 300, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
-switch_mode = 2
-auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
-xfade_time = 0.05
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=50]
-switch_mode = 2
-auto_advance = true
-advance_condition = "land"
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
 switch_mode = 2
@@ -902,60 +869,93 @@ auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
-switch_mode = 1
+switch_mode = 2
+auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=53]
-switch_mode = 1
+switch_mode = 2
+auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
+switch_mode = 2
+auto_advance = true
 xfade_time = 0.2
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+switch_mode = 2
+auto_advance = true
+advance_condition = "land"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+switch_mode = 1
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+switch_mode = 1
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
 xfade_time = 0.2
 priority = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-xfade_time = 0.1
-priority = 0
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=63]
-xfade_time = 0.05
-priority = 0
+xfade_time = 0.2
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=64]
-xfade_time = 0.05
-priority = 0
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=65]
-xfade_time = 0.05
-priority = 0
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+xfade_time = 0.1
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
 xfade_time = 0.05
 priority = 0
 
-[sub_resource type="AnimationNodeStateMachine" id=67]
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachine" id=74]
 states/Dancing/node = SubResource( 5 )
 states/Dancing/position = Vector2( 415, 205 )
 states/Dancing-2/node = SubResource( 3 )
@@ -970,36 +970,36 @@ states/Floating_B/node = SubResource( 9 )
 states/Floating_B/position = Vector2( 813, 38 )
 states/Floating_B-loop/node = SubResource( 8 )
 states/Floating_B-loop/position = Vector2( 1332, 109 )
-states/Holding_idle/node = SubResource( 73 )
+states/Holding_idle/node = SubResource( 14 )
 states/Holding_idle/position = Vector2( 985, 109 )
-states/Idle/node = SubResource( 16 )
+states/Idle/node = SubResource( 21 )
 states/Idle/position = Vector2( 667, 205 )
-states/Interact/node = SubResource( 21 )
+states/Interact/node = SubResource( 26 )
 states/Interact/position = Vector2( 985, 351 )
-states/Jumping/node = SubResource( 24 )
+states/Jumping/node = SubResource( 29 )
 states/Jumping/position = Vector2( 667, 351 )
-states/Landing/node = SubResource( 27 )
+states/Landing/node = SubResource( 32 )
 states/Landing/position = Vector2( 813, 459 )
-states/PickUp1/node = SubResource( 32 )
+states/PickUp1/node = SubResource( 37 )
 states/PickUp1/position = Vector2( 985, 205 )
-states/Push_A-loop/node = SubResource( 74 )
+states/Push_A-loop/node = SubResource( 38 )
 states/Push_A-loop/position = Vector2( 1322, 255 )
-states/Pushing-loop/node = SubResource( 75 )
+states/Pushing-loop/node = SubResource( 39 )
 states/Pushing-loop/position = Vector2( 1332, 61 )
-states/Running/node = SubResource( 35 )
+states/Running/node = SubResource( 42 )
 states/Running/position = Vector2( 270, 351 )
-states/Throw_1H-loop/node = SubResource( 36 )
+states/Throw_1H-loop/node = SubResource( 43 )
 states/Throw_1H-loop/position = Vector2( 1332, 157 )
-states/Throw_2H-loop/node = SubResource( 37 )
+states/Throw_2H-loop/node = SubResource( 44 )
 states/Throw_2H-loop/position = Vector2( 1332, 205 )
-states/Walking/node = SubResource( 40 )
+states/Walking/node = SubResource( 47 )
 states/Walking/position = Vector2( 415, 459 )
-transitions = [ "Idle", "Dancing", SubResource( 41 ), "Idle", "Interact", SubResource( 42 ), "Idle", "PickUp1", SubResource( 43 ), "PickUp1", "Idle", SubResource( 44 ), "Interact", "Idle", SubResource( 45 ), "Dancing", "Dancing-2", SubResource( 46 ), "Dancing-2", "Dancing-3", SubResource( 47 ), "Dancing-3", "Idle", SubResource( 48 ), "Idle", "Jumping", SubResource( 49 ), "Jumping", "Landing", SubResource( 50 ), "Landing", "Idle", SubResource( 51 ), "Walking", "Running", SubResource( 52 ), "Running", "Walking", SubResource( 53 ), "Walking", "Idle", SubResource( 54 ), "Idle", "Walking", SubResource( 55 ), "Idle", "Running", SubResource( 56 ), "Running", "Idle", SubResource( 57 ), "Idle", "Floating_A", SubResource( 58 ), "Floating_A", "Idle", SubResource( 59 ), "Idle", "Floating_B", SubResource( 60 ), "Floating_B", "Idle", SubResource( 61 ), "Idle", "Dying", SubResource( 62 ), "Walking", "Jumping", SubResource( 63 ), "Running", "Jumping", SubResource( 64 ), "Landing", "Walking", SubResource( 65 ), "Landing", "Running", SubResource( 66 ) ]
+transitions = [ "Idle", "Dancing", SubResource( 48 ), "Idle", "Interact", SubResource( 49 ), "Idle", "PickUp1", SubResource( 50 ), "PickUp1", "Idle", SubResource( 51 ), "Interact", "Idle", SubResource( 52 ), "Dancing", "Dancing-2", SubResource( 53 ), "Dancing-2", "Dancing-3", SubResource( 54 ), "Dancing-3", "Idle", SubResource( 55 ), "Idle", "Jumping", SubResource( 56 ), "Jumping", "Landing", SubResource( 57 ), "Landing", "Idle", SubResource( 58 ), "Walking", "Running", SubResource( 59 ), "Running", "Walking", SubResource( 60 ), "Walking", "Idle", SubResource( 61 ), "Idle", "Walking", SubResource( 62 ), "Idle", "Running", SubResource( 63 ), "Running", "Idle", SubResource( 64 ), "Idle", "Floating_A", SubResource( 65 ), "Floating_A", "Idle", SubResource( 66 ), "Idle", "Floating_B", SubResource( 67 ), "Floating_B", "Idle", SubResource( 68 ), "Idle", "Dying", SubResource( 69 ), "Walking", "Jumping", SubResource( 70 ), "Running", "Jumping", SubResource( 71 ), "Landing", "Walking", SubResource( 72 ), "Landing", "Running", SubResource( 73 ) ]
 start_node = "Idle"
 end_node = "Dying"
-graph_offset = Vector2( 221, -18 )
+graph_offset = Vector2( -238, 246 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=75]
 
 [node name="astro_player" instance=ExtResource( 2 )]
 
@@ -1012,10 +1012,10 @@ anims/Jumping = SubResource( 1 )
 anims/Landing = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource( 67 )
+tree_root = SubResource( 74 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 68 )
+parameters/playback = SubResource( 75 )
 parameters/conditions/land = false
 parameters/Holding_idle/Blend2/blend_amount = 0
 parameters/Holding_idle/TimeScale/scale = 1.0
@@ -1028,5 +1028,5 @@ parameters/Jumping/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/PickUp1/Blend2/blend_amount = 0.75
 parameters/PickUp1/TimeScale/scale = 1.0
-parameters/Running/TimeScale/scale = 1.0
-parameters/Walking/TimeScale/scale = 1.0
+parameters/Running/TimeScale/scale = 1.6
+parameters/Walking/TimeScale/scale = 2.5

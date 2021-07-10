@@ -101,12 +101,12 @@ func _unhandled_key_input(event):
 		if event.pressed and event.scancode == KEY_R:
 #			set_anim("Dying")
 			LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", self)
-		elif event.pressed and event.scancode == KEY_Y:
-			OS.window_fullscreen = not OS.window_fullscreen
 		elif event.pressed and event.scancode == KEY_G:
 			debug_gravitometro = not debug_gravitometro
 			get_tree().call_group("GravityParticles", "set_emitting", debug_gravitometro)
-
+		# CAMBIAR FULLSCREEN CAMBIADO A _INPUT DE GAME.GD
+#		elif event.pressed and event.scancode == KEY_Y:
+#			OS.window_fullscreen = not OS.window_fullscreen
 
 func ongrav_movement(delta):
 	vel = move_and_slide(vel, up)
@@ -163,17 +163,17 @@ func ongrav_movement(delta):
 func nograv_movement(delta):
 	vel = move_and_slide(vel, up)
 	
-	var on_floor = downRC.is_colliding()
+#	var on_floor = downRC.is_colliding()
 	
-	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+#	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+#	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
 	backward = v_node.transform.basis.z.normalized()
 	var y_comp = backward.y * Vector3.UP
-	var x_cam = h_node.transform.basis.x #* dir_x
+#	var x_cam = h_node.transform.basis.x #* dir_x
 	var z_cam = h_node.transform.basis.z #* dir_z
-	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
-	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+#	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
+#	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
 	backward = (z_cam + y_comp).normalized()
 	
 	if vel.length() < 10.5:
@@ -240,8 +240,8 @@ func gravity_area_detector():
 		self.set_floor(true)
 
 
-func set_floor(has_floor):
-	self.has_floor = has_floor
+func set_floor(new_has_floor):
+	self.has_floor = new_has_floor
 
 
 func set_gravity(newGravity):
@@ -367,7 +367,7 @@ func store(key):
 			retrieve(key)
 
 
-func throw(delta):
+func throw(_delta):
 	if not holding_item:
 		return
 	
@@ -383,6 +383,18 @@ func throw(delta):
 			direction = FPmiddleRP.get_global_transform().origin - fpc.get_global_transform().origin
 		
 		held_item.apply_central_impulse(direction.normalized() * THROW_STRENGTH)
+		held_item = null
+		holding_item = false
+#		anim_state = "Throwing"
+		
+		if floating:
+			pass
+		return
+	
+	elif Input.is_action_just_released("release"):
+		#vel += backward * Click_Hold
+		held_item.release()
+		
 		held_item = null
 		holding_item = false
 #		anim_state = "Throwing"

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 10, 1, 10 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 20, 2, 20 )
+
+[node name="CheckpointTest" type="Spatial"]
+
+[node name="Piso" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Piso"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Piso"]
+mesh = SubResource( 2 )
+material/0 = null

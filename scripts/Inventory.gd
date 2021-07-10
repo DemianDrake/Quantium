@@ -14,7 +14,7 @@ func update_hotbar(inventory):
 	var slot_node
 	var text
 	var texture
-	var image
+#	var image
 	
 	for key in inventory.keys():
 		slot = inventory[key]
@@ -22,10 +22,11 @@ func update_hotbar(inventory):
 		if slot['item_name'] != 'empty':
 			text = str(slot['amount']) + '/' + str(slot['max_amount'])
 			texture = ImageTexture.new()
-			image = Image.new()
-			image.load(slot['texture_path'])
-			image.resize(60, 60)
-			texture.create_from_image(image)
+			texture.create_from_image(load(slot['texture_path']))
+#			image = Image.new()
+#			image.load(slot['texture_path'])
+#			image.resize(60, 60)
+#			texture.create_from_image(image)
 			
 			slot_node.get_node("TextureRect/Amount").set_text(text)
 			slot_node.get_node('TextureRect').set_texture(texture)
