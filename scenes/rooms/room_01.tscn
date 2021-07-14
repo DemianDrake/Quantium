@@ -26,7 +26,7 @@
 [ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=25]
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=26]
-[ext_resource path="res://scripts/door.gd" type="Script" id=27]
+[ext_resource path="res://scripts/Props/door.gd" type="Script" id=27]
 [ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/assets/props/Medkit.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=30]
@@ -1137,6 +1137,7 @@ transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, 12.
 
 [node name="Box 4" parent="Room Left/Corridor" instance=ExtResource( 23 )]
 transform = Transform( 0.151106, 0, 0.988518, 0, 1, 0, -0.988518, 0, 0.151106, 37.1131, -1.41662, 4.99178 )
+max_amount = 10
 
 [node name="Corridor2" type="Spatial" parent="Room Left"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9.07994 )
