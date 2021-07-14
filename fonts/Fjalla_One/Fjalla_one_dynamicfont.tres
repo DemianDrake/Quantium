@@ -5,5 +5,5 @@ font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
 
 [resource]
 resource_local_to_scene = true
-size = 100
+size = 10
 font_data = SubResource( 1 )

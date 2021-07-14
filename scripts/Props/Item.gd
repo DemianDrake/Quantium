@@ -44,6 +44,13 @@ func item_data_to_dict(dict):
 	dict['scene_path'] = scene_path
 	dict['texture_path'] = texture_path
 
+
+func set_data_from_dict(dict):
+	item_name = dict['item_name']
+	max_amount = dict['max_amount']
+	scene_path = dict['scene_path']
+	texture_path = dict['texture_path']
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

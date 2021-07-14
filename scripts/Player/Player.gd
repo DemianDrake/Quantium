@@ -319,6 +319,7 @@ func retrieve(key):
 	
 	if slot['amount'] > 0:
 		var item = load(slot['scene_path']).instance()
+		item.set_data_from_dict(slot)
 		item.grab(self.get_node("Model/RotationTest/Placeholder"))
 		
 		slot['amount'] -= 1

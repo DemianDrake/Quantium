@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/GUI/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://scenes/GUI/Slot.tscn" type="PackedScene" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 1 )
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
@@ -47,157 +56,46 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
 
-[node name="Slot1" type="ColorRect" parent="ColorRect/MarginContainer/GridContainer"]
+[node name="Slot1" parent="ColorRect/MarginContainer/GridContainer" instance=ExtResource( 2 )]
 margin_right = 60.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = -1.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot1/TextureRect"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Amount" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot1/TextureRect"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Slot2" type="ColorRect" parent="ColorRect/MarginContainer/GridContainer"]
+[node name="Slot2" parent="ColorRect/MarginContainer/GridContainer" instance=ExtResource( 2 )]
 margin_left = 64.0
 margin_right = 124.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1.0
-margin_bottom = -1.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot2/TextureRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Label" parent="ColorRect/MarginContainer/GridContainer/Slot2/TextureRect" index="0"]
+custom_fonts/font = SubResource( 2 )
 text = "2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Amount" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot2/TextureRect"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -14.0
+[node name="Amount" parent="ColorRect/MarginContainer/GridContainer/Slot2/TextureRect" index="1"]
+custom_fonts/font = SubResource( 2 )
 
-[node name="Slot3" type="ColorRect" parent="ColorRect/MarginContainer/GridContainer"]
+[node name="Slot3" parent="ColorRect/MarginContainer/GridContainer" instance=ExtResource( 2 )]
 margin_left = 128.0
 margin_right = 188.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = -1.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot3/TextureRect"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Label" parent="ColorRect/MarginContainer/GridContainer/Slot3/TextureRect" index="0"]
+custom_fonts/font = SubResource( 2 )
 text = "3"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Amount" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot3/TextureRect"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -14.0
+[node name="Amount" parent="ColorRect/MarginContainer/GridContainer/Slot3/TextureRect" index="1"]
+custom_fonts/font = SubResource( 2 )
 
-[node name="Slot4" type="ColorRect" parent="ColorRect/MarginContainer/GridContainer"]
+[node name="Slot4" parent="ColorRect/MarginContainer/GridContainer" instance=ExtResource( 2 )]
 margin_left = 192.0
 margin_right = 252.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/GridContainer/Slot4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = -1.0
-rect_min_size = Vector2( 60, 60 )
-mouse_filter = 2
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot4/TextureRect"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Label" parent="ColorRect/MarginContainer/GridContainer/Slot4/TextureRect" index="0"]
+custom_fonts/font = SubResource( 2 )
 text = "4"
 
-[node name="Amount" type="Label" parent="ColorRect/MarginContainer/GridContainer/Slot4/TextureRect"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -14.0
+[node name="Amount" parent="ColorRect/MarginContainer/GridContainer/Slot4/TextureRect" index="1"]
+custom_fonts/font = SubResource( 2 )
+
+[editable path="ColorRect/MarginContainer/GridContainer/Slot2"]
+[editable path="ColorRect/MarginContainer/GridContainer/Slot3"]
+[editable path="ColorRect/MarginContainer/GridContainer/Slot4"]
