@@ -1,0 +1,23 @@
+Ark Space Station (Outside)
+	Viktor Hahn - Itch.io
+
+Ark Space Station (Inside)
+	MagixBox - Unity AssetStore
+
+Box Props
+	MagixBox - Unity AssetStore
+
+Medikit Prop
+	hopefuldesign - Sketchfab
+
+Oxygen Tank Props
+	louis-muir - Sketchfab
+
+CRONOS
+	Helindu - Sketchfab
+
+Astronaut
+	Michael - Creazilla
+
+Text Font
+	Fjalla One by Sorkin Type

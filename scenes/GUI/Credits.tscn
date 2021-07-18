@@ -1,0 +1,263 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont_buttons.tres" type="DynamicFont" id=2]
+
+[node name="CreditsUI" type="Control"]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.48
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CREDITS" type="Label" parent="Content"]
+margin_right = 1280.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "CREDITS"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="Content"]
+margin_top = 130.0
+margin_right = 1280.0
+margin_bottom = 1164.0
+custom_constants/margin_right = 150
+custom_constants/margin_top = 50
+custom_constants/margin_left = 150
+
+[node name="Body" type="VBoxContainer" parent="Content/Margin"]
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 1130.0
+margin_bottom = 1034.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Development Label" type="Label" parent="Content/Margin/Body"]
+margin_right = 980.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Developed by"
+align = 1
+uppercase = true
+
+[node name="Developers" type="HBoxContainer" parent="Content/Margin/Body"]
+margin_left = 40.0
+margin_top = 81.0
+margin_right = 939.0
+margin_bottom = 132.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_constants/separation = 50
+
+[node name="Enzo" type="Label" parent="Content/Margin/Body/Developers"]
+margin_right = 239.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Enzo Castillo M."
+
+[node name="Damian" type="Label" parent="Content/Margin/Body/Developers"]
+margin_left = 289.0
+margin_right = 547.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Damián Ibarra Z."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cristopher" type="Label" parent="Content/Margin/Body/Developers"]
+margin_left = 597.0
+margin_right = 899.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Cristopher Marín R."
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Assets Label" type="Label" parent="Content/Margin/Body"]
+margin_top = 162.0
+margin_right = 980.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 2 )
+text = "3D Models Used"
+align = 1
+uppercase = true
+
+[node name="Assets" type="HBoxContainer" parent="Content/Margin/Body"]
+margin_top = 243.0
+margin_right = 980.0
+margin_bottom = 660.0
+custom_constants/separation = 100
+
+[node name="Assets" type="VBoxContainer" parent="Content/Margin/Body/Assets"]
+margin_right = 428.0
+margin_bottom = 417.0
+custom_constants/separation = 10
+
+[node name="Outside Ark" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_right = 428.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Ark Space Station (Outside)"
+
+[node name="Inside Ark" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 61.0
+margin_right = 428.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 2 )
+text = "Ark Space Station (Inside)"
+
+[node name="Box Props" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 122.0
+margin_right = 428.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 2 )
+text = "Boxes"
+
+[node name="Medikit" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 183.0
+margin_right = 428.0
+margin_bottom = 234.0
+custom_fonts/font = ExtResource( 2 )
+text = "Medikit"
+
+[node name="Oxygen" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 244.0
+margin_right = 428.0
+margin_bottom = 295.0
+custom_fonts/font = ExtResource( 2 )
+text = "Oxygen Tank"
+
+[node name="CRONOS" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 305.0
+margin_right = 428.0
+margin_bottom = 356.0
+custom_fonts/font = ExtResource( 2 )
+text = "C.R.O.N.O.S."
+
+[node name="Astronaut" type="Label" parent="Content/Margin/Body/Assets/Assets"]
+margin_top = 366.0
+margin_right = 428.0
+margin_bottom = 417.0
+custom_fonts/font = ExtResource( 2 )
+text = "Astronaut Player"
+
+[node name="Authors" type="VBoxContainer" parent="Content/Margin/Body/Assets"]
+margin_left = 528.0
+margin_right = 974.0
+margin_bottom = 417.0
+custom_constants/separation = 10
+
+[node name="Outside Ark" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_right = 446.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Viktor Hahn (Itch.io)"
+align = 2
+
+[node name="Inside Ark" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 61.0
+margin_right = 446.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 2 )
+text = "MagixBox (Unity AssetStore)"
+align = 2
+
+[node name="Box Props" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 122.0
+margin_right = 446.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 2 )
+text = "MagixBox (Unity AssetStore)"
+align = 2
+
+[node name="Medikit" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 183.0
+margin_right = 446.0
+margin_bottom = 234.0
+custom_fonts/font = ExtResource( 2 )
+text = "@hopefuldesign (Sketchfab)"
+align = 2
+
+[node name="Oxygen" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 244.0
+margin_right = 446.0
+margin_bottom = 295.0
+custom_fonts/font = ExtResource( 2 )
+text = "@louis-muir (Sketchfab)"
+align = 2
+
+[node name="CRONOS" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 305.0
+margin_right = 446.0
+margin_bottom = 356.0
+custom_fonts/font = ExtResource( 2 )
+text = "@Helindu (Sketchfab)"
+align = 2
+
+[node name="Astronaut" type="Label" parent="Content/Margin/Body/Assets/Authors"]
+margin_top = 366.0
+margin_right = 446.0
+margin_bottom = 417.0
+custom_fonts/font = ExtResource( 2 )
+text = "Michael (Creazilla)"
+align = 2
+
+[node name="Font Label" type="Label" parent="Content/Margin/Body"]
+margin_top = 690.0
+margin_right = 980.0
+margin_bottom = 741.0
+custom_fonts/font = ExtResource( 2 )
+text = "Fonts Used"
+align = 1
+uppercase = true
+
+[node name="Fjalla One" type="Label" parent="Content/Margin/Body"]
+margin_top = 771.0
+margin_right = 980.0
+margin_bottom = 822.0
+custom_fonts/font = ExtResource( 2 )
+text = "Fjalla One by Sorkin Type"
+align = 1
+
+[node name="Thanks Label" type="Label" parent="Content/Margin/Body"]
+margin_top = 852.0
+margin_right = 980.0
+margin_bottom = 903.0
+custom_fonts/font = ExtResource( 2 )
+text = "Special Tanks to"
+align = 1
+uppercase = true
+
+[node name="Special Thanks" type="HBoxContainer" parent="Content/Margin/Body"]
+margin_left = 216.0
+margin_top = 933.0
+margin_right = 764.0
+margin_bottom = 984.0
+size_flags_horizontal = 4
+custom_constants/separation = 100
+
+[node name="Elias" type="Label" parent="Content/Margin/Body/Special Thanks"]
+margin_right = 179.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Elías Zelada"
+
+[node name="Bea" type="Label" parent="Content/Margin/Body/Special Thanks"]
+margin_left = 279.0
+margin_right = 548.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Beatriz Graboloza"
