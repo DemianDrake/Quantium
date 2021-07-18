@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Themes/GUITheme.tres" type="Theme" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Alpha"
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 70
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:custom_colors/default_color")
@@ -43,14 +49,14 @@ size_flags_stretch_ratio = 0.75
 theme = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
-margin_top = 392.0
+margin_top = 410.0
 margin_right = 880.0
-margin_bottom = 519.0
+margin_bottom = 500.0
 grow_vertical = 0
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.25
 theme = ExtResource( 2 )
-custom_fonts/normal_font = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 1, 1, 0.744487 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 bbcode_enabled = true
@@ -63,7 +69,7 @@ scroll_active = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/RichTextLabel"]
 autoplay = "Alpha"
 playback_speed = 0.2
-anims/Alpha = SubResource( 1 )
+anims/Alpha = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 visible = false

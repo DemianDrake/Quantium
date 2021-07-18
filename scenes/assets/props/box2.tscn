@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/materials/Box3.tres" type="Material" id=1]
 [ext_resource path="res://addons/unity_assets/Sci_Fi_Modular_Pack/meshes/DefaultMaterial.material" type="Material" id=2]
-[ext_resource path="res://scripts/items/box2.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Props/Item.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.416603, 0.319467, 0.339228 )
@@ -28,6 +28,10 @@ surfaces/0 = {
 ]]
 can_sleep = false
 script = ExtResource( 3 )
+item_name = "Box"
+max_amount = 5
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190029, 0.670917, 0.175748 )

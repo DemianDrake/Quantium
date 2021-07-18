@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/Bar.gd" type="Script" id=1]
+[ext_resource path="res://scripts/GUI/Bar.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 20
+font_data = SubResource( 1 )
 
 [node name="HP" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -704.0
-margin_bottom = -564.0
+margin_bottom = -670.0
 mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -32,14 +40,16 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer"]
 margin_right = 576.0
-margin_bottom = 156.0
+margin_bottom = 50.0
 mouse_filter = 2
 color = Color( 0.729412, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/ColorRect"]
+anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_right = 128.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "HP: 100%"
 valign = 1
 __meta__ = {

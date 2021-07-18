@@ -4,10 +4,10 @@
 [ext_resource path="res://scripts/Area.gd" type="Script" id=2]
 [ext_resource path="res://scripts/StaticCamera.gd" type="Script" id=3]
 [ext_resource path="res://scenes/assets/Buttons/HoldButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/items/box2.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Props/Item.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Buttons/HoldButton.gd" type="Script" id=6]
 [ext_resource path="res://scenes/assets/doors/door.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/door.gd" type="Script" id=8]
+[ext_resource path="res://scripts/Props/door.gd" type="Script" id=8]
 [ext_resource path="res://scenes/assets/Buttons/SwitchButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/Buttons/SwitchButton.gd" type="Script" id=10]
 [ext_resource path="res://scripts/Buttons/LogicBool.gd" type="Script" id=11]
@@ -239,6 +239,8 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody"]
 shape = SubResource( 10 )
@@ -257,6 +259,8 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody2"]
 shape = SubResource( 10 )
@@ -275,6 +279,8 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody3"]
 shape = SubResource( 10 )
@@ -293,6 +299,8 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody4"]
 shape = SubResource( 10 )
@@ -306,9 +314,12 @@ material/0 = null
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94541, 21.525, 1.29349 )
 can_sleep = false
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody5"]
 shape = SubResource( 10 )
@@ -327,6 +338,8 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
+scene_path = "res://scenes/assets/props/box2.tscn"
+texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody6"]
 shape = SubResource( 10 )

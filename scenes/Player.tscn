@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Gimbal_cam_TP.gd" type="Script" id=2]
-[ext_resource path="res://scripts/Gimbal_cam_FP.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Player/Gimbal_cam_TP.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Player/Gimbal_cam_FP.gd" type="Script" id=3]
 [ext_resource path="res://scenes/assets/char/astro_player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/GUI/InGameGUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=6]
+[ext_resource path="res://scripts/GUI/PauseMenu.gd" type="Script" id=6]
 [ext_resource path="res://scenes/GUI/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GUI/Crosshair.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.4
@@ -107,6 +108,8 @@ shape = SubResource( 4 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InGameGUI" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="Crosshair" parent="CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )

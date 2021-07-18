@@ -26,8 +26,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-LevelManager="*res://scripts/LevelManager.gd"
-AudioManager="*res://scripts/AudioManager.gd"
+LevelManager="*res://scripts/Managers/LevelManager.gd"
+AudioManager="*res://scripts/Managers/AudioManager.gd"
 
 [display]
 

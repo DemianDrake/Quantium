@@ -4,11 +4,11 @@
 [ext_resource path="res://scenes/assets/space/spacestation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=3]
 [ext_resource path="res://scenes/assets/space/planet.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/SpaceBody.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Managers/SpaceBody.gd" type="Script" id=5]
 [ext_resource path="res://scenes/assets/space/wind_planet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/GUI/TitleScreenGUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/GUI/MainMenuGUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scripts/TitleScreenCamera.gd" type="Script" id=9]
+[ext_resource path="res://scripts/GUI/TitleScreenCamera.gd" type="Script" id=9]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 3 )
