@@ -10,11 +10,14 @@ var current_world: Node = null
 var loading = false
 
 onready var fade = $CanvasLayer/Fade
+onready var music= $Music
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
 	current_world = Levels[0].instance()
 	$World.add_child(current_world)
+	music.stream = AudioManager.play()
+	music.play()
 	
 
 func _input(event: InputEvent) -> void:

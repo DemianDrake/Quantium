@@ -12,3 +12,5 @@ script = ExtResource( 1 )
 layer = 100
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
