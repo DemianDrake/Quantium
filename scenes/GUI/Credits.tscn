@@ -16,7 +16,7 @@ __meta__ = {
 
 [node name="CREDITS" type="Label" parent="Content"]
 margin_right = 1280.0
-margin_bottom = 126.0
+margin_bottom = 14.0
 custom_fonts/font = ExtResource( 1 )
 text = "CREDITS"
 align = 1
@@ -26,9 +26,9 @@ __meta__ = {
 }
 
 [node name="Margin" type="MarginContainer" parent="Content"]
-margin_top = 130.0
+margin_top = 18.0
 margin_right = 1280.0
-margin_bottom = 1164.0
+margin_bottom = 1113.0
 custom_constants/margin_right = 150
 custom_constants/margin_top = 50
 custom_constants/margin_left = 150
@@ -37,7 +37,7 @@ custom_constants/margin_left = 150
 margin_left = 150.0
 margin_top = 50.0
 margin_right = 1130.0
-margin_bottom = 1034.0
+margin_bottom = 1095.0
 custom_constants/separation = 30
 alignment = 1
 
@@ -233,6 +233,8 @@ text = "Fjalla One by Sorkin Type"
 align = 1
 
 [node name="Thanks Label" type="Label" parent="Content/Margin/Body"]
+anchor_top = 0.05
+anchor_bottom = 0.05
 margin_top = 852.0
 margin_right = 980.0
 margin_bottom = 903.0
@@ -241,23 +243,63 @@ text = "Special Tanks to"
 align = 1
 uppercase = true
 
-[node name="Special Thanks" type="HBoxContainer" parent="Content/Margin/Body"]
-margin_left = 216.0
+[node name="Special Thanks" type="VBoxContainer" parent="Content/Margin/Body"]
+anchor_top = 0.05
+anchor_bottom = 0.05
 margin_top = 933.0
-margin_right = 764.0
-margin_bottom = 984.0
-size_flags_horizontal = 4
-custom_constants/separation = 100
+margin_right = 980.0
+margin_bottom = 1045.0
+custom_constants/separation = 10
 
-[node name="Elias" type="Label" parent="Content/Margin/Body/Special Thanks"]
+[node name="Row 1" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
+margin_left = 50.0
+margin_right = 929.0
+margin_bottom = 51.0
+size_flags_horizontal = 4
+custom_constants/separation = 80
+
+[node name="Elias" type="Label" parent="Content/Margin/Body/Special Thanks/Row 1"]
 margin_right = 179.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 2 )
 text = "Elías Zelada"
+align = 1
 
-[node name="Bea" type="Label" parent="Content/Margin/Body/Special Thanks"]
-margin_left = 279.0
-margin_right = 548.0
+[node name="Bea" type="Label" parent="Content/Margin/Body/Special Thanks/Row 1"]
+margin_left = 259.0
+margin_right = 528.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 2 )
 text = "Beatriz Graboloza"
+align = 1
+
+[node name="Eric" type="Label" parent="Content/Margin/Body/Special Thanks/Row 1"]
+margin_left = 608.0
+margin_right = 879.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Eric Kirchgessner"
+align = 1
+
+[node name="Row 2" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
+margin_left = 217.0
+margin_top = 61.0
+margin_right = 762.0
+margin_bottom = 112.0
+size_flags_horizontal = 4
+custom_constants/separation = 80
+
+[node name="Gabo" type="Label" parent="Content/Margin/Body/Special Thanks/Row 2"]
+margin_right = 258.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Gabriel Guajardo"
+align = 1
+
+[node name="Pipinff" type="Label" parent="Content/Margin/Body/Special Thanks/Row 2"]
+margin_left = 338.0
+margin_right = 545.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Felipe Andino"
+align = 1
