@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont.tres" type="DynamicFont" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 1 )
 
 [node name="Slot" type="ColorRect"]
 margin_right = 40.0
@@ -29,7 +40,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="TextureRect"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -31.0
 margin_top = -14.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

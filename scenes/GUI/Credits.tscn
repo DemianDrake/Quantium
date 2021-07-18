@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://fonts/Fjalla_One/Fjalla_one_dynamicfont_buttons.tres" type="DynamicFont" id=2]
 
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 70
+font_data = SubResource( 1 )
+
 [node name="CreditsUI" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 1280.0
 margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Content" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -16,8 +27,8 @@ __meta__ = {
 
 [node name="CREDITS" type="Label" parent="Content"]
 margin_right = 1280.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 1 )
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 2 )
 text = "CREDITS"
 align = 1
 uppercase = true
@@ -26,9 +37,9 @@ __meta__ = {
 }
 
 [node name="Margin" type="MarginContainer" parent="Content"]
-margin_top = 18.0
+margin_top = 93.0
 margin_right = 1280.0
-margin_bottom = 1113.0
+margin_bottom = 1249.0
 custom_constants/margin_right = 150
 custom_constants/margin_top = 50
 custom_constants/margin_left = 150
@@ -37,7 +48,7 @@ custom_constants/margin_left = 150
 margin_left = 150.0
 margin_top = 50.0
 margin_right = 1130.0
-margin_bottom = 1095.0
+margin_bottom = 1156.0
 custom_constants/separation = 30
 alignment = 1
 
@@ -233,8 +244,6 @@ text = "Fjalla One by Sorkin Type"
 align = 1
 
 [node name="Thanks Label" type="Label" parent="Content/Margin/Body"]
-anchor_top = 0.05
-anchor_bottom = 0.05
 margin_top = 852.0
 margin_right = 980.0
 margin_bottom = 903.0
@@ -244,16 +253,14 @@ align = 1
 uppercase = true
 
 [node name="Special Thanks" type="VBoxContainer" parent="Content/Margin/Body"]
-anchor_top = 0.05
-anchor_bottom = 0.05
 margin_top = 933.0
 margin_right = 980.0
-margin_bottom = 1045.0
+margin_bottom = 1106.0
 custom_constants/separation = 10
 
 [node name="Row 1" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
-margin_left = 50.0
-margin_right = 929.0
+margin_left = 226.0
+margin_right = 754.0
 margin_bottom = 51.0
 size_flags_horizontal = 4
 custom_constants/separation = 80
@@ -273,33 +280,33 @@ custom_fonts/font = ExtResource( 2 )
 text = "Beatriz Graboloza"
 align = 1
 
-[node name="Eric" type="Label" parent="Content/Margin/Body/Special Thanks/Row 1"]
-margin_left = 608.0
-margin_right = 879.0
+[node name="Row 2" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
+margin_left = 185.0
+margin_top = 61.0
+margin_right = 794.0
+margin_bottom = 112.0
+size_flags_horizontal = 4
+custom_constants/separation = 80
+
+[node name="Eric" type="Label" parent="Content/Margin/Body/Special Thanks/Row 2"]
+margin_right = 271.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 2 )
 text = "Eric Kirchgessner"
 align = 1
 
-[node name="Row 2" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
-margin_left = 217.0
-margin_top = 61.0
-margin_right = 762.0
-margin_bottom = 112.0
-size_flags_horizontal = 4
-custom_constants/separation = 80
-
 [node name="Gabo" type="Label" parent="Content/Margin/Body/Special Thanks/Row 2"]
-margin_right = 258.0
+margin_left = 351.0
+margin_right = 609.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 2 )
 text = "Gabriel Guajardo"
 align = 1
 
-[node name="Pipinff" type="Label" parent="Content/Margin/Body/Special Thanks/Row 2"]
-margin_left = 338.0
-margin_right = 545.0
-margin_bottom = 51.0
+[node name="Pipinff" type="Label" parent="Content/Margin/Body/Special Thanks"]
+margin_top = 122.0
+margin_right = 980.0
+margin_bottom = 173.0
 custom_fonts/font = ExtResource( 2 )
 text = "Felipe Andino"
 align = 1

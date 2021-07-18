@@ -25,7 +25,7 @@ func _on_LoadGame_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_Credits_pressed() -> void:
-	pass # Se hace algo para los créditos.
+	$Camera/AnimationPlayer.play("CameraCredits", -1, 0.5)
 
 func _on_Exit_pressed() -> void:
 	LevelManager.Game.fade.fade_in()
