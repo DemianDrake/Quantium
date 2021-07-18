@@ -651,10 +651,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Door" parent="Piso9" instance=ExtResource( 7 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, -37 )
-script = ExtResource( 8 )
-
 [node name="Piso2" type="StaticBody" parent="."]
 transform = Transform( 1, 5.96047e-08, 0, -5.96047e-08, 1, 0, 0, 0, 1, 8, 2, 0 )
 
@@ -784,6 +780,10 @@ targets_path = [ NodePath("../GravityZones/GravityFloors/GravityFloor_3/Area") ]
 resetable = true
 
 [node name="DoorsSystem1" type="Node" parent="."]
+
+[node name="Door" parent="DoorsSystem1" instance=ExtResource( 7 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11, 0, -21 )
+script = ExtResource( 8 )
 
 [node name="Door2" parent="DoorsSystem1" instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9, 0, -21 )
