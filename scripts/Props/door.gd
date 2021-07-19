@@ -17,6 +17,11 @@ func interact(_body: Node):
 		anim_open()
 	open = not open
 
+
+func get_description():
+	return "None"
+
+
 func anim_open():
 	$Tween.interpolate_property(self, "rotation_degrees", closed_rotation, opened_rotation, 1, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	$Tween.start()

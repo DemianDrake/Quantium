@@ -40,4 +40,4 @@ func fade_and_call_method(target: Node, method: String, arg):
 	yield(Game.fade, "faded")
 	target.call(method, arg)
 	Game.fade.fade_out()
-	
+

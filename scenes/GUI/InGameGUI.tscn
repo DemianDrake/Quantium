@@ -1,69 +1,303 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/GUI/Inventory.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/GUI/Crosshair.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/GUI/O2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/GUI/HP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/GUI/InGameGUI.gd" type="Script" id=5]
+[ext_resource path="res://scripts/GUI/DialogueBox.gd" type="Script" id=6]
+[ext_resource path="res://scripts/GUI/InfoBox.gd" type="Script" id=7]
 
-[node name="InGameGUI" type="HBoxContainer"]
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+resource_local_to_scene = true
+size = 10
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Fjalla_One/FjallaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 24
+font_data = SubResource( 1 )
+
+[node name="InGameGUI" type="VBoxContainer"]
 anchor_right = 1.0
-anchor_bottom = 0.1
+anchor_bottom = 1.0
 margin_bottom = 8.0
 mouse_filter = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bar" type="VBoxContainer" parent="."]
+[node name="Top" type="HBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 240 )
+mouse_filter = 2
+
+[node name="Bar" type="VBoxContainer" parent="Top"]
 margin_right = 489.0
-margin_bottom = 80.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HP" parent="Bar" instance=ExtResource( 4 )]
+[node name="HP" parent="Top/Bar" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 489.0
-margin_bottom = 50.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="O2" parent="Bar" instance=ExtResource( 3 )]
+[node name="O2" parent="Top/Bar" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 54.0
+margin_top = 68.0
 margin_right = 489.0
-margin_bottom = 80.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Hotbar" type="CenterContainer" parent="."]
+[node name="Hotbar" type="CenterContainer" parent="Top"]
 margin_left = 493.0
 margin_right = 786.0
-margin_bottom = 80.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 size_flags_stretch_ratio = 0.6
 
-[node name="Inventory" parent="Hotbar" instance=ExtResource( 1 )]
+[node name="Inventory" parent="Top/Hotbar" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 18.0
-margin_top = 7.0
+margin_top = 17.0
 margin_right = 274.0
-margin_bottom = 72.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 256, 65 )
 size_flags_horizontal = 3
 
-[node name="Minimap" type="Control" parent="."]
+[node name="Minimap" type="Control" parent="Top"]
 margin_left = 790.0
 margin_right = 1280.0
-margin_bottom = 80.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Middle" type="HBoxContainer" parent="."]
+margin_top = 240.0
+margin_right = 1280.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 0, 240 )
+mouse_filter = 2
+
+[node name="Left" type="Control" parent="Middle"]
+margin_right = 616.0
+margin_bottom = 240.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Crosshair" parent="Middle" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 100.0
+margin_right = 660.0
+margin_bottom = 140.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Right" type="Control" parent="Middle"]
+margin_left = 664.0
+margin_right = 1280.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+
+[node name="Info" type="VBoxContainer" parent="Middle/Right"]
+visible = false
+anchor_right = 0.39
+anchor_bottom = 0.333
+margin_right = -0.240005
+margin_bottom = 0.0800018
+rect_min_size = Vector2( 240, 80 )
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Middle/Right/Info"]
+margin_right = 240.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 240, 80 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Middle/Right/Info/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 0.286275, 0.247059, 0.247059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Middle/Right/Info/ColorRect/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Middle/Right/Info"]
+one_shot = true
+
+[node name="Label" type="Label" parent="Middle/Right/Info"]
+margin_top = 84.0
+margin_right = 240.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 8 )
+
+[node name="Bottom" type="VBoxContainer" parent="."]
+margin_top = 480.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 240 )
+mouse_filter = 2
+
+[node name="placeholder" type="Control" parent="Bottom"]
+margin_right = 1280.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+mouse_filter = 2
+
+[node name="Dialogue" type="HBoxContainer" parent="Bottom"]
+visible = false
+margin_top = 84.0
+margin_right = 1280.0
+margin_bottom = 240.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+
+[node name="ColorRect2" type="ColorRect" parent="Bottom/Dialogue"]
+margin_right = 156.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 156, 156 )
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Bottom/Dialogue/ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 140, 140 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Bottom/Dialogue/ColorRect2/TextureRect"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+rect_min_size = Vector2( 0, 14 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 0.286275, 0.247059, 0.247059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bottom/Dialogue/ColorRect2/TextureRect/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Handsome Astronaut"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="Bottom/Dialogue"]
+margin_left = 160.0
+margin_right = 1280.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Bottom/Dialogue/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+color = Color( 0.286275, 0.247059, 0.247059, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bottom/Dialogue/ColorRect/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Bottom/Dialogue"]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Middle/Right/Info/Timer" to="Middle/Right/Info" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Bottom/Dialogue/Timer" to="Bottom/Dialogue" method="_on_Timer_timeout"]
