@@ -32,6 +32,7 @@ item_name = "Box"
 max_amount = 5
 scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
+description = "A metal box, the squarish type."
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190029, 0.670917, 0.175748 )

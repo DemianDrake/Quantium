@@ -1,10 +1,11 @@
-extends VBoxContainer
+extends HBoxContainer
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 onready var timer = get_node("Timer")
+export var time = 10.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,12 +15,11 @@ func _ready():
 func setup(text: String):
 	set_text(text)
 	show_text()
-	timer.start(10)
+	timer.start(time)
 
 
 func set_text(text: String):
-	var new_text = 'Handsome Astronaut: ' + text
-	get_node("ColorRect/ColorRect/Label").set_text(new_text)
+	get_node("ColorRect/ColorRect/Label").set_text(text)
 
 
 func show_text():

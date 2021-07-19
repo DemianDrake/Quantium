@@ -453,15 +453,18 @@ func comment(text):
 
 func show_info():
 	var text = 'None'
+	var group
 	var obj = get_raycast_elem("Interactable")
 	if is_instance_valid(obj):
 		text = obj.get_description()
+		group = "Interactable"
 	obj = get_raycast_elem("Item")
 	if is_instance_valid(obj):
 		text = obj.get_description()
+		group = "Item"
 	
 	if text != 'None':
-		gui.show_info(text)
+		gui.show_info(text, group)
 
 
 func _physics_process(delta):

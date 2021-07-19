@@ -36,8 +36,8 @@ func show_dialogue(text: String):
 	dialogue_box.setup(text)
 
 
-func show_info(text: String):
-	info_box.setup(text)
+func show_info(text: String, group: String):
+	info_box.setup(text, group)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
