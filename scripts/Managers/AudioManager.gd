@@ -12,3 +12,7 @@ func play():
 func next():
 	current_song = (current_song + 1) % song.size()
 	return song[current_song]
+
+func seek(index: int):
+	current_song = index
+	return song[current_song]

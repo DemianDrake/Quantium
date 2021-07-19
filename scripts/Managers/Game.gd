@@ -72,5 +72,19 @@ func reset():
 	loading = true
 	fade.fade_in()
 
-func music_fade():
-	$Music/Tween.interpolate_property(music, "volume_db", 0, -100)
+func music_fade_out(duration):
+	$Music/Tween.interpolate_property(music, "volume_db", music.volume_db, -1000, duration, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$Music/Tween.start()
+
+func music_fade_in(duration):
+	$Music/Tween.interpolate_property(music, "volume_db", music.volume_db, 0, duration, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$Music/Tween.start()
+
+func music_fade_and_change(duration: float, new_song: int):
+	music_fade_out(duration)
+	yield($Music/Tween, "tween_completed")
+	music.stop()
+	var song = AudioManager.seek(new_song)
+	music.stream = song
+	music.play()
+	music_fade_in(duration)

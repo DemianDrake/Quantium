@@ -68,7 +68,7 @@ var current_o2 = MAX_O2
 
 # VARIABLES EXPERIMENTALES
 var floating = false
-var debug_gravitometro = true
+var gravitometro = true
 var mouse_captured
 
 # Called when the node enters the scene tree for the first time.
@@ -92,6 +92,9 @@ func _input(event: InputEvent) -> void:
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
+		elif event.is_action_pressed("gravitometer"):
+			gravitometro = not gravitometro
+			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		elif event.is_action_pressed("pause"):
 			release_mouse()
 			$PauseMenu.toggle()
@@ -101,9 +104,10 @@ func _unhandled_key_input(event):
 		if event.pressed and event.scancode == KEY_R:
 #			set_anim("Dying")
 			LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", self)
-		elif event.pressed and event.scancode == KEY_G:
-			debug_gravitometro = not debug_gravitometro
-			get_tree().call_group("GravityParticles", "set_emitting", debug_gravitometro)
+		# ACTIVAR GRAVITOCOSO CAMBIADO A _INPUT
+#		elif event.pressed and event.scancode == KEY_G:
+#			gravitometro = not gravitometro
+#			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		# CAMBIAR FULLSCREEN CAMBIADO A _INPUT DE GAME.GD
 #		elif event.pressed and event.scancode == KEY_Y:
 #			OS.window_fullscreen = not OS.window_fullscreen
