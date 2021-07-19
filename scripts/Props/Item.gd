@@ -12,7 +12,8 @@ export var texture_path = 'res://path/to/image'
 func _ready():
 	tmp_transform = get_global_transform()
 	set_sleeping(false)
-	
+
+
 func grab(node):
 	var parent = get_parent()
 	
