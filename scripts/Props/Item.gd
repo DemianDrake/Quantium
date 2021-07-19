@@ -6,6 +6,7 @@ export var item_name = 'Empty'
 export var max_amount = 10
 export var scene_path = 'res://path/to/scene'
 export var texture_path = 'res://path/to/image'
+export var description = 'Generic description, please put something else, xoxo.'
 #export var sleeping_mode = true
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +39,11 @@ func get_item_name():
 
 func get_max_amount():
 	return max_amount
+
+
+func get_description():
+	return description
+
 
 func item_data_to_dict(dict):
 	dict['item_name'] = item_name

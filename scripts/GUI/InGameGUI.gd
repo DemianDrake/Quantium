@@ -8,6 +8,7 @@ onready var inventory = get_node("Top/Hotbar/Inventory")
 onready var hp_bar = get_node("Top/Bar/HP")
 onready var o2_bar = get_node("Top/Bar/O2")
 onready var dialogue_box = get_node("Bottom/Dialogue")
+onready var info_box = get_node("Middle/Right/Info")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,8 +20,8 @@ func get_inventory():
 	return inventory
 
 
-func update_hotbar(inventory):
-	inventory.update_hotbar(inventory)
+func update_hotbar(dict):
+	inventory.update_hotbar(dict)
 
 
 func update_hp(pc):
@@ -33,6 +34,11 @@ func update_o2(pc):
 
 func show_dialogue(text: String):
 	dialogue_box.setup(text)
+
+
+func show_info(text: String):
+	info_box.setup(text)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

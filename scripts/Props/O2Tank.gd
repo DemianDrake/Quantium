@@ -17,6 +17,10 @@ func interact(body: Node):
 		body.comment('Mmm... Delicious oxigen.')
 		queue_free()
 
+
+func get_description():
+	return "An oxigen tank, very pretty, surely delicious..."
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -451,6 +451,19 @@ func comment(text):
 	gui.show_dialogue(text)
 
 
+func show_info():
+	var text = 'None'
+	var obj = get_raycast_elem("Interactable")
+	if is_instance_valid(obj):
+		text = obj.get_description()
+	obj = get_raycast_elem("Item")
+	if is_instance_valid(obj):
+		text = obj.get_description()
+	
+	if text != 'None':
+		gui.show_info(text)
+
+
 func _physics_process(delta):
 	angulo = self.transform.basis.y.angle_to(up)
 	if not compare_floats(angulo, 0):
@@ -465,6 +478,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
+	show_info()
 	interact()
 	hotbar_input_handler()
 	pickup(delta)
@@ -480,16 +494,20 @@ func set_anim(state):
 func get_inventory():
 	return inventory
 
+
 func teleport(new_pos):
 	global_transform.origin = new_pos
+
 
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true
 
+
 func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	mouse_captured = false
+
 
 static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 	return abs(a - b) <= epsilon
