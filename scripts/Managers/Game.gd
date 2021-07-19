@@ -71,3 +71,6 @@ func reset():
 	current_level = -1
 	loading = true
 	fade.fade_in()
+
+func music_fade():
+	$Music/Tween.interpolate_property(music, "volume_db", 0, -100)

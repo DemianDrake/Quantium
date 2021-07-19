@@ -20,6 +20,7 @@ func _process(delta):
 
 func _on_NewGame_pressed() -> void:
 	LevelManager.next()
+	LevelManager.Game.music.stop()
 
 func _on_LoadGame_pressed() -> void:
 	pass # Replace with function body.
