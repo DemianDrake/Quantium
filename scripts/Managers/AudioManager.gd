@@ -1,7 +1,10 @@
 extends Node
 
 var song  = [
-	preload("res://music/Shimmering_Nebulae.wav")
+	preload("res://music/Shimmering_Nebulae.wav"),
+	preload("res://music/Calm_before_Chaos.wav"),
+	preload("res://music/Bandwidth_Bandits.wav"),
+	preload("res://music/Monsters_at_the_Core.wav")
 ]
 
 var current_song = 0

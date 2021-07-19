@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bandwidth_Bandits.wav-5f0bc95ed47f16d43c773430ffeb5e0f.sample"
+
+[deps]
+
+source_file="res://music/Bandwidth_Bandits.wav"
+dest_files=[ "res://.import/Bandwidth_Bandits.wav-5f0bc95ed47f16d43c773430ffeb5e0f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

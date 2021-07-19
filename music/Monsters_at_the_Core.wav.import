@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Monsters_at_the_Core.wav-99594ca6da700ba248c8dd29bb2f6c24.sample"
+
+[deps]
+
+source_file="res://music/Monsters_at_the_Core.wav"
+dest_files=[ "res://.import/Monsters_at_the_Core.wav-99594ca6da700ba248c8dd29bb2f6c24.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
