@@ -193,10 +193,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="Middle/Right/Info"]
+[node name="Start" type="Timer" parent="Middle/Right/Info"]
 one_shot = true
 
 [node name="Reset" type="Timer" parent="Middle/Right/Info"]
+one_shot = true
+
+[node name="End" type="Timer" parent="Middle/Right/Info"]
+one_shot = true
 
 [node name="Label" type="Label" parent="Middle/Right/Info"]
 margin_top = 84.0
@@ -301,6 +305,8 @@ __meta__ = {
 wait_time = 10.0
 one_shot = true
 
-[connection signal="timeout" from="Middle/Right/Info/Timer" to="Middle/Right/Info" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Middle/Right/Info/Start" to="Middle/Right/Info" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Middle/Right/Info/Start" to="Middle/Right/Info" method="_on_Start_timeout"]
 [connection signal="timeout" from="Middle/Right/Info/Reset" to="Middle/Right/Info" method="_on_Reset_timeout"]
+[connection signal="timeout" from="Middle/Right/Info/End" to="Middle/Right/Info" method="_on_End_timeout"]
 [connection signal="timeout" from="Bottom/Dialogue/Timer" to="Bottom/Dialogue" method="_on_Timer_timeout"]
