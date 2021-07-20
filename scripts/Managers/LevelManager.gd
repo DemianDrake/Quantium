@@ -19,6 +19,9 @@ func go_to_checkpoint(node: Spatial):
 		new_position = start_position
 	if new_position:
 		node.teleport(new_position)
+		node.add_hp(node.MAX_HEALTH)
+		node.add_o2(node.MAX_O2)
+		node.dying = false
 
 func next():
 	Game.next()  

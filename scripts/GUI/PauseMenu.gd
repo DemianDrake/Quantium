@@ -19,7 +19,7 @@ func _on_resume_pressed():
 func _on_retry_pressed():
 	button_sfx()
 	player.capture_mouse()
-	LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", player)
+	player.decrease_hp(player.MAX_HEALTH)
 	hide()
 
 func _on_exit_pressed():

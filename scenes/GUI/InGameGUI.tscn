@@ -305,7 +305,6 @@ __meta__ = {
 wait_time = 10.0
 one_shot = true
 
-[connection signal="timeout" from="Middle/Right/Info/Start" to="Middle/Right/Info" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Middle/Right/Info/Start" to="Middle/Right/Info" method="_on_Start_timeout"]
 [connection signal="timeout" from="Middle/Right/Info/Reset" to="Middle/Right/Info" method="_on_Reset_timeout"]
 [connection signal="timeout" from="Middle/Right/Info/End" to="Middle/Right/Info" method="_on_End_timeout"]

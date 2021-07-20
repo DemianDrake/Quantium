@@ -17,6 +17,7 @@ onready var tpc = get_node("Gimbal_h_cam_TP/Gimbal_v_cam/TP Camera")
 onready var h_node = get_node("Gimbal_h_cam_FP")
 onready var v_node = h_node.get_node("Gimbal_v_cam")
 onready var anim_tree = get_node("Model/RotationTest/astro_player/AnimationTree")
+onready var anim_player = get_node("Model/RotationTest/astro_player/AnimationPlayer")
 onready var state_machine = anim_tree["parameters/playback"]
 onready var gui = get_node("CanvasLayer/InGameGUI")
 
@@ -69,6 +70,7 @@ var current_o2 = MAX_O2
 # VARIABLES EXPERIMENTALES
 var floating = false
 var gravitometro = true
+var dying = false
 var mouse_captured
 
 # Called when the node enters the scene tree for the first time.
@@ -102,8 +104,7 @@ func _input(event: InputEvent) -> void:
 func _unhandled_key_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_R:
-#			set_anim("Dying")
-			LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", self)
+			decrease_hp(MAX_HEALTH)
 		# ACTIVAR GRAVITOCOSO CAMBIADO A _INPUT
 #		elif event.pressed and event.scancode == KEY_G:
 #			gravitometro = not gravitometro
@@ -450,6 +451,8 @@ func update_bars(delta):
 	gui.update_hp(current_hp/MAX_HEALTH)
 	gui.update_o2(current_o2/MAX_O2)
 
+func still_alive():
+	return current_hp > 0
 
 func comment(text):
 	gui.show_dialogue(text)
@@ -472,24 +475,32 @@ func show_info():
 
 
 func _physics_process(delta):
-	angulo = self.transform.basis.y.angle_to(up)
-	if not compare_floats(angulo, 0):
-		axis = self.transform.basis.y.cross(up).normalized()
-	if gravity > 0:
-		ongrav_movement(delta)
-		if has_floor:
-			ongrav_rotation_quat(delta)
-	else:
-		nograv_movement(delta)
-	gravity_area_detector()
+	if still_alive():
+		angulo = self.transform.basis.y.angle_to(up)
+		if not compare_floats(angulo, 0):
+			axis = self.transform.basis.y.cross(up).normalized()
+		if gravity > 0:
+			ongrav_movement(delta)
+			if has_floor:
+				ongrav_rotation_quat(delta)
+		else:
+			nograv_movement(delta)
+		gravity_area_detector()
+	elif not dying:
+		dying = true
+		anim_state = "Dying"
+		yield(get_tree().create_timer(3.5), "timeout")
+		LevelManager.fade_and_call_method(LevelManager, "go_to_checkpoint", self)
+		
 
 
 func _process(delta):
-	show_info()
-	interact()
-	hotbar_input_handler()
-	pickup(delta)
-	throw(delta)
+	if still_alive():
+		show_info()
+		interact()
+		hotbar_input_handler()
+		pickup(delta)
+		throw(delta)
 	update_bars(delta)
 	set_anim(anim_state)
 
