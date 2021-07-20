@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slime_001.ogg-23ba3e22d0ff3d913664a32e510c7c71.oggstr"
+
+[deps]
+
+source_file="res://sfx/sci-fi-sounds/slime_001.ogg"
+dest_files=[ "res://.import/slime_001.ogg-23ba3e22d0ff3d913664a32e510c7c71.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/explosionCrunch_004.ogg-24509a474f293de1cea89bd0453de9c6.oggstr"
+
+[deps]
+
+source_file="res://sfx/sci-fi-sounds/explosionCrunch_004.ogg"
+dest_files=[ "res://.import/explosionCrunch_004.ogg-24509a474f293de1cea89bd0453de9c6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

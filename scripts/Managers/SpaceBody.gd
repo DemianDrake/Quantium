@@ -17,15 +17,20 @@ func _ready():
 func _process(delta):			
 	rotate_object_local(up, delta * speed)
 
+func button_sfx():
+	LevelManager.Game.sfx.stream = AudioManager.get_sfx('click')
+	LevelManager.Game.sfx.play()
 
 func _on_NewGame_pressed() -> void:
+	button_sfx()
 	LevelManager.next()
 	LevelManager.Game.music_fade_and_change(2, 1)
 
 func _on_LoadGame_pressed() -> void:
-	pass # Replace with function body.
+	button_sfx()
 
 func _on_Credits_pressed() -> void:
+	button_sfx()
 	# Transición a créditos
 	$Camera/AnimationPlayer.play("CameraCredits", -1, 0.5)
 	yield(get_tree().create_timer(2), "timeout")
@@ -44,6 +49,7 @@ func _on_Credits_pressed() -> void:
 	get_node("CanvasLayer/MainMenuGUI/VBoxContainer/Button/NewGame").grab_focus()
 
 func _on_Exit_pressed() -> void:
+	button_sfx()
 	LevelManager.Game.fade.fade_in()
 	yield(LevelManager.Game.fade, "faded")
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)

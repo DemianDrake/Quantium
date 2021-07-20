@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactMetal_003.ogg-5dde62d3fec9ee2928056d149708a147.oggstr"
+
+[deps]
+
+source_file="res://sfx/sci-fi-sounds/impactMetal_003.ogg"
+dest_files=[ "res://.import/impactMetal_003.ogg-5dde62d3fec9ee2928056d149708a147.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

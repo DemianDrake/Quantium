@@ -11,6 +11,7 @@ var loading = false
 
 onready var fade = $CanvasLayer/Fade
 onready var music= $Music
+onready var sfx  = $Sfx
 
 func _ready():
 	fade.connect("faded", self, "on_faded")

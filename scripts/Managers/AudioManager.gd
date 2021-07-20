@@ -7,6 +7,10 @@ var song  = [
 	preload("res://music/Monsters_at_the_Core.wav")
 ]
 
+var sfx = {
+	'click': preload("res://sfx/kenney_interfacesounds/switch_006.ogg")
+}
+
 var current_song = 0
 
 func play():
@@ -19,3 +23,6 @@ func next():
 func seek(index: int):
 	current_song = index
 	return song[current_song]
+
+func get_sfx(name):
+	return sfx[name]
