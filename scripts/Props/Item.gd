@@ -13,6 +13,7 @@ export var description = 'Generic description, please put something else, xoxo.'
 func _ready():
 	tmp_transform = get_global_transform()
 	set_sleeping(false)
+	connect("body_entered", self, "_on_collision") 
 
 
 func grab(node):
@@ -58,6 +59,6 @@ func set_data_from_dict(dict):
 	scene_path = dict['scene_path']
 	texture_path = dict['texture_path']
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_collision(body: Node) -> void:
+	print(self.name, " collided with ", body.name)
+	$CollideSound.play(0.0)
