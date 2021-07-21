@@ -2,7 +2,7 @@ extends Spatial
 
 var Levels = [
 	preload("res://scenes/Main.tscn"),
-	preload("res://scenes/TestPlayer.tscn"),
+	preload("res://scenes/rooms/tutorial/room_1.tscn")
 	]
 
 var current_level = 0
