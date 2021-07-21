@@ -1,9 +1,8 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/tunnel/intersection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/assets/tunnel/mid_section.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/assets/floor/floor1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/assets/tunnel/window_section.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=7]
@@ -25,7 +24,6 @@
 [ext_resource path="res://scenes/assets/props/box1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=25]
-[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=26]
 [ext_resource path="res://scripts/Props/door.gd" type="Script" id=27]
 [ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/assets/props/Medkit.tscn" type="PackedScene" id=29]
@@ -80,23 +78,7 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="PanoramaSky" id=8]
-panorama = ExtResource( 26 )
-
-[sub_resource type="Environment" id=9]
-background_mode = 2
-background_sky = SubResource( 8 )
-fog_depth_curve = 0.435275
-glow_enabled = true
-glow_intensity = 1.0
-adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_saturation = 1.2
-
 [node name="Spatial" type="Spatial"]
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.867285, 0 )
 
 [node name="Entrance" type="Spatial" parent="."]
 __meta__ = {
@@ -1782,6 +1764,3 @@ transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -
 
 [node name="StaticBody" parent="Room Left/Main Room/Walls/Corner Wall3" instance=ExtResource( 16 )]
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 9 )
