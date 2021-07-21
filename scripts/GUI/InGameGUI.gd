@@ -32,8 +32,8 @@ func update_o2(pc):
 	o2_bar.update_bar(pc)
 
 
-func show_dialogue(text: String):
-	dialogue_box.setup(text)
+func show_dialogue(dialogues: Array, mode: String):
+	dialogue_box.setup(dialogues, mode)
 
 
 func show_info(text: String, group: String):

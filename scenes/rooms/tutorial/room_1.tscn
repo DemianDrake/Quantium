@@ -393,8 +393,3 @@ script = ExtResource( 9 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0823, -1.32631, 4.44365 )
 script = ExtResource( 13 )
 targets_path = [ NodePath("../Door") ]
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

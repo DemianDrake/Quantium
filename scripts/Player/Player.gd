@@ -75,6 +75,7 @@ var mouse_captured
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_bars(0)
 	tpc.make_current()
 	TPmiddleRC.add_exception(self)
 	capture_mouse()
@@ -454,8 +455,8 @@ func update_bars(delta):
 func still_alive():
 	return current_hp > 0
 
-func comment(text):
-	gui.show_dialogue(text)
+func comment(dialogues, mode='AUTO'):
+	gui.show_dialogue(dialogues, mode)
 
 
 func show_info():
