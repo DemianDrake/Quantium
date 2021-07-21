@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/medkit.png-dc6c3e0f7c0b08b016d5000abf682a3c.image"
+
+[deps]
+
+source_file="res://addons/item_textures/photoshoot/medkit.png"
+dest_files=[ "res://.import/medkit.png-dc6c3e0f7c0b08b016d5000abf682a3c.image" ]
+
+[params]
+

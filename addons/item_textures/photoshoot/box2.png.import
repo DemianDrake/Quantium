@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/box2.png-2359b237318eb7f156a68e6f5ca16d44.image"
+
+[deps]
+
+source_file="res://addons/item_textures/photoshoot/box2.png"
+dest_files=[ "res://.import/box2.png-2359b237318eb7f156a68e6f5ca16d44.image" ]
+
+[params]
+

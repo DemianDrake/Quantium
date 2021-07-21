@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/astronauta/astro/astro_player.gltf" type="PackedScene" id=2]
+[ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/assets/props/box1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/assets/props/Medkit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Props/Photoshoot.gd" type="Script" id=6]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[node name="Photoshoot" type="Spatial"]
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 500, 500 )
+transparent_bg = true
+msaa = 2
+script = ExtResource( 6 )
+
+[node name="Camera" type="Camera" parent="Viewport"]
+transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2, 3, 2 )
+projection = 1
+current = true
+size = 2.0
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="box1" parent="Objects" instance=ExtResource( 4 )]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+sleeping = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="box2" parent="Objects" instance=ExtResource( 3 )]
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+sleeping = true
+
+[node name="medkit" parent="Objects" instance=ExtResource( 5 )]
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+sleeping = true
+
+[node name="o2" parent="Objects" instance=ExtResource( 1 )]
+transform = Transform( -0.5, -0.707107, -0.5, -0.707107, -3.09086e-08, 0.707107, -0.5, 0.707107, -0.5, 0, 0.422501, 0 )
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 0.0
+sleeping = true
+
+[node name="astronaut" parent="Objects" instance=ExtResource( 2 )]
+transform = Transform( 1.41421, -1, 1, 0, 1.41421, 1.41421, -1.41421, -1, 1, 1.11621, -2.3571, 1.11621 )
+
+[node name="PreviewCamera" type="Camera" parent="."]
+transform = Transform( -0.5, -5.96046e-08, -0.866025, 2.18168e-08, 1, -8.14215e-08, 0.866025, -5.96047e-08, -0.5, 2.86603, 3, 2.5 )
+projection = 1
+current = true
+size = 5.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 6.18048, 3, 4.49125 )
+flip_v = true
+texture = SubResource( 1 )

@@ -26,12 +26,13 @@ surfaces/0 = {
 "Item",
 "canPressButton",
 ]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00366199, -0.0244133, 0 )
 can_sleep = false
 script = ExtResource( 3 )
 item_name = "Long Box"
 max_amount = 1
 scene_path = "res://scenes/assets/props/box1.tscn"
-texture_path = "res://addons/item_textures/box1.png"
+texture_path = "res://addons/item_textures/photoshoot/box1.png"
 description = "A metal box, rather long."
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

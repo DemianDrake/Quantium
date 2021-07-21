@@ -31,7 +31,7 @@ script = ExtResource( 3 )
 item_name = "Box"
 max_amount = 5
 scene_path = "res://scenes/assets/props/box2.tscn"
-texture_path = "res://addons/item_textures/box2.png"
+texture_path = "res://addons/item_textures/photoshoot/box2.png"
 description = "A metal box, the squarish type."
 
 [node name="OmniLight" type="OmniLight" parent="."]

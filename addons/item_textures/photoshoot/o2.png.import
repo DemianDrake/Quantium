@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/o2.png-38d2ec53eb044979c3650580e3e47086.image"
+
+[deps]
+
+source_file="res://addons/item_textures/photoshoot/o2.png"
+dest_files=[ "res://.import/o2.png-38d2ec53eb044979c3650580e3e47086.image" ]
+
+[params]
+

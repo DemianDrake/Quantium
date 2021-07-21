@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/astronaut.png-d07a360f28a6054326bc70b305f3687c.image"
+
+[deps]
+
+source_file="res://addons/item_textures/photoshoot/astronaut.png"
+dest_files=[ "res://.import/astronaut.png-d07a360f28a6054326bc70b305f3687c.image" ]
+
+[params]
+
