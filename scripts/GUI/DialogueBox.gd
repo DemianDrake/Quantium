@@ -17,20 +17,20 @@ func _ready():
 	pass # Replace with function body.
 
 
-func setup(dialogues: Array, mode: String):
+func setup(dialogues: Array, dialog_mode: String):
 	reset()
 	set_dialogues(dialogues)
-	set_mode(mode)
+	set_mode(dialog_mode)
 	show_text()
 	next()
 	if self.mode == 'AUTO':
 		wait()
 	elif self.mode == 'MANUAL':
-		get_tree().set_pause(true)
+		get_tree().paused = true
 
 
-func set_mode(mode: String):
-	self.mode = mode
+func set_mode(dialog_mode: String):
+	self.mode = dialog_mode
 
 
 func set_dialogues(dialogues: Array):
@@ -77,7 +77,7 @@ func _input(event: InputEvent) -> void:
 				hide_text()
 				yield(get_tree(), "idle_frame")
 				over = true
-				get_tree().set_pause(false)
+				get_tree().paused = false
 
 
 func _on_Timer_timeout():
