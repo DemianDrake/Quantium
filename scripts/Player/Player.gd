@@ -8,8 +8,8 @@ const JUMP_POWER = 20
 const THROW_STRENGTH = 30.0
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
-const MAX_HEALTH = 100
-const MAX_O2 = 100
+const MAX_HEALTH = 100.0
+const MAX_O2 = 100.0
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -64,8 +64,8 @@ var holding_item = false
 var held_item = null
 
 # Variables UI
-var current_hp = MAX_HEALTH
-var current_o2 = MAX_O2
+export var current_hp = MAX_HEALTH
+export var current_o2 = MAX_O2
 
 # VARIABLES EXPERIMENTALES
 var floating = false
