@@ -14,7 +14,11 @@ var over = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
+	var _fade  = $Fade.connect("tween_completed", self, "_on_faded")
+	$Fade.interpolate_property($ColorRect/Control, "modulate:a",
+								$ColorRect/Control.modulate.a, 1.0 - $ColorRect/Control.modulate.a,
+								1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 
 
 func setup(dialogues: Array, dialog_mode: String):
@@ -24,8 +28,11 @@ func setup(dialogues: Array, dialog_mode: String):
 	show_text()
 	next()
 	if self.mode == 'AUTO':
+		$ColorRect/Control.hide()
 		wait()
 	elif self.mode == 'MANUAL':
+		$ColorRect/Control.show()
+		$Fade.start()
 		get_tree().paused = true
 
 
@@ -62,10 +69,6 @@ func reset():
 	self.index = 0
 	self.over = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -78,6 +81,22 @@ func _input(event: InputEvent) -> void:
 				yield(get_tree(), "idle_frame")
 				over = true
 				get_tree().paused = false
+
+
+func _on_faded(_object, _key):
+	$Fade.interpolate_property($ColorRect/Control, "modulate:a",
+								$ColorRect/Control.modulate.a, 1.0 - $ColorRect/Control.modulate.a,
+								1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	$Fade.start()
+
+
+func _on_joy_connection_changed(_device_id, connected):
+	if connected:
+		$ColorRect/Control/A.show()
+		$ColorRect/Control/Space.hide()
+	else:
+		$ColorRect/Control/A.hide()
+		$ColorRect/Control/Space.show()
 
 
 func _on_Timer_timeout():
