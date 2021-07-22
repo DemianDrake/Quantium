@@ -23,6 +23,9 @@ func go_to_checkpoint(node: Spatial):
 		node.add_o2(node.MAX_O2)
 		node.dying = false
 
+func clean_checkpoints():
+	checkpoint = null
+
 func next():
 	Game.next()  
 

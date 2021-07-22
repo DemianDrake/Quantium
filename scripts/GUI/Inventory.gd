@@ -2,6 +2,15 @@ extends Control
 
 func _ready():
 	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
+	if len(Input.get_connected_joypads()) > 0:
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/JSLabel.show()
 
 func update_hotbar(inventory):
 	var slot

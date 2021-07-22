@@ -15,6 +15,9 @@ var over = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
+	if len(Input.get_connected_joypads()) > 0:
+		$ColorRect/Control/A.show()
+		$ColorRect/Control/Space.hide()
 	var _fade  = $Fade.connect("tween_completed", self, "_on_faded")
 	$Fade.interpolate_property($ColorRect/Control, "modulate:a",
 								$ColorRect/Control.modulate.a, 1.0 - $ColorRect/Control.modulate.a,

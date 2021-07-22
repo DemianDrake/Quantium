@@ -181,10 +181,10 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -6.95565, -1.61836, -0.07061
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -1.20267, -1.61836, -5.737 )
 
 [node name="Big Floor Tile3" parent="Room/Floor" instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -6.95565, -1.61836, -5.72087 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -6.95565, -1.62501, -5.72087 )
 
 [node name="Big Floor Tile4" parent="Room/Floor" instance=ExtResource( 2 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -1.20469, -1.61836, -0.0706129 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -1.20469, -1.62099, -0.0553894 )
 
 [node name="Step Ceiling" type="Spatial" parent="Room"]
 
@@ -279,10 +279,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265064, 0 )
 
 [node name="Box 2" parent="Room/Props" instance=ExtResource( 12 )]
 transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -1.47551, 0.5577, 0.764386 )
-
-[node name="Box 6" parent="Room/Props" instance=ExtResource( 12 )]
-transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765, -2.71915, 0.0248824, 1.31138 )
-mode = 1
 
 [node name="Walls" type="Spatial" parent="Room"]
 

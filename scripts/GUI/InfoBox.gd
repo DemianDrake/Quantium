@@ -21,6 +21,9 @@ var duration_map = {'Interactable':'Press', 'Item':'Hold'}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
+	if len(Input.get_connected_joypads()) > 0:
+		$ButtonHint/E.hide()
+		$ButtonHint/X.show()
 
 func setup(text: String, group: String):
 	if not starting:

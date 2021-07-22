@@ -25,6 +25,7 @@ func _on_retry_pressed():
 func _on_exit_pressed():
 	button_sfx()
 	get_tree().paused = false
+	LevelManager.clean_checkpoints()
 	LevelManager.Game.music_fade_and_change(2, 0)
 	LevelManager.fade_and_call_method(LevelManager, "change_scene", "res://scenes/Main.tscn")
 
