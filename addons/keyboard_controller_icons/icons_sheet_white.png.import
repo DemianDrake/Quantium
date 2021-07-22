@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/icons_sheet_white.png-05f3422a720ccfa08616ec44459f5352.image"
+
+[deps]
+
+source_file="res://addons/keyboard_controller_icons/icons_sheet_white.png"
+dest_files=[ "res://.import/icons_sheet_white.png-05f3422a720ccfa08616ec44459f5352.image" ]
+
+[params]
+
