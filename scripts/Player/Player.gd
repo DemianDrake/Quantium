@@ -102,6 +102,7 @@ func _input(event: InputEvent) -> void:
 			release_mouse()
 			$PauseMenu.toggle()
 
+
 func _unhandled_key_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_R:
@@ -516,6 +517,12 @@ func get_inventory():
 
 func teleport(new_pos):
 	global_transform.origin = new_pos
+
+
+func temporal_gravitometer(time):
+	get_tree().call_group("GravityParticles", "set_emitting", true)
+	yield(get_tree().create_timer(time), "timeout")
+	get_tree().call_group("GravityParticles", "set_emitting", false)
 
 
 func capture_mouse():
