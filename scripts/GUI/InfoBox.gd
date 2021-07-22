@@ -20,8 +20,7 @@ var duration_map = {'Interactable':'Press', 'Item':'Hold'}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 
 func setup(text: String, group: String):
 	if not starting:
@@ -40,9 +39,18 @@ func set_text(text: String):
 
 
 func set_button(group: String):
-	var text = duration_map[group] + ' E/X to ' + action_map[group]
-	get_node("Label").set_text(text)
+	var text1 = duration_map[group]
+	var text2 = 'to ' + action_map[group]
+	$ButtonHint/Label1.set_text(text1)
+	$ButtonHint/Label2.set_text(text2)
 
+func _on_joy_connection_changed(_device_id, connected):
+	if connected:
+		$ButtonHint/E.hide()
+		$ButtonHint/X.show()
+	else:
+		$ButtonHint/E.show()
+		$ButtonHint/X.hide()
 
 func show_text():
 	self.set_visible(true)

@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/hotbar_controller.png-69f352c823a85bbad2e5b9318f4f85fe.image"
+
+[deps]
+
+source_file="res://addons/keyboard_controller_icons/hotbar_controller.png"
+dest_files=[ "res://.import/hotbar_controller.png-69f352c823a85bbad2e5b9318f4f85fe.image" ]
+
+[params]
+

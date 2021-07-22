@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/hotbar_numbers.png-7a6d8782e4422d9aaa586c402204fceb.image"
+
+[deps]
+
+source_file="res://addons/keyboard_controller_icons/hotbar_numbers.png"
+dest_files=[ "res://.import/hotbar_numbers.png-7a6d8782e4422d9aaa586c402204fceb.image" ]
+
+[params]
+

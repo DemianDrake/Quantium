@@ -1,13 +1,7 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var _error = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 
 func update_hotbar(inventory):
 	var slot
@@ -29,6 +23,22 @@ func update_hotbar(inventory):
 			slot_node.get_node("TextureRect/Amount").set_text('')
 			slot_node.get_node('TextureRect').set_texture(null)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_joy_connection_changed(_device_id, connected):
+	if connected:
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/JSLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/KBLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/JSLabel.show()
+	else:
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/KBLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot1/TextureRect/JSLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/KBLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot2/TextureRect/JSLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/KBLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot3/TextureRect/JSLabel.hide()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/KBLabel.show()
+		$ColorRect/MarginContainer/GridContainer/Slot4/TextureRect/JSLabel.hide()
