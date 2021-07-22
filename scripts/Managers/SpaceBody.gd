@@ -37,9 +37,9 @@ func _on_Credits_pressed() -> void:
 	$AnimationPlayer.play("Credits")
 	yield($Camera/AnimationPlayer, "animation_finished")
 	# En créditos
-	$CanvasLayer/Tween.interpolate_property($CanvasLayer/CreditsUI, "rect_position", Vector2(0,0), Vector2(0,-1000), 9.5, Tween.TRANS_LINEAR)
+	$CanvasLayer/Tween.interpolate_property($CanvasLayer/CreditsUI, "rect_position", Vector2(0,0), Vector2(0,-2800), 20.0, Tween.TRANS_LINEAR)
 	$CanvasLayer/Tween.start()
-	yield(get_tree().create_timer(10), "timeout")
+	yield(get_tree().create_timer(21), "timeout")
 	# Vuelta a menú principal
 	$Camera/AnimationPlayer.play("CameraCredits", -1, -0.5, true)
 	yield(get_tree().create_timer(1.5), "timeout")
