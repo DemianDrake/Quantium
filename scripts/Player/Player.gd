@@ -476,6 +476,10 @@ func show_info():
 		gui.show_info(text, group)
 
 
+func show_save_icon():
+	gui.show_save_icon()
+
+
 func _physics_process(delta):
 	if still_alive():
 		angulo = self.transform.basis.y.angle_to(up)

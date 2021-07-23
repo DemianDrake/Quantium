@@ -6,6 +6,7 @@ func _ready() -> void:
 
 func on_body_entered(body: Node):
 	if body.is_in_group("Player"):
+		body.show_save_icon()
 		LevelManager.checkpoint = self
 
 func on():
