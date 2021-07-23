@@ -10,6 +10,9 @@ const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 const MAX_HEALTH = 100.0
 const MAX_O2 = 100.0
+const MAX_FALL_TIME = 6.0
+const MIN_FALL_TIME = 1.5
+const MAX_FALL_DAMAGE = 100.0
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -152,6 +155,8 @@ func ongrav_movement(delta):
 		vertical_vel *= 0
 	
 	if on_floor:
+		if airborne_time != 0:
+			fall_damage(airborne_time)
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
 		airborne_time = 0
 	else:
@@ -453,8 +458,20 @@ func update_bars(delta):
 	gui.update_hp(current_hp/MAX_HEALTH)
 	gui.update_o2(current_o2/MAX_O2)
 
+
+func fall_damage(fall_time):
+	var damage = 0.0
+	if fall_time > MIN_FALL_TIME:
+		damage = fall_time/MAX_FALL_TIME
+	damage = clamp(damage, 0.0, 1.0) # Daño en valor decimal [0,1]
+	damage *= MAX_FALL_DAMAGE # Daño en valor porcentual
+#	print_debug("Fall time: ", fall_time, "Fall damage: ", damage,"%")
+	decrease_hp(damage)
+
+
 func still_alive():
 	return current_hp > 0
+
 
 func comment(dialogues, mode='AUTO'):
 	gui.show_dialogue(dialogues, mode)
