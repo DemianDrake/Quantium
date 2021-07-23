@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/assets/Utils/Checkpoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/assets/Passage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=3]
+
+[node name="tutorial_passage_2" type="Spatial"]
+
+[node name="Passage" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Props" type="Spatial" parent="Passage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89139, -1.2411, 0 )
+
+[node name="O2 tank" parent="Passage/Props" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422501, 4.33807 )
+
+[node name="O2 tank2" parent="Passage/Props" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.960813, 0.422501, 4.33807 )
+
+[node name="O2 tank3" parent="Passage/Props" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422501, 3.59685 )
+
+[node name="O2 tank4" parent="Passage/Props" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422501, 5.20916 )
+
+[node name="Passage Unit" parent="Passage" instance=ExtResource( 2 )]
+
+[node name="Passage Unit2" parent="Passage" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.405, 0, 0 )
+
+[node name="Checkpoint" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4.36569 )
