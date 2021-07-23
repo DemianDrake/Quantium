@@ -37,6 +37,8 @@ func on_body_entered(body: Node):
 
 func on_body_exited(body: Node):
 	bodies.erase(body)
+	if body.is_in_group("Player"):
+		body.airborne_time = 0
 
 func _physics_process(delta):
 	for body in bodies: 
