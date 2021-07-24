@@ -13,6 +13,7 @@ const MAX_O2 = 100.0
 const MAX_FALL_TIME = 6.0
 const MIN_FALL_TIME = 1.5
 const MAX_FALL_DAMAGE = 100.0
+const PLAYER_NAME = 'Handsome Astronaut'
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -473,8 +474,8 @@ func still_alive():
 	return current_hp > 0
 
 
-func comment(dialogues, mode, times):
-	gui.show_dialogue(dialogues, mode, times)
+func comment(dialogues: Array, mode: String, times: Array, speaker: String =PLAYER_NAME):
+	gui.show_dialogue(dialogues, mode, times, speaker)
 
 
 func show_info():

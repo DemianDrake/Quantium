@@ -32,8 +32,8 @@ func update_o2(pc):
 	o2_bar.update_bar(pc)
 
 
-func show_dialogue(dialogues: Array, mode: String, times: Array):
-	dialogue_box.setup(dialogues, mode, times)
+func show_dialogue(dialogues: Array, mode: String, times: Array, speaker: String):
+	dialogue_box.setup(dialogues, mode, times, speaker)
 
 
 func show_save_icon():

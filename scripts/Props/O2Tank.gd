@@ -17,7 +17,7 @@ func interact(body: Node):
 	if body.is_in_group('Player'):
 		body.add_o2(o2_amount)
 		if comment:
-			body.comment(['Mmm... Delicious oxigen.'], 'AUTO', [3.0])
+			body.comment(['HEELP, I AM BEING BREATHED... AHHHH!'], 'AUTO', [3.0], 'O2 Tank')
 		queue_free()
 
 

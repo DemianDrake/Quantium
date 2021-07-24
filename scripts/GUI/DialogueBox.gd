@@ -5,6 +5,7 @@ extends HBoxContainer
 # var a = 2
 # var b = "text"
 onready var timer = get_node("Timer")
+onready var speaker_label = get_node("ColorRect2/ColorRect/Label")
 
 var text_array
 var mode
@@ -24,11 +25,12 @@ func _ready():
 								1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 
 
-func setup(dialogues: Array, dialog_mode: String, times: Array):
+func setup(dialogues: Array, dialog_mode: String, times: Array, speaker: String):
 	reset()
 	set_dialogues(dialogues)
 	set_times(times)
 	set_mode(dialog_mode)
+	set_speaker(speaker)
 	show_text()
 	if self.mode == 'AUTO':
 		$ColorRect/Control.hide()
@@ -42,6 +44,10 @@ func setup(dialogues: Array, dialog_mode: String, times: Array):
 
 func set_mode(dialog_mode: String):
 	self.mode = dialog_mode
+
+
+func set_speaker(speaker: String):
+	self.speaker_label.set_text(speaker)
 
 
 func set_times(times: Array):
