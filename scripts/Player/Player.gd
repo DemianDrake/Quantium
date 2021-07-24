@@ -10,7 +10,7 @@ const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 const MAX_HEALTH = 100.0
 const MAX_O2 = 100.0
-const MAX_FALL_TIME = 6.0
+const MAX_FALL_TIME = 4.0
 const MIN_FALL_TIME = 1.5
 const MAX_FALL_DAMAGE = 100.0
 const PLAYER_NAME = 'Handsome Astronaut'
@@ -74,6 +74,7 @@ export var current_o2 = MAX_O2
 # VARIABLES EXPERIMENTALES
 var floating = false
 var gravitometro = true
+export var can_use_gravitometer = true setget set_gravitometer_flag
 var dying = false
 var mouse_captured
 
@@ -99,7 +100,7 @@ func _input(event: InputEvent) -> void:
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
-		elif event.is_action_pressed("gravitometer"):
+		elif event.is_action_pressed("gravitometer") and can_use_gravitometer:
 			gravitometro = not gravitometro
 			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		elif event.is_action_pressed("pause"):
@@ -545,6 +546,10 @@ func temporal_gravitometer(time):
 	get_tree().call_group("GravityParticles", "set_emitting", true)
 	yield(get_tree().create_timer(time), "timeout")
 	get_tree().call_group("GravityParticles", "set_emitting", false)
+
+
+func set_gravitometer_flag(valor):
+	can_use_gravitometer = valor
 
 
 func capture_mouse():

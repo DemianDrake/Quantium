@@ -30,6 +30,7 @@ environment = SubResource( 2 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 current_hp = 10.0
 current_o2 = 80.0
+can_use_gravitometer = false
 
 [node name="tutorial_room_1" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -9 )

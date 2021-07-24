@@ -19,7 +19,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.01563, 0.0602794, 0.751054 )
+extents = Vector3( 1.01563, 0.200536, 0.751054 )
 
 [node name="StaticBody" type="StaticBody"]
 
@@ -35,4 +35,5 @@ spot_range = 0.891621
 spot_angle = 84.2
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143121, 0 )
 shape = SubResource( 2 )
