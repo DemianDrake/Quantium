@@ -39,7 +39,7 @@ surfaces/0 = {
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.245728, 0.197042, 1.49505 )
 
-[node name="Room_2" type="Spatial"]
+[node name="room_2" type="Spatial"]
 
 [node name="Room" type="Spatial" parent="."]
 __meta__ = {

@@ -1,0 +1,564 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/Props/door.gd" type="Script" id=1]
+[ext_resource path="res://scenes/assets/wall/wall4.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/assets/floor/floor4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/assets/doors/door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/assets/wall/wall_doorframe.tscn" type="PackedScene" id=9]
+
+[node name="room_4" type="Spatial"]
+
+[node name="Room" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Walls" type="Spatial" parent="Room"]
+
+[node name="Wall" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -2.26494e-07, 0, 6, 0, 1.50996e-06, 0, -1.5, -2.49749, 4.4586, -2.82104 )
+
+[node name="Wall2" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -2.26494e-07, 0, 6, 0, 1.50996e-06, 0, -1.5, -32.4488, 4.4586, -2.82104 )
+
+[node name="Wall4" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -2.26494e-07, 0, 6, 0, 1.50996e-06, 0, -1.5, -62.2108, 4.4586, -2.82104 )
+
+[node name="Wall3" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 6, 0, 0, 0, 1.5, -2.49749, 4.4586, 26.9798 )
+
+[node name="Wall5" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 6, 0, 0, 0, 1.5, -32.1812, 4.4586, 26.9798 )
+
+[node name="Wall6" parent="Room/Walls" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 6, 0, 0, 0, 1.5, -62.0007, 4.4586, 26.9798 )
+
+[node name="Border Wall2" parent="Room/Walls" instance=ExtResource( 3 )]
+transform = Transform( 7.07107, -2.82843, 0, -3.09086e-07, -1.23634e-07, -4, 7.07107, 2.82843, -1.74846e-07, -76.0348, 4.24313, -1.854 )
+
+[node name="Border Wall5" parent="Room/Walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 1.23634e-07, 3.09086e-07, -1.23634e-07, -4, 0, 4, -1.23634e-07, -77.4829, 0.872259, 26.1869 )
+
+[node name="Border Wall3" parent="Room/Walls" instance=ExtResource( 3 )]
+transform = Transform( -7.07107, -2.82843, 1.74846e-07, -3.09086e-07, -1.23634e-07, -4, 7.07106, -2.82843, 7.64274e-15, 11.1985, 4.24313, -1.854 )
+
+[node name="Border Wall4" parent="Room/Walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -1.23634e-07, 3.09086e-07, -1.23634e-07, -4, 0, -4, 1.23634e-07, 12.4733, 7.75635, 26.2382 )
+
+[node name="Door Wall" type="Spatial" parent="Room/Walls"]
+
+[node name="Wall4" parent="Room/Walls/Door Wall" instance=ExtResource( 2 )]
+transform = Transform( -3.93403e-07, 0, 1.5, 0, 6, 0, -9, 0, -6.55671e-08, 12.4563, 4.4586, 9.78614 )
+
+[node name="Wall5" parent="Room/Walls/Door Wall" instance=ExtResource( 2 )]
+transform = Transform( 0, -1.31134e-07, 1.5, -3, -1.31134e-07, 0, 1.31134e-07, -3, -6.55671e-08, 12.4694, 6.11518, 26.1533 )
+
+[node name="Door Wall2" type="Spatial" parent="Room/Walls"]
+transform = Transform( -1, -7.10543e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, -65.2734, 8.78079, 0.655604 )
+
+[node name="Wall4" parent="Room/Walls/Door Wall2" instance=ExtResource( 2 )]
+transform = Transform( 3.93403e-07, -2.29282e-14, 1.5, -7.86805e-07, -6, 0, 9, -5.24537e-07, -6.55671e-08, 12.4563, 4.4586, 9.78614 )
+
+[node name="Wall5" parent="Room/Walls/Door Wall2" instance=ExtResource( 2 )]
+transform = Transform( 0, -1.31134e-07, 1.5, -3, -1.31134e-07, 0, 1.31134e-07, -3, -6.55671e-08, 12.4694, 6.11518, 26.1533 )
+
+[node name="Floor" type="Spatial" parent="Room"]
+
+[node name="long unit" type="Spatial" parent="Room/Floor"]
+
+[node name="Long Floor Tile" parent="Room/Floor/long unit" instance=ExtResource( 6 )]
+transform = Transform( -6.99382e-07, 0, 14, 0, 2.5, 0, -16, 0, -6.11959e-07, -75.6356, -1.62447, 12.2121 )
+
+[node name="Light6" parent="Room/Floor/long unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, -1.42109e-14, -5, 1.91069e-14, 2.18557e-07, -75.6009, -1.46231, 20.0952 )
+
+[node name="Light4" parent="Room/Floor/long unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, -1.42109e-14, -5, 1.91069e-14, 2.18557e-07, -76.0106, -1.46231, 11.4567 )
+
+[node name="Light7" parent="Room/Floor/long unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, -1.42109e-14, -5, 1.91069e-14, 2.18557e-07, -76.0106, -1.46231, 4.3434 )
+
+[node name="unit" type="Spatial" parent="Room/Floor"]
+
+[node name="Big Floor Tile" parent="Room/Floor/unit" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 19.717 )
+
+[node name="Big Floor Tile3" parent="Room/Floor/unit" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 3.33914 )
+
+[node name="Light2" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.12869, -1.46231, 3.1579 )
+
+[node name="Light3" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 7.94738, -1.46231, 19.5335 )
+
+[node name="Light9" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.10411, -1.46231, 11.4592 )
+
+[node name="Light4" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.78902, -1.46231, 3.1579 )
+
+[node name="Light5" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.97034, -1.46231, 19.5335 )
+
+[node name="Light10" parent="Room/Floor/unit" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.8136, -1.46231, 11.4592 )
+
+[node name="unit2" type="Spatial" parent="Room/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0388, 0, 0 )
+
+[node name="Big Floor Tile" parent="Room/Floor/unit2" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 19.717 )
+
+[node name="Big Floor Tile3" parent="Room/Floor/unit2" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 3.33914 )
+
+[node name="Light2" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.12869, -1.46231, 3.1579 )
+
+[node name="Light3" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 7.94738, -1.46231, 19.5335 )
+
+[node name="Light9" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.10411, -1.46231, 11.4592 )
+
+[node name="Light4" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.78902, -1.46231, 3.1579 )
+
+[node name="Light5" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.97034, -1.46231, 19.5335 )
+
+[node name="Light10" parent="Room/Floor/unit2" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.8136, -1.46231, 11.4592 )
+
+[node name="unit3" type="Spatial" parent="Room/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1139, 0, 0 )
+
+[node name="Big Floor Tile" parent="Room/Floor/unit3" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 19.717 )
+
+[node name="Big Floor Tile3" parent="Room/Floor/unit3" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 3.33914 )
+
+[node name="Light2" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.12869, -1.46231, 3.1579 )
+
+[node name="Light3" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 7.94738, -1.46231, 19.5335 )
+
+[node name="Light9" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.10411, -1.46231, 11.4592 )
+
+[node name="Light4" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.78902, -1.46231, 3.1579 )
+
+[node name="Light5" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.97034, -1.46231, 19.5335 )
+
+[node name="Light10" parent="Room/Floor/unit3" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.8136, -1.46231, 11.4592 )
+
+[node name="unit4" type="Spatial" parent="Room/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63.1889, 0, 0 )
+
+[node name="Big Floor Tile" parent="Room/Floor/unit4" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 19.717 )
+
+[node name="Big Floor Tile3" parent="Room/Floor/unit4" instance=ExtResource( 4 )]
+transform = Transform( 11, 0, 0, 0, 3, 0, 0, 0, 11, 2.76667, -1.61836, 3.33914 )
+
+[node name="Light2" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.12869, -1.46231, 3.1579 )
+
+[node name="Light3" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 7.94738, -1.46231, 19.5335 )
+
+[node name="Light9" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, 8.10411, -1.46231, 11.4592 )
+
+[node name="Light4" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.78902, -1.46231, 3.1579 )
+
+[node name="Light5" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.97034, -1.46231, 19.5335 )
+
+[node name="Light10" parent="Room/Floor/unit4" instance=ExtResource( 7 )]
+transform = Transform( 2.18557e-07, -2.84217e-14, 5, 3.82137e-15, 1, 0, -5, 1.91069e-14, 2.18557e-07, -2.8136, -1.46231, 11.4592 )
+
+[node name="Ceiling" type="Spatial" parent="Room"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 6.59261, 0.548176 )
+
+[node name="row4" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -4.53524, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row4"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row4/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row4/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row4"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row4/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row4/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row4"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row4/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row4/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row5" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -3.0583, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row5"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row5/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row5/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row5"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row5/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row5/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row5"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row5/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row5/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row6" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -1.55171, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row6"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row6/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row6/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row6"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row6/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row6/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row6"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row6/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row6/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row7" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -0.0516271, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row7"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row7/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row7/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row7"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row7/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row7/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row7"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row7/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row7/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row8" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -10.5587, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row8"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row8/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row8/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row8"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row8/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row8/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row8"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row8/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row8/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row9" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -9.08172, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row9"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row9/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row9/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row9"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row9/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row9/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row9"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row9/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row9/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row10" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -7.57513, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row10"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row10/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row10/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row10"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row10/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row10/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row10"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row10/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row10/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row11" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -6.07505, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row11"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row11/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row11/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row11"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row11/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row11/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row11"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row11/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row11/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row12" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -16.5598, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row12"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row12/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row12/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row12"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row12/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row12/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row12"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row12/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row12/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row13" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -15.0829, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row13"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row13/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row13/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row13"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row13/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row13/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row13"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row13/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row13/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row14" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -13.5763, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row14"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row14/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row14/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row14"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row14/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row14/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row14"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row14/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row14/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="row15" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 1.42109e-14, 0, -1.13687e-13, 1, 0, 0, 0, 1, -12.0762, 1.90735e-06, 0 )
+
+[node name="unit" type="Spatial" parent="Room/Ceiling/row15"]
+transform = Transform( 1, 0, 0, 5.68434e-14, 1, 0, 0, 0, 1, 0, 0.0985031, 0 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row15/unit" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row15/unit" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit2" type="Spatial" parent="Room/Ceiling/row15"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.120107, -2.03892 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row15/unit2" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row15/unit2" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="unit3" type="Spatial" parent="Room/Ceiling/row15"]
+transform = Transform( 1, 1.24345e-14, 0, -8.52651e-14, 1, 0, 0, 0, 1, 0, 0.0793071, -4.06046 )
+
+[node name="Ceiling2" parent="Room/Ceiling/row15/unit3" instance=ExtResource( 5 )]
+transform = Transform( 1.21634e-08, 1.59872e-14, -1.02, 0, 1.5, 2.84217e-14, 1.02, 0, 1.21634e-08, 1.76909, 3.54827, 4.33012 )
+
+[node name="Light6" parent="Room/Ceiling/row15/unit3" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74227e-08, -0.999999, 1.69407e-21, -1, 8.74229e-08, -0.999999, 3.82137e-15, 4.37114e-08, 1.64772, 3.42513, 4.40677 )
+
+[node name="Door" type="Spatial" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6082, 0, 20.6076 )
+
+[node name="DoorFrame" parent="Room/Door" instance=ExtResource( 9 )]
+transform = Transform( -6.33815e-08, 0, 1, 0, 1.3, 0, -1.45, 0, -4.37114e-08, -2.42046, 0.0735401, 4.56038 )
+
+[node name="Door" parent="Room/Door" instance=ExtResource( 8 )]
+transform = Transform( -7.08124e-08, 0, -1, 0, 1.47, 0, 1.62, 0, -4.37114e-08, -2.64878, -1.15476, 5.44126 )
+script = ExtResource( 1 )
+open = true

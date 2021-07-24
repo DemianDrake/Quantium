@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/rooms/tutorial/room_1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/rooms/tutorial/Room_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/rooms/tutorial/room_2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/rooms/tutorial/room_3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_3.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
@@ -39,7 +40,7 @@ transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, 
 [node name="Frame" parent="turorial_passage_1/Passage/Passage Unit3" index="3"]
 transform = Transform( -1.5, 0, -2.26494e-07, 0, 1.35, 0, 2.26494e-07, 0, -1.5, -2.71431, -0.0869821, 4.47684 )
 
-[node name="Room_2" parent="." instance=ExtResource( 5 )]
+[node name="room_2" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -45.8236 )
 
 [node name="tutorial_passage_2" parent="." instance=ExtResource( 6 )]
@@ -47,6 +48,9 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.8525
 
 [node name="room_3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.6281, 1.43051e-06, -82.8409 )
+
+[node name="tutorial_passage_3" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.1062, 8.56311, -112.047 )
 
 [editable path="turorial_passage_1"]
 [editable path="turorial_passage_1/Passage/Passage Unit3"]
