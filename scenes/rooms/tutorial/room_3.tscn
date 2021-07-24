@@ -22,7 +22,7 @@
 [ext_resource path="res://scripts/Buttons/HoldButton.gd" type="Script" id=20]
 [ext_resource path="res://scenes/assets/props/box1.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scripts/Managers/Gravitometer_temporal_toggle.gd" type="Script" id=23]
+[ext_resource path="res://scripts/Managers/DialogTrigger.gd" type="Script" id=23]
 [ext_resource path="res://scripts/Managers/Gravitometer_temporal_button_toggle.gd" type="Script" id=24]
 
 [sub_resource type="QuadMesh" id=1]
@@ -45,7 +45,7 @@ surfaces/0 = {
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.0899646, 0.0211475, 0.149914 )
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 15, 6, 15 )
 
 [sub_resource type="ParticlesMaterial" id=5]
@@ -656,7 +656,7 @@ gravities = [ [ Vector3( 0, -1, 0 ), 9.8 ], [ Vector3( 0, 1, 0 ), 9.8 ] ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/Area/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563242, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="GravityParticles" parent="Room/Area/Area" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.548386, 0 )
@@ -705,7 +705,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26809, 0 )
 [node name="Gravitometer_toggle" type="Area" parent="Room"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6549, 0, 25 )
 script = ExtResource( 23 )
-dialogue = [ "Did my gravitometer just activated itself?", "It probably broke in the accident, I should repair it later.", "Huh? The exit door is in the ceiling? How do I get there?" ]
+dialogues = [ "Did my gravitometer just activated itself?", "It probably broke in the accident, I should repair it later.", "Huh? The exit door is in the ceiling? How do I get there?" ]
+activate_particles = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/Gravitometer_toggle"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475464, 0, 0.0141449 )
