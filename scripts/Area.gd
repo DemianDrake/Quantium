@@ -1,6 +1,7 @@
 extends Area
 
 export var enabled = true
+export var particles_emitting = false
 export(Array, Array) var gravities
 
 onready var particles: ParticlesMaterial
@@ -22,7 +23,7 @@ func _ready():
 		var box_size = $CollisionShape.shape.extents
 		var volume = box_size.x * box_size.y * box_size.z
 		has_particles = true
-		$GravityParticles.emitting = enabled
+		$GravityParticles.emitting = particles_emitting and enabled
 		$GravityParticles.amount = volume * PARTICLE_VRATIO
 		particles = $GravityParticles.process_material
 		particles.gravity = self.gravity_vec * self.gravity

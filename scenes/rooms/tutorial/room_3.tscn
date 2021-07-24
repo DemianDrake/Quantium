@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Props/door.gd" type="Script" id=1]
 [ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/assets/doors/door.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/assets/wall/wall_doorframe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/assets/Utils/Checkpoint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=11]
 [ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/assets/wall/wall3.tscn" type="PackedScene" id=13]
@@ -21,6 +22,8 @@
 [ext_resource path="res://scripts/Buttons/HoldButton.gd" type="Script" id=20]
 [ext_resource path="res://scenes/assets/props/box1.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scripts/Managers/Gravitometer_temporal_toggle.gd" type="Script" id=23]
+[ext_resource path="res://scripts/Managers/Gravitometer_temporal_button_toggle.gd" type="Script" id=24]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -42,7 +45,8 @@ surfaces/0 = {
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.0899646, 0.0211475, 0.149914 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 15, 6, 15 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 resource_local_to_scene = true
@@ -53,6 +57,13 @@ damping = 9.0
 damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
+
+[sub_resource type="BoxShape" id=6]
+resource_local_to_scene = true
+extents = Vector3( 7, 1, 11 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.498617, 2, 1.33713 )
 
 [node name="room_3" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00458145 )
@@ -644,18 +655,22 @@ script = ExtResource( 11 )
 gravities = [ [ Vector3( 0, -1, 0 ), 9.8 ], [ Vector3( 0, 1, 0 ), 9.8 ] ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/Area/Area"]
-transform = Transform( 15, 0, 0, 0, 6, 0, 0, 0, 15, 0, 0.563242, 0 )
-shape = SubResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563242, 0 )
+shape = SubResource( 8 )
 
 [node name="GravityParticles" parent="Room/Area/Area" instance=ExtResource( 12 )]
-transform = Transform( 15, 0, 0, 0, 6, 0, 0, 0, 15, 4.76837e-07, 0.548386, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.548386, 0 )
 amount = 512
 process_material = SubResource( 5 )
 
 [node name="SwitchButton" parent="Room/Area" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6917, -1.56708, 15.6368 )
 script = ExtResource( 18 )
-targets_path = [ NodePath("../Area") ]
+targets_path = [ NodePath("../Area"), NodePath("../Gravitometer_toggle") ]
+
+[node name="Gravitometer_toggle" type="Spatial" parent="Room/Area"]
+script = ExtResource( 24 )
+dialogue = [ "What happened? I'm in the ceiling!" ]
 
 [node name="Props" type="Spatial" parent="Room"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.462317, 0 )
@@ -678,6 +693,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87511, -1.14526, 15.6674 )
 [node name="Box Small5" parent="Room/Props" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54397, -1.14526, 14.6704 )
 
+[node name="Checkpoint" parent="Room" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 10, 16 )
+
+[node name="CollisionShape" parent="Room/Checkpoint" index="0"]
+shape = SubResource( 6 )
+
+[node name="Spawn" parent="Room/Checkpoint" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26809, 0 )
+
+[node name="Gravitometer_toggle" type="Area" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6549, 0, 25 )
+script = ExtResource( 23 )
+dialogue = [ "Did my gravitometer just activated itself?", "It probably broke in the accident, I should repair it later.", "Huh? The exit door is in the ceiling? How do I get there?" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room/Gravitometer_toggle"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475464, 0, 0.0141449 )
+shape = SubResource( 7 )
+
 [editable path="Room/Step Ceiling/Level 2/Step Ceiling 3"]
 [editable path="Room/Ceiling/row/unit/Light6"]
 [editable path="Room/Ceiling/row/small area/unit2/Light6"]
@@ -687,3 +720,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54397, -1.14526, 14.6704 )
 [editable path="Room/Ceiling/row2/unit2/Light6"]
 [editable path="Room/Ceiling/row2/unit3/Light6"]
 [editable path="Room/Ceiling/row4/unit3/Light6"]
+[editable path="Room/Checkpoint"]

@@ -219,7 +219,7 @@ func nograv_movement(delta):
 
 func ongrav_rotation_quat(_delta):
 	var basisQuat = Quat(self.transform.basis)
-	var rotBasisQuat = Quat(self.transform.basis.rotated(axis,angulo))
+	var rotBasisQuat = Quat(self.transform.basis.rotated(axis.normalized(),angulo))
 	basisQuat = basisQuat.slerp(rotBasisQuat, 0.1)
 	self.transform.basis = Basis(basisQuat)
 
