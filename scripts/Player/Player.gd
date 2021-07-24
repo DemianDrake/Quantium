@@ -473,8 +473,8 @@ func still_alive():
 	return current_hp > 0
 
 
-func comment(dialogues, mode='AUTO'):
-	gui.show_dialogue(dialogues, mode)
+func comment(dialogues, mode, times):
+	gui.show_dialogue(dialogues, mode, times)
 
 
 func show_info():

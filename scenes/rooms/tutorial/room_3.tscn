@@ -671,6 +671,7 @@ targets_path = [ NodePath("../Area"), NodePath("../Gravitometer_toggle") ]
 [node name="Gravitometer_toggle" type="Spatial" parent="Room/Area"]
 script = ExtResource( 24 )
 dialogue = [ "What happened? I'm in the ceiling!" ]
+times = [ 2.0 ]
 
 [node name="Props" type="Spatial" parent="Room"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.462317, 0 )
@@ -706,6 +707,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26809, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6549, 0, 25 )
 script = ExtResource( 23 )
 dialogues = [ "Did my gravitometer just activated itself?", "It probably broke in the accident, I should repair it later.", "Huh? The exit door is in the ceiling? How do I get there?" ]
+times = [ 2.0, 2.0, 2.0 ]
 activate_particles = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Room/Gravitometer_toggle"]

@@ -385,6 +385,7 @@ dialogues = [ "Oh, I am so beautiful...", "This room is very metallic, many ligh
 [node name="DialogTrigger2" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1324, -1.21511, 4.44237 )
 dialogues = [ "Yay! It opened!" ]
+times = [ 2.0 ]
 
 [node name="CollisionShape" parent="DialogTrigger2" index="0"]
 shape = SubResource( 1 )

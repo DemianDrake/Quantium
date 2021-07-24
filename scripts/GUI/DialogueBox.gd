@@ -5,12 +5,12 @@ extends HBoxContainer
 # var a = 2
 # var b = "text"
 onready var timer = get_node("Timer")
-export var time = 5.0
 
 var text_array
 var mode
 var index = 0
 var over = false
+var time_array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,12 +24,12 @@ func _ready():
 								1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 
 
-func setup(dialogues: Array, dialog_mode: String):
+func setup(dialogues: Array, dialog_mode: String, times: Array):
 	reset()
 	set_dialogues(dialogues)
+	set_times(times)
 	set_mode(dialog_mode)
 	show_text()
-	next()
 	if self.mode == 'AUTO':
 		$ColorRect/Control.hide()
 		wait()
@@ -37,10 +37,15 @@ func setup(dialogues: Array, dialog_mode: String):
 		$ColorRect/Control.show()
 		$Fade.start()
 		get_tree().paused = true
+	next()
 
 
 func set_mode(dialog_mode: String):
 	self.mode = dialog_mode
+
+
+func set_times(times: Array):
+	self.time_array = times
 
 
 func set_dialogues(dialogues: Array):
@@ -61,7 +66,7 @@ func hide_text():
 
 
 func wait():
-	self.timer.start(self.time)
+	self.timer.start(self.time_array[index])
 
 
 func next():
@@ -105,7 +110,7 @@ func _on_joy_connection_changed(_device_id, connected):
 func _on_Timer_timeout():
 	if self.index < len(text_array):
 		show_text()
-		next()
 		wait()
+		next()
 	else:
 		hide_text()
