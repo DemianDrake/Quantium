@@ -30,6 +30,12 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.28692
 
 [node name="Intersection" parent="." instance=ExtResource( 4 )]
 
+[node name="Passage Unit4" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.507547, 0, 30.869 )
+
+[node name="Intersection2" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.412862, 0, 30.869 )
+
 [node name="Area" type="Area" parent="." groups=[
 "floor_area",
 ]]
