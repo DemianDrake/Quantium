@@ -67,19 +67,19 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="BoxShape" id=13]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 2, 5, 1 )
 
-[sub_resource type="SphereShape" id=9]
+[sub_resource type="SphereShape" id=10]
 radius = 4.0
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="BoxShape" id=11]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CubeMesh" id=12]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=13]
 resource_local_to_scene = true
 extents = Vector3( 2, 2, 2 )
 
@@ -224,7 +224,7 @@ __meta__ = {
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityAreas/Area8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.78814e-07, -3 )
-shape = SubResource( 13 )
+shape = SubResource( 9 )
 
 [node name="Area" type="Area" parent="GravityZones/GravityAreas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -12 )
@@ -236,7 +236,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityZones/GravityAreas/Area"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -258,10 +258,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="RigidBody2" type="RigidBody" parent="Objects/Items" groups=[
@@ -278,10 +278,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody2"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody2"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="RigidBody3" type="RigidBody" parent="Objects/Items" groups=[
@@ -298,10 +298,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody3"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody3"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="RigidBody4" type="RigidBody" parent="Objects/Items" groups=[
@@ -318,10 +318,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody4"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody4"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="RigidBody5" type="RigidBody" parent="Objects/Items" groups=[
@@ -337,10 +337,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody5"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody5"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="RigidBody6" type="RigidBody" parent="Objects/Items" groups=[
@@ -357,10 +357,10 @@ scene_path = "res://scenes/assets/props/box2.tscn"
 texture_path = "res://addons/item_textures/box2.png"
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Items/RigidBody6"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Items/RigidBody6"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Others" type="Node" parent="Objects"]
@@ -372,10 +372,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2" type="CollisionShape" parent="Objects/Others/RigidBody2"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Objects/Others/RigidBody2"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Objects/Others"]
@@ -385,10 +385,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Others/StaticBody2"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Objects/Others/StaticBody2"]
-mesh = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Piso" type="StaticBody" parent="."]
@@ -868,6 +868,6 @@ script = ExtResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -34 )
 
 [node name="CollisionShape" parent="Checkpoints/Checkpoint" index="0"]
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [editable path="Checkpoints/Checkpoint"]

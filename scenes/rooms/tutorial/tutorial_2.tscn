@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,20 +20,6 @@ adjustment_enabled = true
 adjustment_brightness = 0.95
 adjustment_saturation = 1.2
 
-[sub_resource type="ParticlesMaterial" id=4]
-resource_local_to_scene = true
-lifetime_randomness = 0.5
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
-damping = 9.0
-damping_random = 0.5
-scale = 0.1
-scale_random = 0.1
-
-[sub_resource type="BoxShape" id=5]
-resource_local_to_scene = true
-extents = Vector3( 7, 1, 11 )
-
 [sub_resource type="ParticlesMaterial" id=3]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
@@ -44,18 +30,123 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
+[sub_resource type="BoxShape" id=4]
+resource_local_to_scene = true
+extents = Vector3( 7, 1, 11 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=6]
+resource_local_to_scene = true
+extents = Vector3( 1.48986, 0.872796, 2.56551 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=8]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=9]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=10]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=11]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=12]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=13]
+resource_local_to_scene = true
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=14]
+resource_local_to_scene = true
+extents = Vector3( 1, 1.4638, 1.72843 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=16]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=17]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 0.0
+scale = 0.1
+scale_random = 0.1
+
 [node name="tutorial" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.0179e-08, 0.0958087, -0.690416 )
-current_hp = 10.0
-current_o2 = 80.0
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -16.8744, 0.0958087, -25.6904 )
 
 [node name="room_3" parent="." instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4256, -8, 28.1382 )
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -45.8981, -8, -11.3374 )
 
 [node name="Door" parent="room_3/Room/Door2" index="1"]
 open = true
@@ -64,25 +155,85 @@ open = true
 gravity_vec = Vector3( 0, 1, 0 )
 
 [node name="GravityParticles" parent="room_3/Room/Area/Area" index="1"]
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 
 [node name="CollisionShape" parent="room_3/Room/Checkpoint" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="tutorial_passage_3" parent="." instance=ExtResource( 8 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1062, 0.56311, -1.047 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6073, 0.56311, -41.09 )
+
+[node name="Area" parent="tutorial_passage_3" index="6"]
+gravity_vec = Vector3( 0, 0, 1 )
 
 [node name="GravityParticles" parent="tutorial_passage_3/Area" index="0"]
-process_material = SubResource( 3 )
+process_material = SubResource( 5 )
 
 [node name="CollisionShape" parent="tutorial_passage_3/NextScene" index="0"]
 disabled = true
 
 [node name="tutorial_2_passage_1" parent="." instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.67457, 0.562771, -23.3115 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67457, 0.562771, -23.3115 )
 
 [node name="room_4" parent="." instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, -4.10039, -261 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 243.744, -4.25717, -10 )
+
+[node name="CollisionShape" parent="room_4/First_zone/Intro/MovingPlatform/FallDamageDisabler" index="0"]
+shape = SubResource( 6 )
+
+[node name="RampArea" parent="room_4/First_zone/Intro/Areas" index="0"]
+gravity_vec = Vector3( 0, -0.613, -0.79 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/RampArea" index="0"]
+process_material = SubResource( 7 )
+
+[node name="WallArea" parent="room_4/First_zone/Intro/Areas" index="1"]
+gravity_vec = Vector3( 0, 0, -1 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/WallArea" index="0"]
+process_material = SubResource( 8 )
+
+[node name="RampArea2" parent="room_4/First_zone/Intro/Areas" index="2"]
+gravity_vec = Vector3( 0, 0.707, -0.707 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/RampArea2" index="0"]
+process_material = SubResource( 9 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/CeilingArea" index="0"]
+process_material = SubResource( 10 )
+
+[node name="GravityObstacle" parent="room_4/First_zone/Intro/Areas" index="4"]
+gravity_vec = Vector3( -1, 0, 0 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/GravityObstacle" index="0"]
+process_material = SubResource( 11 )
+
+[node name="GravityObstacle2" parent="room_4/First_zone/Intro/Areas" index="5"]
+gravity_vec = Vector3( -1, 0, 0 )
+
+[node name="GravityParticles" parent="room_4/First_zone/Intro/Areas/GravityObstacle2" index="0"]
+process_material = SubResource( 12 )
+
+[node name="CollisionShape" parent="room_4/Checkpoint" index="0"]
+shape = SubResource( 13 )
+
+[node name="CollisionShape" parent="room_4/DialogTrigger" index="0"]
+shape = SubResource( 14 )
+
+[node name="ToWall" parent="room_4/Second_zone/Intro/Areas" index="0"]
+gravity_vec = Vector3( 0, 0, -1 )
+
+[node name="GravityParticles" parent="room_4/Second_zone/Intro/Areas/ToWall" index="0"]
+process_material = SubResource( 15 )
+
+[node name="GravityParticles" parent="room_4/Second_zone/Intro/Areas/ToCeil" index="0"]
+process_material = SubResource( 16 )
+
+[node name="ToWall2" parent="room_4/Second_zone/Intro/Areas" index="2"]
+gravity_vec = Vector3( 1, 0, 0 )
+
+[node name="GravityParticles" parent="room_4/Second_zone/Intro/Areas/ToWall2" index="0"]
+process_material = SubResource( 17 )
 
 [editable path="room_3"]
 [editable path="room_3/Room/Step Ceiling/Level 2/Step Ceiling 3"]
@@ -96,3 +247,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, -4.
 [editable path="room_3/Room/Ceiling/row4/unit3/Light6"]
 [editable path="room_3/Room/Checkpoint"]
 [editable path="tutorial_passage_3"]
+[editable path="room_4"]
+[editable path="room_4/First_zone/Intro/MovingPlatform/FallDamageDisabler"]
+[editable path="room_4/Checkpoint"]
+[editable path="room_4/DialogTrigger"]

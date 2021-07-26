@@ -29,6 +29,7 @@ onready var gui = get_node("CanvasLayer/InGameGUI")
 var vel = Vector3(0, 0, 0)
 var gravity = 9.8
 var up = Vector3.UP
+var snap = -up
 var backward =	self.transform.basis.z.normalized()
 var current_speed = SPEED
 var insideArea = false
@@ -76,6 +77,7 @@ var floating = false
 var gravitometro = true
 export var can_use_gravitometer = true setget set_gravitometer_flag
 var dying = false
+var can_fall_damage = true
 var mouse_captured
 
 # Called when the node enters the scene tree for the first time.
@@ -121,7 +123,7 @@ func _unhandled_key_input(event):
 #			OS.window_fullscreen = not OS.window_fullscreen
 
 func ongrav_movement(delta):
-	vel = move_and_slide(vel, up)
+	vel = move_and_slide_with_snap(vel, snap, up, true)
 	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time #+ gravity*GRAVITY_FACTOR*up
 	
 	var on_floor = downRC.is_colliding()
@@ -151,13 +153,15 @@ func ongrav_movement(delta):
 #		anim_state = "Falling"
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
+		snap = Vector3.ZERO 
 		vertical_vel *= JUMP_POWER
 		anim_state = "Jumping"
 	else:
 		vertical_vel *= 0
+		snap = -up 
 	
 	if on_floor:
-		if airborne_time != 0:
+		if airborne_time != 0 and can_fall_damage:
 			fall_damage(airborne_time)
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
 		airborne_time = 0

@@ -13,8 +13,8 @@ func _ready():
 func on_body_entered(body: Node):
 	if body.is_in_group("Player"):
 		if say_something:
-			yield(get_tree().create_timer(times[0]), "timeout")
 			body.comment(dialogues, dialog_mode, times)
-			yield(get_tree().create_timer(times[0]), "timeout")
+			if dialog_mode == "AUTO":
+				yield(get_tree().create_timer(times[0]), "timeout")
 		LevelManager.clean_checkpoints()
 		LevelManager.fade_and_call_method(LevelManager, "change_scene", next_scene_path)

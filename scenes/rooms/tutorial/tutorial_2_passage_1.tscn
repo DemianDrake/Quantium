@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=2]
@@ -10,11 +10,15 @@
 [ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=9]
 [ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=10]
+[ext_resource path="res://FallDamageDisabler.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/assets/space/spacestation.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/Managers/SpaceBody.gd" type="Script" id=13]
+[ext_resource path="res://scenes/assets/space/sun_body.tscn" type="PackedScene" id=14]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 4.5, 1.7, 1 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=2]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -25,18 +29,7 @@ scale_random = 0.1
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 15, 2, 3 )
 
-[sub_resource type="ParticlesMaterial" id=15]
-resource_local_to_scene = true
-lifetime_randomness = 0.5
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
-scale = 0.1
-scale_random = 0.1
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 4.4, 5, 6 )
-
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=4]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -45,20 +38,9 @@ scale = 0.1
 scale_random = 0.1
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 14, 5, 10 )
+extents = Vector3( 4.4, 5, 6 )
 
-[sub_resource type="ParticlesMaterial" id=17]
-resource_local_to_scene = true
-lifetime_randomness = 0.5
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
-scale = 0.1
-scale_random = 0.1
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 9, 5, 10 )
-
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="ParticlesMaterial" id=6]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -67,9 +49,9 @@ scale = 0.1
 scale_random = 0.1
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 14, 5, 14 )
+extents = Vector3( 14, 5, 10 )
 
-[sub_resource type="ParticlesMaterial" id=19]
+[sub_resource type="ParticlesMaterial" id=8]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -78,9 +60,9 @@ scale = 0.1
 scale_random = 0.1
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 4, 3, 3 )
+extents = Vector3( 9, 5, 10 )
 
-[sub_resource type="ParticlesMaterial" id=20]
+[sub_resource type="ParticlesMaterial" id=10]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -88,10 +70,36 @@ emission_box_extents = Vector3( 1, 1, 1 )
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 14, 5, 14 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 4, 3, 3 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=15]
 extents = Vector3( 42, 3, 3 )
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=17]
+resource_local_to_scene = true
+extents = Vector3( 3, 1, 5 )
+
+[sub_resource type="BoxShape" id=16]
 extents = Vector3( 43.319, 2.88239, 0.322524 )
 
 [node name="tutorial_2_passage_1" type="Spatial"]
@@ -1138,7 +1146,7 @@ gravity_vec = Vector3( -0.259, 0, -0.966 )
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area" instance=ExtResource( 10 )]
-process_material = SubResource( 14 )
+process_material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53575, -0.270152, 0.586586 )
@@ -1151,13 +1159,12 @@ transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 3
 space_override = 3
 gravity_vec = Vector3( 0, 1, 0 )
 script = ExtResource( 9 )
-particles_emitting = true
 
 [node name="GravityParticles" parent="Areas/Area2" instance=ExtResource( 10 )]
-process_material = SubResource( 15 )
+process_material = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area2"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Area3" type="Area" parent="Areas" groups=[
 "floor_area",
@@ -1167,11 +1174,11 @@ space_override = 3
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area3" instance=ExtResource( 10 )]
-process_material = SubResource( 16 )
+process_material = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area3"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -0.159508, -0.270152, 0.408359 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Area4" type="Area" parent="Areas" groups=[
 "floor_area",
@@ -1182,11 +1189,11 @@ gravity = 2.4
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area4" instance=ExtResource( 10 )]
-process_material = SubResource( 17 )
+process_material = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area4"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -4.85275, -0.270152, 2.07706 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="Area5" type="Area" parent="Areas" groups=[
 "floor_area",
@@ -1197,11 +1204,11 @@ gravity = 0.5
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area5" instance=ExtResource( 10 )]
-process_material = SubResource( 18 )
+process_material = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area5"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -0.312233, -0.270152, 1.22572 )
-shape = SubResource( 7 )
+shape = SubResource( 11 )
 
 [node name="Area6" type="Area" parent="Areas" groups=[
 "floor_area",
@@ -1212,10 +1219,10 @@ gravity_vec = Vector3( 0, 0, -1 )
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area6" instance=ExtResource( 10 )]
-process_material = SubResource( 19 )
+process_material = SubResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area6"]
-shape = SubResource( 9 )
+shape = SubResource( 13 )
 
 [node name="Area7" type="Area" parent="Areas" groups=[
 "floor_area",
@@ -1227,10 +1234,16 @@ gravity = 0.0
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area7" instance=ExtResource( 10 )]
-process_material = SubResource( 20 )
+process_material = SubResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area7"]
-shape = SubResource( 10 )
+shape = SubResource( 15 )
+
+[node name="FallDamageDisabler" parent="Areas" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 115, -4.19224, -11 )
+
+[node name="CollisionShape" parent="Areas/FallDamageDisabler" index="0"]
+shape = SubResource( 17 )
 
 [node name="Invisible walls" type="Spatial" parent="."]
 
@@ -1238,22 +1251,36 @@ shape = SubResource( 10 )
 transform = Transform( 0.999444, 0, 0.0333471, 0, 1, 0, -0.0333471, 0, 0.999444, 168.348, -4.82759, -8.67857 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody"]
-shape = SubResource( 11 )
+shape = SubResource( 16 )
 
 [node name="StaticBody3" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999814, -4.30191e-10, 0.0193032, -0.0193032, -4.4565e-08, 0.999814, 4.30191e-10, -1, -4.4565e-08, 164.248, -2.08262, -12.4333 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody3"]
-shape = SubResource( 11 )
+shape = SubResource( 16 )
 
 [node name="StaticBody4" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999843, 3.99496e-10, -0.0177126, 0.0177126, -4.51158e-08, 0.999843, -3.99496e-10, -1, -4.51158e-08, 164.008, -7.16876, -12.4333 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody4"]
-shape = SubResource( 11 )
+shape = SubResource( 16 )
 
 [node name="StaticBody2" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999444, 0, -0.0333471, 0, 1, 0, 0.0333471, 0, 0.999444, 164.413, -4.82759, -15.0306 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody2"]
-shape = SubResource( 11 )
+shape = SubResource( 16 )
+
+[node name="Spatial" parent="." instance=ExtResource( 12 )]
+transform = Transform( 11.3137, 0, 11.3137, -2.9282, 15.4548, 2.9282, -10.9282, -4.1411, 10.9282, 69, -212, 149 )
+
+[node name="The Sun" type="Spatial" parent="." instance=ExtResource( 14 )]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, -57, 25, -555 )
+script = ExtResource( 13 )
+speed = 0.01
+
+[node name="OmniLight" type="OmniLight" parent="The Sun"]
+light_energy = 2.0
+omni_range = 4096.0
+
+[editable path="Areas/FallDamageDisabler"]

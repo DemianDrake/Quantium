@@ -70,6 +70,7 @@ cast_to = Vector3( 0, 0, -3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.6 )
 size = 2.50965
 near = 0.01
+far = 4096.0
 margin = 2.0
 
 [node name="RaycastPointer" type="Position3D" parent="Gimbal_h_cam_TP/Gimbal_v_cam"]
@@ -92,6 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 [node name="FP Camera" type="Camera" parent="Gimbal_h_cam_FP/Gimbal_v_cam"]
 cull_mask = 1048573
 current = true
+far = 4096.0
 
 [node name="downRC" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499918, 0 )
