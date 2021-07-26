@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=2]
@@ -10,65 +10,89 @@
 [ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=9]
 [ext_resource path="res://scenes/particles/GravityParticles.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=12]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 4.5, 1.7, 1 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=14]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
-damping = 9.0
-damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 15, 2, 3 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 4.4, 5, 6 )
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 14, 5, 10 )
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 9, 5, 10 )
-
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 14, 5, 14 )
-
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=16]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
-damping = 9.0
-damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 14, 5, 10 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 9, 5, 10 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 14, 5, 14 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
 scale = 0.1
 scale_random = 0.1
 
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 4, 3, 3 )
 
+[sub_resource type="ParticlesMaterial" id=20]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+scale = 0.1
+scale_random = 0.1
+
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 42, 3, 3 )
 
-[sub_resource type="PanoramaSky" id=11]
-panorama = ExtResource( 12 )
-
-[sub_resource type="Environment" id=12]
-background_mode = 2
-background_sky = SubResource( 11 )
-fog_depth_curve = 0.435275
-glow_enabled = true
-glow_intensity = 1.0
-adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_saturation = 1.2
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 43.319, 2.88239, 0.322524 )
 
 [node name="tutorial_2_passage_1" type="Spatial"]
 
@@ -367,7 +391,7 @@ transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -
 
 [node name="CollisionShape" type="CollisionShape" parent="Passages/Passage2/Walls/Walls Left"]
 transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -6.82654, 0, 6.84937 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Walls Left2" type="StaticBody" parent="Passages/Passage2/Walls"]
 transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -4.85342, 0, 9.08201 )
@@ -410,7 +434,7 @@ transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -
 
 [node name="CollisionShape" type="CollisionShape" parent="Passages/Passage2/Walls/Walls Left2"]
 transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -6.82928, 0, 6.86707 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Light" parent="Passages/Passage2" instance=ExtResource( 8 )]
 transform = Transform( 1, -2.98023e-08, 8.88178e-16, 0, -4.37114e-08, -1, 2.98023e-08, 1, -4.37114e-08, 6.12449, 1.48216, 2.998 )
@@ -534,7 +558,7 @@ transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -
 
 [node name="CollisionShape" type="CollisionShape" parent="Passages/Passage7/Walls/Walls Left"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80751, 0, 7.05184 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Passage4" type="Spatial" parent="Passages"]
 transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 31.488, 2.33447, -5.50548 )
@@ -1114,25 +1138,25 @@ gravity_vec = Vector3( -0.259, 0, -0.966 )
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area" instance=ExtResource( 10 )]
-process_material = SubResource( 1 )
+process_material = SubResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53575, -0.270152, 0.586586 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Area2" type="Area" parent="Areas" groups=[
 "floor_area",
 ]]
-transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 36.3467, 0, -2.26641 )
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 37.0288, 0, -2.44919 )
 space_override = 3
 gravity_vec = Vector3( 0, 1, 0 )
 script = ExtResource( 9 )
+particles_emitting = true
 
 [node name="GravityParticles" parent="Areas/Area2" instance=ExtResource( 10 )]
-process_material = SubResource( 1 )
+process_material = SubResource( 15 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.570549, -0.270152, 0.408359 )
 shape = SubResource( 4 )
 
 [node name="Area3" type="Area" parent="Areas" groups=[
@@ -1143,7 +1167,7 @@ space_override = 3
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area3" instance=ExtResource( 10 )]
-process_material = SubResource( 1 )
+process_material = SubResource( 16 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area3"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -0.159508, -0.270152, 0.408359 )
@@ -1158,7 +1182,7 @@ gravity = 2.4
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area4" instance=ExtResource( 10 )]
-process_material = SubResource( 1 )
+process_material = SubResource( 17 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area4"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -4.85275, -0.270152, 2.07706 )
@@ -1173,7 +1197,7 @@ gravity = 0.5
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area5" instance=ExtResource( 10 )]
-process_material = SubResource( 1 )
+process_material = SubResource( 18 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area5"]
 transform = Transform( 0.98678, 0, 0.162069, 0, 1, 0, -0.162069, 0, 0.98678, -0.312233, -0.270152, 1.22572 )
@@ -1188,7 +1212,7 @@ gravity_vec = Vector3( 0, 0, -1 )
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area6" instance=ExtResource( 10 )]
-process_material = SubResource( 8 )
+process_material = SubResource( 19 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area6"]
 shape = SubResource( 9 )
@@ -1203,13 +1227,33 @@ gravity = 0.0
 script = ExtResource( 9 )
 
 [node name="GravityParticles" parent="Areas/Area7" instance=ExtResource( 10 )]
-process_material = SubResource( 8 )
+process_material = SubResource( 20 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Areas/Area7"]
 shape = SubResource( 10 )
 
-[node name="Player" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5096, 0.0244498, 8.39285 )
+[node name="Invisible walls" type="Spatial" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 12 )
+[node name="StaticBody" type="StaticBody" parent="Invisible walls"]
+transform = Transform( 0.999444, 0, 0.0333471, 0, 1, 0, -0.0333471, 0, 0.999444, 168.348, -4.82759, -8.67857 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="StaticBody3" type="StaticBody" parent="Invisible walls"]
+transform = Transform( 0.999814, -4.30191e-10, 0.0193032, -0.0193032, -4.4565e-08, 0.999814, 4.30191e-10, -1, -4.4565e-08, 164.248, -2.08262, -12.4333 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody3"]
+shape = SubResource( 11 )
+
+[node name="StaticBody4" type="StaticBody" parent="Invisible walls"]
+transform = Transform( 0.999843, 3.99496e-10, -0.0177126, 0.0177126, -4.51158e-08, 0.999843, -3.99496e-10, -1, -4.51158e-08, 164.008, -7.16876, -12.4333 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody4"]
+shape = SubResource( 11 )
+
+[node name="StaticBody2" type="StaticBody" parent="Invisible walls"]
+transform = Transform( 0.999444, 0, -0.0333471, 0, 1, 0, 0.0333471, 0, 0.999444, 164.413, -4.82759, -15.0306 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody2"]
+shape = SubResource( 11 )

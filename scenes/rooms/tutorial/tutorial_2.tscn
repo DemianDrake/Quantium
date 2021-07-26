@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/rooms/tutorial/tutorial_2_passage_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/rooms/tutorial/room_4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/rooms/tutorial/room_3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_3.tscn" type="PackedScene" id=8]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_depth_curve = 0.435275
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_brightness = 0.95
+adjustment_saturation = 1.2
+
+[sub_resource type="ParticlesMaterial" id=4]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[sub_resource type="BoxShape" id=5]
+resource_local_to_scene = true
+extents = Vector3( 7, 1, 11 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+damping = 9.0
+damping_random = 0.5
+scale = 0.1
+scale_random = 0.1
+
+[node name="tutorial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.0179e-08, 0.0958087, -0.690416 )
+current_hp = 10.0
+current_o2 = 80.0
+
+[node name="room_3" parent="." instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4256, -8, 28.1382 )
+
+[node name="Door" parent="room_3/Room/Door2" index="1"]
+open = true
+
+[node name="Area" parent="room_3/Room/Area" index="0"]
+gravity_vec = Vector3( 0, 1, 0 )
+
+[node name="GravityParticles" parent="room_3/Room/Area/Area" index="1"]
+process_material = SubResource( 4 )
+
+[node name="CollisionShape" parent="room_3/Room/Checkpoint" index="0"]
+shape = SubResource( 5 )
+
+[node name="tutorial_passage_3" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1062, 0.56311, -1.047 )
+
+[node name="GravityParticles" parent="tutorial_passage_3/Area" index="0"]
+process_material = SubResource( 3 )
+
+[node name="CollisionShape" parent="tutorial_passage_3/NextScene" index="0"]
+disabled = true
+
+[node name="tutorial_2_passage_1" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.67457, 0.562771, -23.3115 )
+
+[node name="room_4" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, -4.10039, -261 )
+
+[editable path="room_3"]
+[editable path="room_3/Room/Step Ceiling/Level 2/Step Ceiling 3"]
+[editable path="room_3/Room/Ceiling/row/unit/Light6"]
+[editable path="room_3/Room/Ceiling/row/small area/unit2/Light6"]
+[editable path="room_3/Room/Ceiling/row/small area/unit4/Light6"]
+[editable path="room_3/Room/Ceiling/row/switch area/row/unit3/Light6"]
+[editable path="room_3/Room/Ceiling/row/switch area/row/unit4/Light6"]
+[editable path="room_3/Room/Ceiling/row2/unit2/Light6"]
+[editable path="room_3/Room/Ceiling/row2/unit3/Light6"]
+[editable path="room_3/Room/Ceiling/row4/unit3/Light6"]
+[editable path="room_3/Room/Checkpoint"]
+[editable path="tutorial_passage_3"]
