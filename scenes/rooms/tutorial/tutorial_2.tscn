@@ -15,7 +15,9 @@ background_mode = 2
 background_sky = SubResource( 1 )
 fog_depth_curve = 0.435275
 glow_enabled = true
-glow_intensity = 1.0
+glow_intensity = 0.5
+glow_blend_mode = 1
+glow_bicubic_upscale = true
 adjustment_enabled = true
 adjustment_brightness = 0.95
 adjustment_saturation = 1.2
@@ -580,7 +582,7 @@ scale_random = 0.1
 environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 220.126, -4.41058, -35.6904 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -17.0473, 0.137283, -26.261 )
 
 [node name="room_3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -45.8981, -8, -11.3374 )

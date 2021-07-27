@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/assets/space/spacestation.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/Managers/SpaceBody.gd" type="Script" id=13]
 [ext_resource path="res://scenes/assets/space/sun_body.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/assets/Utils/MapLimit.tscn" type="PackedScene" id=15]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 4.5, 1.7, 1 )
@@ -100,6 +101,10 @@ resource_local_to_scene = true
 extents = Vector3( 3, 1, 5 )
 
 [sub_resource type="BoxShape" id=17]
+resource_local_to_scene = true
+extents = Vector3( 122, 1, 45 )
+
+[sub_resource type="BoxShape" id=18]
 extents = Vector3( 43.319, 2.88239, 0.322524 )
 
 [node name="tutorial_2_passage_1" type="Spatial"]
@@ -1246,31 +1251,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 115, -4.19224, -11 )
 [node name="CollisionShape" parent="Areas/FallDamageDisabler" index="0"]
 shape = SubResource( 16 )
 
+[node name="MapLimit" parent="Areas" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 102, -11, -6 )
+
+[node name="CollisionShape" parent="Areas/MapLimit" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27, 0 )
+shape = SubResource( 17 )
+
 [node name="Invisible walls" type="Spatial" parent="."]
 
 [node name="StaticBody" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999444, 0, 0.0333471, 0, 1, 0, -0.0333471, 0, 0.999444, 168.348, -4.82759, -8.67857 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody"]
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="StaticBody3" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999814, -4.30191e-10, 0.0193032, -0.0193032, -4.4565e-08, 0.999814, 4.30191e-10, -1, -4.4565e-08, 164.248, -2.08262, -12.4333 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody3"]
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="StaticBody4" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999843, 3.99496e-10, -0.0177126, 0.0177126, -4.51158e-08, 0.999843, -3.99496e-10, -1, -4.51158e-08, 164.008, -7.16876, -12.4333 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody4"]
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="StaticBody2" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999444, 0, -0.0333471, 0, 1, 0, 0.0333471, 0, 0.999444, 164.413, -4.82759, -15.0306 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Invisible walls/StaticBody2"]
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="Spatial" parent="." instance=ExtResource( 12 )]
 transform = Transform( 11.3137, 0, 11.3137, -2.9282, 15.4548, 2.9282, -10.9282, -4.1411, 10.9282, 69, -212, 149 )
@@ -1285,3 +1297,4 @@ light_energy = 2.0
 omni_range = 4096.0
 
 [editable path="Areas/FallDamageDisabler"]
+[editable path="Areas/MapLimit"]
