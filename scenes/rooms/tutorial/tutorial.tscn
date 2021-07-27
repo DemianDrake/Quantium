@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/rooms/tutorial/room_3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/assets/Utils/Checkpoint.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
@@ -21,6 +22,10 @@ glow_intensity = 1.0
 adjustment_enabled = true
 adjustment_brightness = 0.95
 adjustment_saturation = 1.2
+
+[sub_resource type="BoxShape" id=3]
+resource_local_to_scene = true
+extents = Vector3( 2, 2, 2 )
 
 [node name="tutorial" type="Spatial"]
 
@@ -38,9 +43,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 
 [node name="turorial_passage_1" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -5, 0, -18 )
 
-[node name="Frame" parent="turorial_passage_1/Passage/Passage Unit3" index="3"]
-transform = Transform( -1.5, 0, -2.26494e-07, 0, 1.35, 0, 2.26494e-07, 0, -1.5, -2.71431, -0.0869821, 4.47684 )
-
 [node name="room_2" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -45.8236 )
 
@@ -53,5 +55,58 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24.6281
 [node name="tutorial_passage_3" parent="." instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.1062, 8.56311, -112.047 )
 
-[editable path="turorial_passage_1"]
-[editable path="turorial_passage_1/Passage/Passage Unit3"]
+[node name="Checkpoints" type="Spatial" parent="."]
+
+[node name="room1" parent="Checkpoints" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+room_nodepath = NodePath("../../tutorial_room_1")
+room_resource = "res://scenes/rooms/tutorial/room_1.tscn"
+room_resetable = true
+
+[node name="CollisionShape" parent="Checkpoints/room1" index="0"]
+shape = SubResource( 3 )
+
+[node name="Spawn" parent="Checkpoints/room1" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="passage1" parent="Checkpoints" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473394, 0, -9 )
+room_nodepath = NodePath("../../turorial_passage_1")
+room_resource = "res://scenes/rooms/tutorial/tutorial_passage_1.tscn"
+room_resetable = true
+
+[node name="CollisionShape" parent="Checkpoints/passage1" index="0"]
+shape = SubResource( 3 )
+
+[node name="room2" parent="Checkpoints" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428283, 0, -32 )
+room_nodepath = NodePath("../../room_2")
+room_resource = "res://scenes/rooms/tutorial/room_2.tscn"
+room_resetable = true
+
+[node name="CollisionShape" parent="Checkpoints/room2" index="0"]
+shape = SubResource( 3 )
+
+[node name="passage2" parent="Checkpoints" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473394, 0, -54.69 )
+room_nodepath = NodePath("../../tutorial_passage_2")
+room_resource = "res://scenes/rooms/tutorial/tutorial_passage_2.tscn"
+room_resetable = true
+
+[node name="CollisionShape" parent="Checkpoints/passage2" index="0"]
+shape = SubResource( 3 )
+
+[node name="room3" parent="Checkpoints" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428283, 0, -69 )
+room_nodepath = NodePath("../../room_3")
+room_resource = "res://scenes/rooms/tutorial/room_3.tscn"
+room_resetable = true
+
+[node name="CollisionShape" parent="Checkpoints/room3" index="0"]
+shape = SubResource( 3 )
+
+[editable path="Checkpoints/room1"]
+[editable path="Checkpoints/passage1"]
+[editable path="Checkpoints/room2"]
+[editable path="Checkpoints/passage2"]
+[editable path="Checkpoints/room3"]

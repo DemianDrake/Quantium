@@ -80,7 +80,7 @@ var dying = false
 var can_fall_damage = true
 var mouse_captured
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	update_bars(0)
 	tpc.make_current()
@@ -88,6 +88,7 @@ func _ready():
 	capture_mouse()
 	mouse_captured = true
 	LevelManager.start_position = get_global_transform().origin
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -115,16 +116,12 @@ func _unhandled_key_input(event):
 		if event.pressed and event.scancode == KEY_R:
 			decrease_hp(MAX_HEALTH)
 		# ACTIVAR GRAVITOCOSO CAMBIADO A _INPUT
-#		elif event.pressed and event.scancode == KEY_G:
-#			gravitometro = not gravitometro
-#			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		# CAMBIAR FULLSCREEN CAMBIADO A _INPUT DE GAME.GD
-#		elif event.pressed and event.scancode == KEY_Y:
-#			OS.window_fullscreen = not OS.window_fullscreen
+
 
 func ongrav_movement(delta):
 	vel = move_and_slide_with_snap(vel, snap, up, true)
-	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time #+ gravity*GRAVITY_FACTOR*up
+	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time
 	
 	var on_floor = downRC.is_colliding()
 	
@@ -149,9 +146,6 @@ func ongrav_movement(delta):
 	if dir_x == 0 and dir_z == 0:
 		anim_state = "Idle"
 	
-#	if vel_g > 0:
-#		anim_state = "Falling"
-	
 	if Input.is_action_just_pressed("jump") and on_floor:
 		snap = Vector3.ZERO 
 		vertical_vel *= JUMP_POWER
@@ -168,8 +162,7 @@ func ongrav_movement(delta):
 	else:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
 		airborne_time += delta
-	
-	
+		
 	vel = horizontal_vel + vertical_vel - vel_g
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		var horizontal_dir = horizontal_vel - horizontal_vel.project(up*15)
@@ -181,17 +174,9 @@ func ongrav_movement(delta):
 func nograv_movement(delta):
 	vel = move_and_slide(vel, up)
 	
-#	var on_floor = downRC.is_colliding()
-	
-#	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-#	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
 	backward = v_node.transform.basis.z.normalized()
 	var y_comp = backward.y * Vector3.UP
-#	var x_cam = h_node.transform.basis.x #* dir_x
-	var z_cam = h_node.transform.basis.z #* dir_z
-#	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
-#	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+	var z_cam = h_node.transform.basis.z
 	backward = (z_cam + y_comp).normalized()
 	
 	if vel.length() < 10.5:
@@ -199,27 +184,13 @@ func nograv_movement(delta):
 	else:
 		anim_state = "Floating_B"
 	
-	if Input.is_action_just_pressed("throw"):
-		Click_Hold = 1.0
-	elif Input.is_action_pressed("throw"):
-		Click_Hold += delta
-		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
-		#print(Click_Hold)
-	elif Input.is_action_just_released("throw"):
-		vel += backward * Click_Hold
-		Click_Hold = 1.0
-		
-	#print(h_node.transform.basis.x)
-	#if horizontal_vel.length() > 0:
-	#	print(horizontal_vel, horizontal_vel2)
+	if Input.is_action_just_released("throw"):
+		vel += backward
 	
 	var vertical_vel = up.normalized()
 	
-	#if Input.is_action_just_pressed("jump") and on_floor:
-	#	vertical_vel *= JUMP_POWER
-	#else:
 	vertical_vel *= 0
-		
+	
 	vel += vertical_vel
 
 
@@ -279,7 +250,7 @@ func interact():
 				if held_item == casted_interactable:
 					casted_interactable.interact(self)
 			else:
-				anim_state = "Interact"
+#				anim_state = "Interact"
 				casted_interactable.interact(self)
 		elif is_instance_valid(held_item):
 			if held_item.is_in_group("Interactable"):
@@ -290,12 +261,14 @@ func pickup(delta):
 	if Input.is_action_pressed("interact"):
 		var casted_item = get_raycast_elem("Item")
 		if is_instance_valid(casted_item):
-			anim_state = "PickUp1"
+#			anim_state = "PickUp1"
 			E_hold += delta
 			#print(E_hold)
 			if E_hold >= HOLD_TIME:
 				if not holding_item:
 					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))
+					casted_item.add_to_group("Duplicated")
+
 					held_item = casted_item
 					holding_item = true
 					E_hold = 0
@@ -339,6 +312,7 @@ func retrieve(key):
 		var item = load(slot['scene_path']).instance()
 		item.set_data_from_dict(slot)
 		item.grab(self.get_node("Model/RotationTest/Placeholder"))
+		item.add_to_group("Duplicated")
 		
 		slot['amount'] -= 1
 		if slot['amount'] == 0:
@@ -536,6 +510,10 @@ func _process(delta):
 
 func set_anim(state):
 	state_machine.travel(state)
+
+
+func set_inventory(new_inventory):
+	inventory = new_inventory
 
 
 func get_inventory():

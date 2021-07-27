@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/assets/Utils/Checkpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/Passage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=3]
 
@@ -30,6 +29,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422501, 5.20916 )
 
 [node name="Passage Unit2" parent="Passage" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.405, 0, 0 )
-
-[node name="Checkpoint" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4.36569 )
