@@ -19,5 +19,5 @@ func _process(delta):
 		print("energy flux change")
 		nrg_flux *= -1
 	mat.set_emission_energy(nrg + nrg_flux)
-	light.omni_range = nrg + nrg_flux + 7.5
+	light.omni_range = nrg + nrg_flux + 15
 	pass

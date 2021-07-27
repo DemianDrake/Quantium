@@ -58,7 +58,8 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
 [node name="OmniLight" type="OmniLight" parent="Quantium Core"]
 transform = Transform( 0.2, 1.35308e-17, 2.42144e-09, 4.18139e-23, 0.2, -1.11759e-09, -2.42144e-09, 1.11759e-09, 0.2, 0, -0.0782013, -6.77626e-22 )
 light_energy = 5.0
-omni_range = 23.5
+omni_range = 50.0
+omni_attenuation = 2.73208
 
 [node name="Icosphere001_Material009_0" type="MeshInstance" parent="Quantium Core"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
