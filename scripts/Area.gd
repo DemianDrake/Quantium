@@ -3,6 +3,7 @@ extends Area
 export var enabled = true
 export var particles_emitting = false
 export(Array, Array) var gravities
+export var local = false
 
 onready var particles: ParticlesMaterial
 
@@ -17,6 +18,10 @@ const PARTICLE_VRATIO = 7
 func _ready():
 	var _entered_signal = connect("body_entered", self, "on_body_entered")
 	var _exited_signal  = connect("body_exited", self, "on_body_exited")
+	print(self.gravity_vec)
+	if local:
+		local_grav()
+	print(self.gravity_vec)
 	set_override()
 	gravities_qty = len(gravities)
 	if get_node_or_null("GravityParticles"):
@@ -88,6 +93,16 @@ func update_items():
 func update_server():
 	var space = PhysicsServer.area_get_space(get_rid())
 	PhysicsServer.area_set_space(get_rid(), space)
+
+
+func local_grav():
+	var global_vec = self.gravity_vec
+	self.gravity_vec = global_vec.x * global_transform.basis.x
+	self.gravity_vec += global_vec.y * global_transform.basis.y
+	self.gravity_vec += global_vec.z * global_transform.basis.z
+	self.gravity_vec = self.gravity_vec.normalized()
+	
+
 
 func button_pressed(mode):
 	if not mode: #false = toggle
