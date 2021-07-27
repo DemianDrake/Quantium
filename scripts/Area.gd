@@ -81,6 +81,8 @@ func set_grav(index):
 		set_gravity(new_scalar)
 		if has_particles:
 			particles.gravity = new_vector * new_scalar
+		if local:
+			local_grav()
 
 #método 2: recargar cada item. No funcionó
 func update_items():
