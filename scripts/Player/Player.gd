@@ -112,6 +112,8 @@ func _unhandled_key_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_R:
 			decrease_hp(MAX_HEALTH)
+		elif event.pressed and event.scancode == KEY_M:
+			LevelManager.Game.music.stop()
 		# ACTIVAR GRAVITOCOSO CAMBIADO A _INPUT
 #		elif event.pressed and event.scancode == KEY_G:
 #			gravitometro = not gravitometro
