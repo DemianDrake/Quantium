@@ -29,6 +29,13 @@ func _ready():
 		particles.gravity = self.gravity_vec * self.gravity
 		particles.emission_box_extents = box_size
 		$GravityParticles.set_visibility_aabb(AABB(- box_size, 2 * box_size))
+	elif get_node_or_null("GravityParticles2"):
+		var volume = 50.0
+		$GravityParticles2.emitting = particles_emitting and enabled
+		$GravityParticles2.amount = volume * PARTICLE_VRATIO
+		particles = $GravityParticles2.process_material
+		particles.gravity = self.gravity_vec * self.gravity
+		
 	
 func on_body_entered(body: Node):
 	bodies.append(body)
