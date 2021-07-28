@@ -19,6 +19,7 @@ func go_to_checkpoint(node: Spatial):
 		get_tree().call_group("Duplicated", "queue_free")
 		node.held_item = null
 		node.holding_item = false
+		node.airborne_time = 0
 		if checkpoint.room_resetable:
 			var room_node = checkpoint.room_node
 			var room_transform = room_node.global_transform
