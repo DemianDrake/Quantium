@@ -27,6 +27,7 @@ transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.
 transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2729, 1.67272, 4.22687 )
 
 [node name="Floor" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0201921, 0 )
 
 [node name="Floor Tile" type="Spatial" parent="Floor"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.51574, 0.209206, 4.52808 )

@@ -45,10 +45,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.4128
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241746, 0.158494, 6.29004 )
 space_override = 3
-gravity_vec = Vector3( 1, 0, 0 )
+gravity_vec = Vector3( 0, 0, 1 )
 gravity = 19.6
 script = ExtResource( 2 )
 gravities = [ [ Vector3( 1, 0, 0 ), 19.6 ] ]
+local = true
 
 [node name="GravityParticles" parent="Area" instance=ExtResource( 3 )]
 process_material = SubResource( 1 )

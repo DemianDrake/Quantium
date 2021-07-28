@@ -21,11 +21,11 @@ func on_body_entered(body: Node):
 
 func on():
 	$CollisionShape.set_deferred("disabled", true)
-	print_debug("%s is on" % name)
+#	print_debug("%s is on" % name)
 
 func off():
 	$CollisionShape.set_deferred("disabled", false)
-	print("%s is off" % name)
+#	print("%s is off" % name)
 
 func get_spawn_point():
 	return $Spawn.global_transform.origin
