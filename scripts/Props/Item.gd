@@ -50,6 +50,7 @@ func item_data_to_dict(dict):
 	dict['max_amount'] = max_amount
 	dict['scene_path'] = scene_path
 	dict['texture_path'] = texture_path
+	dict['groups'] = get_groups()
 
 
 func set_data_from_dict(dict):
@@ -57,6 +58,8 @@ func set_data_from_dict(dict):
 	max_amount = dict['max_amount']
 	scene_path = dict['scene_path']
 	texture_path = dict['texture_path']
+	for group in dict['groups']:
+		add_to_group(group)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

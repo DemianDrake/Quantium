@@ -33,7 +33,7 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=4]
 resource_local_to_scene = true
 lifetime_randomness = 0.5
 emission_shape = 2
@@ -43,11 +43,11 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=5]
 resource_local_to_scene = true
 extents = Vector3( 3, 1.06814, 2 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=6]
 resource_local_to_scene = true
 extents = Vector3( 3, 1, 3.75962 )
 
@@ -75,7 +75,7 @@ process_material = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6073, 0.56311, -41.09 )
 
 [node name="GravityParticles" parent="tutorial_passage_3/Area" index="0"]
-process_material = SubResource( 5 )
+process_material = SubResource( 4 )
 
 [node name="CollisionShape" parent="tutorial_passage_3/NextScene" index="0"]
 disabled = true
@@ -95,7 +95,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0288, 0.332331, -14.7066 )
 transform = Transform( 0.995799, 0, 0.0915711, 0, 1, 0, -0.0915711, 0, 0.995799, 49.3695, -4.06235, -29.2915 )
 
 [node name="CollisionShape" parent="Checkpoints/Passage_3" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Spawn" parent="Checkpoints/Passage_3" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47231, 0.414899, -0.135387 )
@@ -113,7 +113,7 @@ room_resource = "res://scenes/rooms/tutorial/room_4.tscn"
 room_resetable = true
 
 [node name="CollisionShape" parent="Checkpoints/Room4_2" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Spawn" parent="Checkpoints/Room4_2" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.916393, 0 )
@@ -125,7 +125,7 @@ room_resource = "res://scenes/rooms/tutorial/room_4.tscn"
 room_resetable = true
 
 [node name="CollisionShape" parent="Checkpoints/Room4_3" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Spawn" parent="Checkpoints/Room4_3" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.916393, 0 )

@@ -558,7 +558,7 @@ static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 
 
 static func slot_dict():
-	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':''}
+	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':'', 'groups':[]}
 
 
 static func hotbar_dict():
