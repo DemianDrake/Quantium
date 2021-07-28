@@ -179,7 +179,7 @@ func ongrav_movement(delta):
 		self.get_node("Model/RotationTest").look_at(horizontal_dir, up)
 
 
-func nograv_movement(delta):
+func nograv_movement(_delta):
 	vel = move_and_slide(vel, up)
 	
 	backward = v_node.transform.basis.z.normalized()
@@ -307,7 +307,8 @@ func hotbar_input_handler():
 	if Input.is_action_just_pressed("hotbar_key"):
 		var key = get_slot_key()
 		if holding_item:
-			store(key)
+			if held_item.max_amount > 0:
+				store(key)
 		else:
 			retrieve(key)
 		gui.update_hotbar(inventory)

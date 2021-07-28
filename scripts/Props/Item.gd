@@ -21,6 +21,10 @@ func grab(node):
 	if is_instance_valid(parent):
 		parent.remove_child(self)
 	node.add_child(self)
+	
+	if item_name == 'Quantium':
+		self.mode = RigidBody.MODE_RIGID
+	
 	#set_translation(Vector3(0, 0, 0))
 	set_transform(Transform.IDENTITY)
 	set_physics_process(false)
@@ -33,6 +37,9 @@ func release():
 	tmp_node.add_child(self)
 	set_physics_process(true)
 	set_global_transform(tmp_transform)
+	if item_name == 'Quantium':
+		self.mode = RigidBody.MODE_STATIC
+	
 
 func get_item_name():
 	return item_name

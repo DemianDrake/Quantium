@@ -4,6 +4,8 @@ export (bool) var this_bool
 export (Array, NodePath) var targets_path
 export (Array, NodePath) var previous_path
 export (Array, bool) var expected_state
+export (bool) var override_mode = false
+export (bool) var override_value
 var targets = []
 var previous = []
 var bools = []
@@ -24,5 +26,7 @@ func next_step(mode):
 			print("node " + previous[i].get_name() + " is not a logic node!")
 	# Comprobación final
 	if !bools.has(false):
+		if override_mode:
+			mode = override_value
 		for target in targets:
 			target.button_pressed(mode)
