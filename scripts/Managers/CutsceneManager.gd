@@ -10,15 +10,9 @@ onready var text = $"Text Boxes"
 onready var logo = $GameLogo
 onready var color_layer = $"Color Layer"
 
-var timer = 0.0
-var current = 0
-var alpha = 1.0
+export var current = 0
 var scene = "Scene 0"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func playscene():
 	background.texture.set_current_frame(current - 1)
@@ -28,11 +22,12 @@ func playscene():
 		alert_anim.play("Alert")
 	current += 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	timer += delta
+	if current == -1:
+		return
 	if anim_tree.get_current_node() == "Start":
 		anim_tree.stop()
 		playscene()
 	elif anim_tree.get_current_node() == "Fade to White":
 		alert_anim.stop()
+		current = -1
