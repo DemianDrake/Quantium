@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_2_passage_1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/rooms/tutorial/room_4.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/assets/Utils/Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/rooms/tutorial/tutorial_2_passage_2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/rooms/tutorial/room_3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/rooms/tutorial/tutorial_passage_3.tscn" type="PackedScene" id=8]
 
@@ -45,7 +46,7 @@ scale_random = 0.1
 
 [sub_resource type="BoxShape" id=5]
 resource_local_to_scene = true
-extents = Vector3( 3, 1.06814, 2 )
+extents = Vector3( 4.61449, 1.06814, 4.57233 )
 
 [sub_resource type="BoxShape" id=6]
 resource_local_to_scene = true
@@ -86,13 +87,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67457, 0.562771, -23.3115 )
 [node name="room_4" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 243.744, -4.25717, -10 )
 
+[node name="tutorial_2_passage_2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 332.8, 16.229, -39.7 )
+
 [node name="Checkpoints" type="Spatial" parent="."]
 
 [node name="Start" parent="Checkpoints" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0288, 0.332331, -14.7066 )
 
 [node name="Passage_3" parent="Checkpoints" instance=ExtResource( 5 )]
-transform = Transform( 0.995799, 0, 0.0915711, 0, 1, 0, -0.0915711, 0, 0.995799, 49.3695, -4.06235, -29.2915 )
+transform = Transform( 0.995799, 0, 0.0915711, 0, 1, 0, -0.0915711, 0, 0.995799, 61.3695, -4.06235, -29.2915 )
 
 [node name="CollisionShape" parent="Checkpoints/Passage_3" index="0"]
 shape = SubResource( 5 )

@@ -110,7 +110,7 @@ resource_local_to_scene = true
 extents = Vector3( 122, 1, 45 )
 
 [sub_resource type="BoxShape" id=19]
-extents = Vector3( 43.319, 2.88239, 0.322524 )
+extents = Vector3( 40, 2.88239, 0.322524 )
 
 [node name="tutorial_2_passage_1" type="Spatial"]
 
@@ -1155,7 +1155,7 @@ transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -
 transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -4.821, -1.30459, 6.62372 )
 
 [node name="Passage6" type="Spatial" parent="Passages"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 219.338, -4.59336, -16.4033 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 218.431, -4.59336, -16.4033 )
 
 [node name="Ceiling" type="Spatial" parent="Passages/Passage6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.225, 0.29 )
@@ -1291,6 +1291,7 @@ transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -
 
 [node name="Frame" parent="Passages/Passage6" instance=ExtResource( 3 )]
 transform = Transform( 1.5, 0, 0, 0, 1.35, 0, 0, 0, 1.5, -2.1004, -0.0672556, 4.49593 )
+visible = false
 
 [node name="Passage8" type="Spatial" parent="Passages"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 227.39, -4.59336, -16.4033 )
@@ -1589,7 +1590,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27, 0 )
 shape = SubResource( 18 )
 
 [node name="Invisible walls" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5093, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77312, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="Invisible walls"]
 transform = Transform( 0.999444, 0, 0.0333471, 0, 1, 0, -0.0333471, 0, 0.999444, 168.348, -4.82759, -8.67857 )
