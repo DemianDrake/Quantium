@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Props/Item.gd" type="Script" id=1]
+[ext_resource path="res://scenes/assets/props/Quantium.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.5
+
+[node name="Quantium_Item" type="RigidBody" groups=[
+"Item",
+"Quantium",
+]]
+script = ExtResource( 1 )
+item_name = "Quantium"
+max_amount = 0
+scene_path = "res://scenes/assets/props/Quantium_Item.tscn"
+description = "Quantium fragment, as beautiful as myself."
+
+[node name="Quantium" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="OmniLight" parent="Quantium/Quantium Core" index="0"]
+light_color = Color( 0.678431, 0.0509804, 0.74902, 1 )
+light_energy = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[editable path="Quantium"]

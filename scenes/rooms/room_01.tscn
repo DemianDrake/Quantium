@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/tunnel/intersection.tscn" type="PackedScene" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://scenes/assets/props/box1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/assets/props/box2.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scripts/Area.gd" type="Script" id=25]
-[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=26]
 [ext_resource path="res://scripts/Props/door.gd" type="Script" id=27]
 [ext_resource path="res://scenes/assets/props/O2Tank.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/assets/props/Medkit.tscn" type="PackedScene" id=29]
@@ -80,23 +79,7 @@ damping_random = 0.5
 scale = 0.1
 scale_random = 0.1
 
-[sub_resource type="PanoramaSky" id=8]
-panorama = ExtResource( 26 )
-
-[sub_resource type="Environment" id=9]
-background_mode = 2
-background_sky = SubResource( 8 )
-fog_depth_curve = 0.435275
-glow_enabled = true
-glow_intensity = 1.0
-adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_saturation = 1.2
-
 [node name="Spatial" type="Spatial"]
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.867285, 0 )
 
 [node name="Entrance" type="Spatial" parent="."]
 __meta__ = {
@@ -438,12 +421,12 @@ transform = Transform( 0.997765, 0, -0.0668138, 0, 1, 0, 0.0668138, 0, 0.997765,
 mode = 1
 
 [node name="O2Tank" parent="Room Right/Props" instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21485, 0.398246, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21485, 0.217881, 0 )
 
 [node name="Medkit" parent="Room Right/Props" groups=[
 "Item",
 ] instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922122, 0.256413, -1.54533 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922122, 0.0511814, -1.54533 )
 
 [node name="Room Left" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195144, 0, 0 )
@@ -501,9 +484,9 @@ process_material = SubResource( 5 )
 [node name="RightGrav2" type="Area" parent="Room Left/GravityFloors" groups=[
 "floor_area",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.548801, -5.64421 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.548801, -5.64421 )
 space_override = 3
-gravity_vec = Vector3( 1, 0, 0 )
+gravity_vec = Vector3( -1, 0, 0 )
 priority = 1.0
 script = ExtResource( 25 )
 
@@ -1783,5 +1766,5 @@ transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -
 [node name="StaticBody" parent="Room Left/Main Room/Walls/Corner Wall3" instance=ExtResource( 16 )]
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 9 )
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.648651, 0 )

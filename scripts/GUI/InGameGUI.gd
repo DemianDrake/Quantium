@@ -32,9 +32,18 @@ func update_o2(pc):
 	o2_bar.update_bar(pc)
 
 
-func show_dialogue(text: String):
-	dialogue_box.setup(text)
+func show_dialogue(dialogues: Array, mode: String, times: Array, speaker: String):
+	dialogue_box.setup(dialogues, mode, times, speaker)
 
+
+func show_save_icon():
+	var tween = $Top/Indicators/CenterContainer/TextureRect/Tween
+	tween.interpolate_property($Top/Indicators/CenterContainer/TextureRect, "modulate:a", 0.0, 1.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_completed")
+	tween.interpolate_property($Top/Indicators/CenterContainer/TextureRect, "modulate:a", 1.0, 0.0, 1.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.start()
+	
 
 func show_info(text: String, group: String):
 	info_box.setup(text, group)

@@ -1,3 +1,388 @@
-[gd_scene format=2]
+[gd_scene load_steps=14 format=2]
 
-[node name="Spatial" type="Spatial"]
+[ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/assets/wall/wall4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/assets/floor/floor4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/Props/door.gd" type="Script" id=9]
+[ext_resource path="res://scenes/assets/doors/door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/assets/wall/wall_doorframe.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/assets/Buttons/SwitchButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/Buttons/SwitchButton.gd" type="Script" id=13]
+[ext_resource path="res://scenes/assets/Utils/DialogTrigger.tscn" type="PackedScene" id=14]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.867855, 1, 0.807688 )
+
+[node name="tutorial_room_1" type="Spatial"]
+
+[node name="Room" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Half-Room" type="Spatial" parent="Room"]
+
+[node name="Floor" type="Spatial" parent="Room/Half-Room"]
+
+[node name="Long Floor Tile" parent="Room/Half-Room/Floor" instance=ExtResource( 7 )]
+transform = Transform( -1.31134e-07, 0, 2.5, 0, 2.5, 0, -3, 0, -1.09278e-07, -16.5749, -1.62447, 0.0133748 )
+
+[node name="Long Floor Tile2" parent="Room/Half-Room/Floor" instance=ExtResource( 7 )]
+transform = Transform( -1.31134e-07, 0, 2.5, 0, 2.5, 0, -3, 0, -1.09278e-07, -3.35969, -1.62447, 0.0133748 )
+
+[node name="Big Floor Tile" parent="Room/Half-Room/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -6.95565, -1.61836, -0.0706129 )
+
+[node name="Big Floor Tile2" parent="Room/Half-Room/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -12.7235, -1.61836, -0.0706129 )
+
+[node name="Walls" type="Spatial" parent="Room/Half-Room"]
+
+[node name="Wall4" parent="Room/Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -14.8999, 0.0391405, -2.82104 )
+
+[node name="Wall3" parent="Room/Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -10.108, 0.0391405, -2.82104 )
+
+[node name="Wall2" parent="Room/Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.8, 0, -2.26494e-07, 0, 1.5, 0, 2.71792e-07, 0, -1.5, -5.03081, 0.0391405, -2.82104 )
+
+[node name="Mirrored Corner Wall" type="Spatial" parent="Room/Half-Room/Walls"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.3623, 0, 0.280214 )
+
+[node name="Wall2" parent="Room/Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.009, 0.271848 )
+
+[node name="Border Wall" parent="Room/Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, 0, 0.702, 3.14875 )
+
+[node name="Corner Wall" type="Spatial" parent="Room/Half-Room/Walls"]
+
+[node name="Wall" parent="Room/Half-Room/Walls/Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+
+[node name="StaticBody" parent="Room/Half-Room/Walls/Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
+
+[node name="Walls2" type="Spatial" parent="Room/Half-Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.18955, 0 )
+
+[node name="Wall4" parent="Room/Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -14.8999, -0.163185, -2.82104 )
+
+[node name="Wall3" parent="Room/Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -10.108, -0.163185, -2.82104 )
+
+[node name="Wall2" parent="Room/Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.8, 0, -2.26494e-07, 0, 1.5, 0, 2.71792e-07, 0, -1.5, -5.03081, -0.163185, -2.82104 )
+
+[node name="Mirrored Corner Wall" type="Spatial" parent="Room/Half-Room/Walls2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.3623, 0, 0.280214 )
+
+[node name="Wall2" parent="Room/Half-Room/Walls2/Mirrored Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.009, 0.271848 )
+
+[node name="Border Wall" parent="Room/Half-Room/Walls2/Mirrored Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, 0, 2.06158, 3.14875 )
+
+[node name="Corner Wall" type="Spatial" parent="Room/Half-Room/Walls2"]
+
+[node name="Wall" parent="Room/Half-Room/Walls2/Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+
+[node name="StaticBody" parent="Room/Half-Room/Walls2/Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 1.9833, -2.57275 )
+
+[node name="Mirrored-Half-Room" type="Spatial" parent="Room"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.949, 0, 8.8426 )
+
+[node name="Floor" type="Spatial" parent="Room/Mirrored-Half-Room"]
+
+[node name="Long Floor Tile" parent="Room/Mirrored-Half-Room/Floor" instance=ExtResource( 7 )]
+transform = Transform( -1.31134e-07, 0, -2.5, 0, 2.5, 0, 3, 0, -1.09278e-07, -16.5749, -1.62447, 0.0133748 )
+
+[node name="Long Floor Tile2" parent="Room/Mirrored-Half-Room/Floor" instance=ExtResource( 7 )]
+transform = Transform( -1.31134e-07, 0, -2.5, 0, 2.5, 0, 3, 0, -1.09278e-07, -3.35969, -1.62447, 0.0133748 )
+
+[node name="Big Floor Tile" parent="Room/Mirrored-Half-Room/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -6.95565, -1.61836, -0.0706129 )
+
+[node name="Big Floor Tile2" parent="Room/Mirrored-Half-Room/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3.8, -12.7235, -1.61836, -0.0706129 )
+
+[node name="Walls" type="Spatial" parent="Room/Mirrored-Half-Room"]
+
+[node name="Wall2" parent="Room/Mirrored-Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.8, 0, -2.26494e-07, 0, 1.5, 0, 2.71792e-07, 0, -1.5, -5.03081, 0.0391405, -2.82104 )
+
+[node name="Wall4" parent="Room/Mirrored-Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -14.8999, 0.0391405, -2.82104 )
+
+[node name="Wall3" parent="Room/Mirrored-Half-Room/Walls" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -10.108, 0.0391405, -2.82104 )
+
+[node name="Corner Wall" type="Spatial" parent="Room/Mirrored-Half-Room/Walls"]
+
+[node name="Wall" parent="Room/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+
+[node name="StaticBody" parent="Room/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
+
+[node name="Mirrored Corner Wall" type="Spatial" parent="Room/Mirrored-Half-Room/Walls"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.3623, 0, 0.280213 )
+
+[node name="Wall2" parent="Room/Mirrored-Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.009, 0.271848 )
+
+[node name="Border Wall" parent="Room/Mirrored-Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, 0, 0.702, 3.14875 )
+
+[node name="Walls2" type="Spatial" parent="Room/Mirrored-Half-Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11564, 0 )
+
+[node name="Wall2" parent="Room/Mirrored-Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.8, 0, -2.26494e-07, 0, 1.5, 0, 2.71792e-07, 0, -1.5, -5.03081, -0.092623, -2.82104 )
+
+[node name="Wall4" parent="Room/Mirrored-Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -14.8999, -0.092623, -2.82104 )
+
+[node name="Wall3" parent="Room/Mirrored-Half-Room/Walls2" instance=ExtResource( 5 )]
+transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -10.108, -0.092623, -2.82104 )
+
+[node name="Corner Wall" type="Spatial" parent="Room/Mirrored-Half-Room/Walls2"]
+
+[node name="Wall" parent="Room/Mirrored-Half-Room/Walls2/Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+
+[node name="StaticBody" parent="Room/Mirrored-Half-Room/Walls2/Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 2.03258, -2.57275 )
+
+[node name="Mirrored Corner Wall" type="Spatial" parent="Room/Mirrored-Half-Room/Walls2"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.3623, 0, 0.280213 )
+
+[node name="Wall2" parent="Room/Mirrored-Half-Room/Walls2/Mirrored Corner Wall" instance=ExtResource( 5 )]
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.009, 0.271848 )
+
+[node name="Border Wall" parent="Room/Mirrored-Half-Room/Walls2/Mirrored Corner Wall" instance=ExtResource( 4 )]
+transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -4.76837e-07, 2.0343, 3.14875 )
+
+[node name="Ceiling" type="Spatial" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05551, 0.548176 )
+
+[node name="High Ceiling" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0916653, 0.208534, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -5.92645, 3.2166, -0.331017 )
+
+[node name="Light2" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -8.1028, 3.2166, -0.331017 )
+
+[node name="Ceiling2" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, 1.18735 )
+
+[node name="Ceiling3" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, -1.8543 )
+
+[node name="Ceiling5" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, 1.18735 )
+
+[node name="Ceiling6" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, -1.8543 )
+
+[node name="Ceiling8" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, 1.18735 )
+
+[node name="Ceiling9" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, -1.8543 )
+
+[node name="Ceiling10" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, 1.18735 )
+
+[node name="Ceiling11" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, -1.8543 )
+
+[node name="Light3" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -14.9156, 3.2166, -0.331017 )
+
+[node name="Light4" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -17.0919, 3.2166, -0.331017 )
+
+[node name="Ceiling4" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, 1.18735 )
+
+[node name="Ceiling7" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, -1.8543 )
+
+[node name="Ceiling12" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, 1.18735 )
+
+[node name="Ceiling13" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, -1.8543 )
+
+[node name="Ceiling14" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, 1.18735 )
+
+[node name="Ceiling15" parent="Room/Ceiling/High Ceiling" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
+
+[node name="High Ceiling2" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0916653, 0.208534, 6.06113 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -5.92645, 3.2166, -0.331017 )
+
+[node name="Light2" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -8.1028, 3.2166, -0.331017 )
+
+[node name="Ceiling2" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, 1.18735 )
+
+[node name="Ceiling3" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, -1.8543 )
+
+[node name="Ceiling5" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, 1.18735 )
+
+[node name="Ceiling6" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, -1.8543 )
+
+[node name="Ceiling8" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, 1.18735 )
+
+[node name="Ceiling9" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, -1.8543 )
+
+[node name="Ceiling10" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, 1.18735 )
+
+[node name="Ceiling11" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, -1.8543 )
+
+[node name="Light3" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -14.9156, 3.2166, -0.331017 )
+
+[node name="Light4" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -17.0919, 3.2166, -0.331017 )
+
+[node name="Ceiling4" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, 1.18735 )
+
+[node name="Ceiling7" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, -1.8543 )
+
+[node name="Ceiling12" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, 1.18735 )
+
+[node name="Ceiling13" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, -1.8543 )
+
+[node name="Ceiling14" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, 1.18735 )
+
+[node name="Ceiling15" parent="Room/Ceiling/High Ceiling2" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
+
+[node name="High Ceiling3" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0916653, 0.208534, 12.1277 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -5.92645, 3.2166, -0.331017 )
+
+[node name="Light2" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -8.1028, 3.2166, -0.331017 )
+
+[node name="Ceiling3" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, -1.8543 )
+
+[node name="Ceiling6" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, -1.8543 )
+
+[node name="Ceiling9" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, -1.8543 )
+
+[node name="Ceiling11" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, -1.8543 )
+
+[node name="Light3" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -14.9156, 3.2166, -0.331017 )
+
+[node name="Light4" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -17.0919, 3.2166, -0.331017 )
+
+[node name="Ceiling7" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, -1.8543 )
+
+[node name="Ceiling13" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, -1.8543 )
+
+[node name="Ceiling15" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 6 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
+
+[node name="Middle" type="Spatial" parent="Room"]
+
+[node name="Walls" type="Spatial" parent="Room/Middle"]
+
+[node name="Wall2" parent="Room/Middle/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.383, 3.16377, 4.30123 )
+
+[node name="Wall" parent="Room/Middle/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -2.54857, 3.16377, 4.53745 )
+
+[node name="Wall3" parent="Room/Middle/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.383, 0.00503254, 4.30123 )
+
+[node name="Floor" type="Spatial" parent="Room/Middle"]
+
+[node name="Long Floor Tile" parent="Room/Middle/Floor" instance=ExtResource( 7 )]
+transform = Transform( -6.99382e-08, 0, 2.5, 0, 2.5, 0, -1.6, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
+
+[node name="Long Floor Tile2" parent="Room/Middle/Floor" instance=ExtResource( 7 )]
+transform = Transform( -6.99382e-08, 0, -2.5, 0, 2.5, 0, 1.6, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
+
+[node name="Big Floor Tile" parent="Room/Middle/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 )
+
+[node name="Big Floor Tile2" parent="Room/Middle/Floor" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -12.8579, -1.61836, 4.40909 )
+
+[node name="Door" type="Spatial" parent="Room/Middle"]
+
+[node name="DoorFrame" parent="Room/Middle/Door" instance=ExtResource( 11 )]
+transform = Transform( -6.33815e-08, 0, 1, 0, 1.3, 0, -1.45, 0, -4.37114e-08, -2.42046, 0.0735401, 4.56038 )
+
+[node name="Door" parent="Room/Middle/Door" instance=ExtResource( 10 )]
+transform = Transform( -7.08124e-08, 0, -1, 0, 1.47, 0, 1.62, 0, -4.37114e-08, -2.64878, -1.15476, 5.44126 )
+script = ExtResource( 9 )
+
+[node name="SwitchButton" parent="Room/Middle/Door" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0823, -1.32631, 4.44365 )
+script = ExtResource( 13 )
+targets_path = [ NodePath("../Door") ]
+
+[node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
+dialog_mode = "MANUAL"
+dialogues = [ "Oh, I am so beautiful...", "This room is very metallic, many light.", "I should look around, or better yet, I should look at myself!", "There's a door, there might be a giant glowing yellow button to open it.", "The door leads to the void, the rest hasn't been implemented yet xoxo." ]
+
+[node name="DialogTrigger2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1324, -1.21511, 4.44237 )
+dialogues = [ "Yay! It opened!" ]
+times = [ 2.0 ]
+
+[node name="CollisionShape" parent="DialogTrigger2" index="0"]
+shape = SubResource( 1 )
+
+[editable path="DialogTrigger2"]

@@ -5,11 +5,16 @@ const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
 const JUMP_POWER = 20
+const COYOTE_TIME = 0.1
 const THROW_STRENGTH = 30.0
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
-const MAX_HEALTH = 100
-const MAX_O2 = 100
+const MAX_HEALTH = 100.0
+const MAX_O2 = 100.0
+const MAX_FALL_SPEED = 45.0
+const MIN_FALL_SPEED = 15.0
+const MAX_FALL_DAMAGE = 100.0
+const PLAYER_NAME = 'Handsome Astronaut'
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")
@@ -25,9 +30,12 @@ onready var gui = get_node("CanvasLayer/InGameGUI")
 var vel = Vector3(0, 0, 0)
 var gravity = 9.8
 var up = Vector3.UP
+var snap = -up
 var backward =	self.transform.basis.z.normalized()
 var current_speed = SPEED
 var insideArea = false
+var coyote_time = 0
+var jumped = false
 var airborne_time = 0
 
 onready var angulo = 0
@@ -64,22 +72,26 @@ var holding_item = false
 var held_item = null
 
 # Variables UI
-var current_hp = MAX_HEALTH
-var current_o2 = MAX_O2
+export var current_hp = MAX_HEALTH
+export var current_o2 = MAX_O2
 
 # VARIABLES EXPERIMENTALES
 var floating = false
 var gravitometro = true
+export var can_use_gravitometer = true setget set_gravitometer_flag
 var dying = false
+var can_fall_damage = true
 var mouse_captured
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	update_bars(0)
 	tpc.make_current()
 	TPmiddleRC.add_exception(self)
 	capture_mouse()
 	mouse_captured = true
 	LevelManager.start_position = get_global_transform().origin
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventJoypadButton:
@@ -94,12 +106,13 @@ func _input(event: InputEvent) -> void:
 				tpc.make_current()
 				h_node = get_node("Gimbal_h_cam_TP")
 				v_node = h_node.get_node("Gimbal_v_cam")
-		elif event.is_action_pressed("gravitometer"):
+		elif event.is_action_pressed("gravitometer") and can_use_gravitometer:
 			gravitometro = not gravitometro
 			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		elif event.is_action_pressed("pause"):
 			release_mouse()
 			$PauseMenu.toggle()
+
 
 func _unhandled_key_input(event):
 	if event is InputEventKey:
@@ -108,16 +121,12 @@ func _unhandled_key_input(event):
 		elif event.pressed and event.scancode == KEY_M:
 			LevelManager.Game.music.stop()
 		# ACTIVAR GRAVITOCOSO CAMBIADO A _INPUT
-#		elif event.pressed and event.scancode == KEY_G:
-#			gravitometro = not gravitometro
-#			get_tree().call_group("GravityParticles", "set_emitting", gravitometro)
 		# CAMBIAR FULLSCREEN CAMBIADO A _INPUT DE GAME.GD
-#		elif event.pressed and event.scancode == KEY_Y:
-#			OS.window_fullscreen = not OS.window_fullscreen
+
 
 func ongrav_movement(delta):
-	vel = move_and_slide(vel, up)
-	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time #+ gravity*GRAVITY_FACTOR*up
+	vel = move_and_slide_with_snap(vel, snap, up, true)
+	var vel_g = gravity*GRAVITY_FACTOR*up*airborne_time
 	
 	var on_floor = downRC.is_colliding()
 	
@@ -142,23 +151,28 @@ func ongrav_movement(delta):
 	if dir_x == 0 and dir_z == 0:
 		anim_state = "Idle"
 	
-#	if vel_g > 0:
-#		anim_state = "Falling"
-	
-	if Input.is_action_just_pressed("jump") and on_floor:
+	if Input.is_action_just_pressed("jump") and (on_floor or coyote_time <= COYOTE_TIME) and not jumped:
+		snap = Vector3.ZERO 
 		vertical_vel *= JUMP_POWER
 		anim_state = "Jumping"
+		jumped = true
+	elif jumped and coyote_time > COYOTE_TIME:
+		jumped = false
 	else:
 		vertical_vel *= 0
+		snap = -up 
 	
 	if on_floor:
+		if airborne_time != 0 and can_fall_damage:
+			fall_damage(airborne_time)
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
 		airborne_time = 0
+		coyote_time = 0
 	else:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
 		airborne_time += delta
-	
-	
+		coyote_time += delta
+		
 	vel = horizontal_vel + vertical_vel - vel_g
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		var horizontal_dir = horizontal_vel - horizontal_vel.project(up*15)
@@ -167,20 +181,12 @@ func ongrav_movement(delta):
 		self.get_node("Model/RotationTest").look_at(horizontal_dir, up)
 
 
-func nograv_movement(delta):
+func nograv_movement(_delta):
 	vel = move_and_slide(vel, up)
 	
-#	var on_floor = downRC.is_colliding()
-	
-#	var dir_z = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-#	var dir_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	#var horizontal_vel2 = h_node.transform.basis.x * dir_x + h_node.transform.basis.z * dir_z
 	backward = v_node.transform.basis.z.normalized()
 	var y_comp = backward.y * Vector3.UP
-#	var x_cam = h_node.transform.basis.x #* dir_x
-	var z_cam = h_node.transform.basis.z #* dir_z
-#	var x_comp = self.transform.basis.x * x_cam.x + self.transform.basis.x * z_cam.x
-#	var z_comp = self.transform.basis.z * x_cam.z + self.transform.basis.z * z_cam.z
+	var z_cam = h_node.transform.basis.z
 	backward = (z_cam + y_comp).normalized()
 	
 	if vel.length() < 10.5:
@@ -188,33 +194,19 @@ func nograv_movement(delta):
 	else:
 		anim_state = "Floating_B"
 	
-	if Input.is_action_just_pressed("throw"):
-		Click_Hold = 1.0
-	elif Input.is_action_pressed("throw"):
-		Click_Hold += delta
-		Click_Hold = min(Click_Hold,MAX_CLICK_HOLD_TIME)
-		#print(Click_Hold)
-	elif Input.is_action_just_released("throw"):
-		vel += backward * Click_Hold
-		Click_Hold = 1.0
-		
-	#print(h_node.transform.basis.x)
-	#if horizontal_vel.length() > 0:
-	#	print(horizontal_vel, horizontal_vel2)
+	if Input.is_action_just_released("throw"):
+		vel += backward
 	
 	var vertical_vel = up.normalized()
 	
-	#if Input.is_action_just_pressed("jump") and on_floor:
-	#	vertical_vel *= JUMP_POWER
-	#else:
 	vertical_vel *= 0
-		
+	
 	vel += vertical_vel
 
 
 func ongrav_rotation_quat(_delta):
 	var basisQuat = Quat(self.transform.basis)
-	var rotBasisQuat = Quat(self.transform.basis.rotated(axis,angulo))
+	var rotBasisQuat = Quat(self.transform.basis.rotated(axis.normalized(),angulo))
 	basisQuat = basisQuat.slerp(rotBasisQuat, 0.1)
 	self.transform.basis = Basis(basisQuat)
 
@@ -268,7 +260,7 @@ func interact():
 				if held_item == casted_interactable:
 					casted_interactable.interact(self)
 			else:
-				anim_state = "Interact"
+#				anim_state = "Interact"
 				casted_interactable.interact(self)
 		elif is_instance_valid(held_item):
 			if held_item.is_in_group("Interactable"):
@@ -279,12 +271,14 @@ func pickup(delta):
 	if Input.is_action_pressed("interact"):
 		var casted_item = get_raycast_elem("Item")
 		if is_instance_valid(casted_item):
-			anim_state = "PickUp1"
+#			anim_state = "PickUp1"
 			E_hold += delta
 			#print(E_hold)
 			if E_hold >= HOLD_TIME:
 				if not holding_item:
 					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))
+					casted_item.add_to_group("Duplicated")
+
 					held_item = casted_item
 					holding_item = true
 					E_hold = 0
@@ -315,7 +309,8 @@ func hotbar_input_handler():
 	if Input.is_action_just_pressed("hotbar_key"):
 		var key = get_slot_key()
 		if holding_item:
-			store(key)
+			if held_item.max_amount > 0:
+				store(key)
 		else:
 			retrieve(key)
 		gui.update_hotbar(inventory)
@@ -328,6 +323,7 @@ func retrieve(key):
 		var item = load(slot['scene_path']).instance()
 		item.set_data_from_dict(slot)
 		item.grab(self.get_node("Model/RotationTest/Placeholder"))
+		item.add_to_group("Duplicated")
 		
 		slot['amount'] -= 1
 		if slot['amount'] == 0:
@@ -453,11 +449,24 @@ func update_bars(delta):
 	gui.update_hp(current_hp/MAX_HEALTH)
 	gui.update_o2(current_o2/MAX_O2)
 
+
+func fall_damage(fall_time):
+	var damage = 0.0
+	var fall_speed = gravity * fall_time
+	if fall_speed > MIN_FALL_SPEED:
+		damage = fall_speed/MAX_FALL_SPEED
+	damage = clamp(damage, 0.0, 1.0) # Daño en valor decimal [0,1]
+	damage *= MAX_FALL_DAMAGE # Daño en valor porcentual
+#	print_debug("Fall speed: ", fall_speed, "Fall damage: ", damage,"%")
+	decrease_hp(damage)
+
+
 func still_alive():
 	return current_hp > 0
 
-func comment(text):
-	gui.show_dialogue(text)
+
+func comment(dialogues: Array, mode: String, times: Array, speaker: String =PLAYER_NAME):
+	gui.show_dialogue(dialogues, mode, times, speaker)
 
 
 func show_info():
@@ -474,6 +483,10 @@ func show_info():
 	
 	if text != 'None':
 		gui.show_info(text, group)
+
+
+func show_save_icon():
+	gui.show_save_icon()
 
 
 func _physics_process(delta):
@@ -511,12 +524,26 @@ func set_anim(state):
 	state_machine.travel(state)
 
 
+func set_inventory(new_inventory):
+	inventory = new_inventory
+
+
 func get_inventory():
 	return inventory
 
 
 func teleport(new_pos):
 	global_transform.origin = new_pos
+
+
+func temporal_gravitometer(time):
+	get_tree().call_group("GravityParticles", "set_emitting", true)
+	yield(get_tree().create_timer(time), "timeout")
+	get_tree().call_group("GravityParticles", "set_emitting", false)
+
+
+func set_gravitometer_flag(valor):
+	can_use_gravitometer = valor
 
 
 func capture_mouse():
@@ -534,7 +561,7 @@ static func compare_floats(a, b, epsilon = FLOAT_EPSILON):
 
 
 static func slot_dict():
-	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':''}
+	return {'amount':0, 'item_name':'empty', 'max_amount':0, 'scene_path':'', 'texture_path':'', 'groups':[]}
 
 
 static func hotbar_dict():

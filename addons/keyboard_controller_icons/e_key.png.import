@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/e_key.png-cbc90401115440509549d8419eeb418f.image"
+
+[deps]
+
+source_file="res://addons/keyboard_controller_icons/e_key.png"
+dest_files=[ "res://.import/e_key.png-cbc90401115440509549d8419eeb418f.image" ]
+
+[params]
+

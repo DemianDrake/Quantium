@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/a_button.png-6f9d06c5843fa32c433c741bb0b4cfa6.image"
+
+[deps]
+
+source_file="res://addons/keyboard_controller_icons/a_button.png"
+dest_files=[ "res://.import/a_button.png-6f9d06c5843fa32c433c741bb0b4cfa6.image" ]
+
+[params]
+

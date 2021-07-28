@@ -14,9 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var nrg = mat.get_emission_energy()
-	print(nrg)
+#	print(nrg)
 	if nrg >= 10 or nrg <= 0:
-		print("energy flux change")
+#		print("energy flux change")
 		nrg_flux *= -1
 	mat.set_emission_energy(nrg + nrg_flux)
 	light.omni_range = nrg + nrg_flux + 7.5

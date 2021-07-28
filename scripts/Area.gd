@@ -1,7 +1,9 @@
 extends Area
 
 export var enabled = true
+export var particles_emitting = false
 export(Array, Array) var gravities
+export var local = false
 
 onready var particles: ParticlesMaterial
 
@@ -16,18 +18,27 @@ const PARTICLE_VRATIO = 7
 func _ready():
 	var _entered_signal = connect("body_entered", self, "on_body_entered")
 	var _exited_signal  = connect("body_exited", self, "on_body_exited")
+	if local:
+		local_grav()
 	set_override()
 	gravities_qty = len(gravities)
 	if get_node_or_null("GravityParticles"):
 		var box_size = $CollisionShape.shape.extents
 		var volume = box_size.x * box_size.y * box_size.z
 		has_particles = true
-		$GravityParticles.emitting = enabled
+		$GravityParticles.emitting = particles_emitting and enabled
 		$GravityParticles.amount = volume * PARTICLE_VRATIO
 		particles = $GravityParticles.process_material
 		particles.gravity = self.gravity_vec * self.gravity
 		particles.emission_box_extents = box_size
 		$GravityParticles.set_visibility_aabb(AABB(- box_size, 2 * box_size))
+	elif get_node_or_null("GravityParticles2"):
+		var volume = 50.0
+		$GravityParticles2.emitting = particles_emitting and enabled
+		$GravityParticles2.amount = volume * PARTICLE_VRATIO
+		particles = $GravityParticles2.process_material
+		particles.gravity = self.gravity_vec * self.gravity
+		
 	
 func on_body_entered(body: Node):
 	bodies.append(body)
@@ -37,6 +48,8 @@ func on_body_entered(body: Node):
 
 func on_body_exited(body: Node):
 	bodies.erase(body)
+	if body.is_in_group("Player"):
+		body.airborne_time = 0
 
 func _physics_process(delta):
 	for body in bodies: 
@@ -66,6 +79,8 @@ func set_grav(index):
 		set_gravity(new_scalar)
 		if has_particles:
 			particles.gravity = new_vector * new_scalar
+		if local:
+			local_grav()
 
 #método 2: recargar cada item. No funcionó
 func update_items():
@@ -78,6 +93,16 @@ func update_items():
 func update_server():
 	var space = PhysicsServer.area_get_space(get_rid())
 	PhysicsServer.area_set_space(get_rid(), space)
+
+
+func local_grav():
+	var global_vec = self.gravity_vec
+	self.gravity_vec = global_vec.x * global_transform.basis.x
+	self.gravity_vec += global_vec.y * global_transform.basis.y
+	self.gravity_vec += global_vec.z * global_transform.basis.z
+	self.gravity_vec = self.gravity_vec.normalized()
+	
+
 
 func button_pressed(mode):
 	if not mode: #false = toggle

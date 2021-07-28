@@ -22,6 +22,10 @@ func grab(node):
 	if is_instance_valid(parent):
 		parent.remove_child(self)
 	node.add_child(self)
+	
+	if item_name == 'Quantium':
+		self.mode = RigidBody.MODE_RIGID
+	
 	#set_translation(Vector3(0, 0, 0))
 	set_transform(Transform.IDENTITY)
 	set_physics_process(false)
@@ -34,6 +38,9 @@ func release():
 	tmp_node.add_child(self)
 	set_physics_process(true)
 	set_global_transform(tmp_transform)
+	if item_name == 'Quantium':
+		self.mode = RigidBody.MODE_STATIC
+	
 
 func get_item_name():
 	return item_name
@@ -51,6 +58,7 @@ func item_data_to_dict(dict):
 	dict['max_amount'] = max_amount
 	dict['scene_path'] = scene_path
 	dict['texture_path'] = texture_path
+	dict['groups'] = get_groups()
 
 
 func set_data_from_dict(dict):
@@ -58,6 +66,8 @@ func set_data_from_dict(dict):
 	max_amount = dict['max_amount']
 	scene_path = dict['scene_path']
 	texture_path = dict['texture_path']
+	for group in dict['groups']:
+		add_to_group(group)
 
 func _on_collision(body: Node) -> void:
 	print(self.name, " collided with ", body.name)

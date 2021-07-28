@@ -23,7 +23,7 @@ func button_sfx():
 
 func _on_NewGame_pressed() -> void:
 	button_sfx()
-	LevelManager.next()
+	LevelManager.change_scene("res://scenes/rooms/tutorial/tutorial.tscn")
 	LevelManager.Game.music_fade_and_change(2, 1)
 
 func _on_LoadGame_pressed() -> void:
