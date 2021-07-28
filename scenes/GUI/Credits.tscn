@@ -55,7 +55,7 @@ __meta__ = {
 [node name="Margin" type="MarginContainer" parent="Content"]
 margin_top = 277.0
 margin_right = 1280.0
-margin_bottom = 3088.0
+margin_bottom = 3851.0
 custom_constants/margin_right = 150
 custom_constants/margin_top = 50
 custom_constants/margin_left = 150
@@ -64,7 +64,7 @@ custom_constants/margin_left = 150
 margin_left = 150.0
 margin_top = 50.0
 margin_right = 1130.0
-margin_bottom = 2811.0
+margin_bottom = 3574.0
 custom_constants/separation = 30
 alignment = 1
 
@@ -253,10 +253,29 @@ custom_fonts/font = ExtResource( 2 )
 text = "Michael (Creazilla)"
 align = 2
 
-[node name="Soundtrack" type="Label" parent="Content/Margin/Body"]
+[node name="Assets Label2" type="Label" parent="Content/Margin/Body"]
 margin_top = 1042.0
 margin_right = 980.0
 margin_bottom = 1201.0
+custom_fonts/font = ExtResource( 2 )
+text = "
+
+Materials Used"
+align = 1
+uppercase = true
+
+[node name="Free Sci-Fi Game Soundtracks2" type="Label" parent="Content/Margin/Body"]
+margin_top = 1231.0
+margin_right = 980.0
+margin_bottom = 1282.0
+custom_fonts/font = ExtResource( 2 )
+text = "Chain Mail by Arnklit (MaterialMaker)"
+align = 1
+
+[node name="Soundtrack" type="Label" parent="Content/Margin/Body"]
+margin_top = 1312.0
+margin_right = 980.0
+margin_bottom = 1471.0
 custom_fonts/font = ExtResource( 2 )
 text = "
 
@@ -265,9 +284,9 @@ align = 1
 uppercase = true
 
 [node name="Assets2" type="HBoxContainer" parent="Content/Margin/Body"]
-margin_top = 1231.0
+margin_top = 1501.0
 margin_right = 980.0
-margin_bottom = 1343.0
+margin_bottom = 1613.0
 custom_constants/separation = 100
 
 [node name="Left" type="VBoxContainer" parent="Content/Margin/Body/Assets2"]
@@ -311,17 +330,52 @@ custom_fonts/font = ExtResource( 2 )
 text = "Shimmering Nebulae"
 
 [node name="Free Sci-Fi Game Soundtracks" type="Label" parent="Content/Margin/Body"]
-margin_top = 1373.0
+margin_top = 1643.0
 margin_right = 980.0
-margin_bottom = 1424.0
+margin_bottom = 1694.0
 custom_fonts/font = ExtResource( 2 )
 text = "Free Sci-Fi Game Soundtracks by VOiD1 Gaming (Itch.io)"
 align = 1
 
-[node name="Font Label" type="Label" parent="Content/Margin/Body"]
-margin_top = 1454.0
+[node name="SFX" type="Label" parent="Content/Margin/Body"]
+margin_top = 1724.0
 margin_right = 980.0
-margin_bottom = 1613.0
+margin_bottom = 1883.0
+custom_fonts/font = ExtResource( 2 )
+text = "
+
+Sound Effects"
+align = 1
+uppercase = true
+
+[node name="Kenney" type="Label" parent="Content/Margin/Body"]
+margin_top = 1913.0
+margin_right = 980.0
+margin_bottom = 1964.0
+custom_fonts/font = ExtResource( 2 )
+text = "Kenney Interface Sounds by Kenney (kenney.nl)"
+align = 1
+
+[node name="Kenney3" type="Label" parent="Content/Margin/Body"]
+margin_top = 1994.0
+margin_right = 980.0
+margin_bottom = 2045.0
+custom_fonts/font = ExtResource( 2 )
+text = "Kenney Impact Sounds by Kenney (kenney.nl)"
+align = 1
+
+[node name="Kenney2" type="Label" parent="Content/Margin/Body"]
+margin_top = 2075.0
+margin_right = 980.0
+margin_bottom = 2126.0
+custom_fonts/font = ExtResource( 2 )
+text = "Kenney Sci-Fi Sounds by Kenney (kenney.nl)"
+align = 1
+
+[node name="Font Label" type="Label" parent="Content/Margin/Body"]
+margin_top = 2156.0
+margin_right = 980.0
+margin_bottom = 2315.0
 custom_fonts/font = ExtResource( 2 )
 text = "
 
@@ -330,17 +384,17 @@ align = 1
 uppercase = true
 
 [node name="Fjalla One" type="Label" parent="Content/Margin/Body"]
-margin_top = 1643.0
+margin_top = 2345.0
 margin_right = 980.0
-margin_bottom = 1694.0
+margin_bottom = 2396.0
 custom_fonts/font = ExtResource( 2 )
 text = "Fjalla One by Sorkin Type"
 align = 1
 
 [node name="Icons Label" type="Label" parent="Content/Margin/Body"]
-margin_top = 1724.0
+margin_top = 2426.0
 margin_right = 980.0
-margin_bottom = 1883.0
+margin_bottom = 2585.0
 custom_fonts/font = ExtResource( 2 )
 text = "
 
@@ -348,18 +402,55 @@ Button Icons Used"
 align = 1
 uppercase = true
 
-[node name="Pixel button prompts" type="Label" parent="Content/Margin/Body"]
-margin_top = 1913.0
+[node name="Assets3" type="HBoxContainer" parent="Content/Margin/Body"]
+margin_top = 2615.0
 margin_right = 980.0
-margin_bottom = 1964.0
+margin_bottom = 2727.0
+custom_constants/separation = 100
+
+[node name="Assets" type="VBoxContainer" parent="Content/Margin/Body/Assets3"]
+margin_right = 473.0
+margin_bottom = 112.0
+custom_constants/separation = 10
+
+[node name="Pixel buttons" type="Label" parent="Content/Margin/Body/Assets3/Assets"]
+margin_right = 473.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 2 )
-text = "Pixel Button Prompts by Retrocade Media (Itch.io)"
-align = 1
+text = "Pixel Button Prompts                "
+
+[node name="Game icons" type="Label" parent="Content/Margin/Body/Assets3/Assets"]
+margin_top = 61.0
+margin_right = 473.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 2 )
+text = "Game Icons"
+
+[node name="Authors" type="VBoxContainer" parent="Content/Margin/Body/Assets3"]
+margin_left = 573.0
+margin_right = 971.0
+margin_bottom = 112.0
+custom_constants/separation = 10
+
+[node name="Retrocade" type="Label" parent="Content/Margin/Body/Assets3/Authors"]
+margin_right = 398.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 2 )
+text = "Retrocade Media (Itch.io)"
+align = 2
+
+[node name="Kenney" type="Label" parent="Content/Margin/Body/Assets3/Authors"]
+margin_top = 61.0
+margin_right = 398.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 2 )
+text = "Kenney (kenney.nl)"
+align = 2
 
 [node name="Thanks Label" type="Label" parent="Content/Margin/Body"]
-margin_top = 1994.0
+margin_top = 2757.0
 margin_right = 980.0
-margin_bottom = 2153.0
+margin_bottom = 2916.0
 custom_fonts/font = ExtResource( 2 )
 text = "
 
@@ -368,9 +459,9 @@ align = 1
 uppercase = true
 
 [node name="Special Thanks" type="VBoxContainer" parent="Content/Margin/Body"]
-margin_top = 2183.0
+margin_top = 2946.0
 margin_right = 980.0
-margin_bottom = 2356.0
+margin_bottom = 3119.0
 custom_constants/separation = 10
 
 [node name="Row 1" type="HBoxContainer" parent="Content/Margin/Body/Special Thanks"]
@@ -427,9 +518,9 @@ text = "Felipe Andino"
 align = 1
 
 [node name="Arbolito games" type="Label" parent="Content/Margin/Body"]
-margin_top = 2386.0
+margin_top = 3149.0
 margin_right = 980.0
-margin_bottom = 2761.0
+margin_bottom = 3524.0
 custom_fonts/font = ExtResource( 2 )
 text = "
 
