@@ -5,13 +5,14 @@ const SPIN = 0.1
 const SPEED = 10
 const RUN_SPEED = 15
 const JUMP_POWER = 20
+const COYOTE_TIME = 0.15
 const THROW_STRENGTH = 30.0
 const PLAYER_GRAVITY_DEFAULT = 9.8
 const GRAVITY_FACTOR = 1.6/9.8
 const MAX_HEALTH = 100.0
 const MAX_O2 = 100.0
-const MAX_FALL_TIME = 4.0
-const MIN_FALL_TIME = 1.5
+const MAX_FALL_SPEED = 45.0
+const MIN_FALL_SPEED = 15.0
 const MAX_FALL_DAMAGE = 100.0
 const PLAYER_NAME = 'Handsome Astronaut'
 
@@ -33,6 +34,8 @@ var snap = -up
 var backward =	self.transform.basis.z.normalized()
 var current_speed = SPEED
 var insideArea = false
+var coyote_time = 0
+var jumped = false
 var airborne_time = 0
 
 onready var angulo = 0
@@ -146,10 +149,13 @@ func ongrav_movement(delta):
 	if dir_x == 0 and dir_z == 0:
 		anim_state = "Idle"
 	
-	if Input.is_action_just_pressed("jump") and on_floor:
+	if Input.is_action_just_pressed("jump") and (on_floor or coyote_time <= COYOTE_TIME) and not jumped:
 		snap = Vector3.ZERO 
 		vertical_vel *= JUMP_POWER
 		anim_state = "Jumping"
+		jumped = true
+	elif jumped and coyote_time > COYOTE_TIME:
+		jumped = false
 	else:
 		vertical_vel *= 0
 		snap = -up 
@@ -159,9 +165,11 @@ func ongrav_movement(delta):
 			fall_damage(airborne_time)
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.4)
 		airborne_time = 0
+		coyote_time = 0
 	else:
 		horizontal_vel = lerp(vel, horizontal_vel * current_speed, 0.1)
 		airborne_time += delta
+		coyote_time += delta
 		
 	vel = horizontal_vel + vertical_vel - vel_g
 	if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
@@ -441,11 +449,12 @@ func update_bars(delta):
 
 func fall_damage(fall_time):
 	var damage = 0.0
-	if fall_time > MIN_FALL_TIME:
-		damage = fall_time/MAX_FALL_TIME
+	var fall_speed = gravity * fall_time
+	if fall_speed > MIN_FALL_SPEED:
+		damage = fall_speed/MAX_FALL_SPEED
 	damage = clamp(damage, 0.0, 1.0) # Daño en valor decimal [0,1]
 	damage *= MAX_FALL_DAMAGE # Daño en valor porcentual
-#	print_debug("Fall time: ", fall_time, "Fall damage: ", damage,"%")
+#	print_debug("Fall speed: ", fall_speed, "Fall damage: ", damage,"%")
 	decrease_hp(damage)
 
 
