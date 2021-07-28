@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scripts/Props/door.gd" type="Script" id=1]
 [ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=2]
@@ -10,11 +10,9 @@
 [ext_resource path="res://scenes/assets/ceiling/ceiling1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/assets/wall/wall_doorframe.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/assets/Buttons/SpecialButton.tscn" type="PackedScene" id=10]
-[ext_resource path="res://skyboxnt/Equirectangular.png" type="Texture" id=11]
 [ext_resource path="res://scenes/assets/floor/floor1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scripts/Puzzles/light_indicator.gd" type="Script" id=14]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scripts/Buttons/SpecialButton.gd" type="Script" id=16]
 [ext_resource path="res://scripts/Buttons/LogicBool.gd" type="Script" id=17]
 [ext_resource path="res://scripts/Buttons/LogicCheck.gd" type="Script" id=18]
@@ -26,96 +24,77 @@
 [ext_resource path="res://scenes/assets/tunnel/mid_section.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/assets/props/Quantium_Item.tscn" type="PackedScene" id=25]
 
-[sub_resource type="PanoramaSky" id=1]
-panorama = ExtResource( 11 )
-
-[sub_resource type="Environment" id=7]
-background_mode = 2
-background_sky = SubResource( 1 )
-fog_depth_curve = 0.435275
-glow_blend_mode = 0
-glow_bicubic_upscale = true
-adjustment_enabled = true
-adjustment_brightness = 0.95
-adjustment_saturation = 1.2
-
-[sub_resource type="SpatialMaterial" id=18]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=19]
-material = SubResource( 18 )
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=20]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=21]
-material = SubResource( 20 )
+[sub_resource type="PlaneMesh" id=6]
+material = SubResource( 5 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=23]
-material = SubResource( 22 )
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=25]
-material = SubResource( 24 )
+[sub_resource type="PlaneMesh" id=10]
+material = SubResource( 9 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=26]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=27]
-material = SubResource( 26 )
+[sub_resource type="PlaneMesh" id=12]
+material = SubResource( 11 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=28]
+[sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=29]
-material = SubResource( 28 )
+[sub_resource type="PlaneMesh" id=14]
+material = SubResource( 13 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="SpatialMaterial" id=15]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=31]
-material = SubResource( 30 )
+[sub_resource type="PlaneMesh" id=16]
+material = SubResource( 15 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=32]
+[sub_resource type="SpatialMaterial" id=17]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=33]
-material = SubResource( 32 )
+[sub_resource type="PlaneMesh" id=18]
+material = SubResource( 17 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=34]
+[sub_resource type="SpatialMaterial" id=19]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=35]
-material = SubResource( 34 )
+[sub_resource type="PlaneMesh" id=20]
+material = SubResource( 19 )
 size = Vector2( 0.14, 0.24 )
 
-[sub_resource type="SpatialMaterial" id=36]
+[sub_resource type="SpatialMaterial" id=21]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=37]
-material = SubResource( 36 )
+[sub_resource type="PlaneMesh" id=22]
+material = SubResource( 21 )
 size = Vector2( 0.14, 0.24 )
 
 [node name="room_5_1" type="Spatial"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
-
-[node name="Player" parent="." instance=ExtResource( 15 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 4 )
 
 [node name="Room" type="Spatial" parent="."]
 __meta__ = {
@@ -540,7 +519,7 @@ light_energy = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 19 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Light2" parent="Puzzle/Lights" instance=ExtResource( 7 )]
@@ -552,7 +531,7 @@ light_energy = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 21 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Light3" parent="Puzzle/Lights" instance=ExtResource( 7 )]
@@ -564,7 +543,7 @@ light_energy = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 23 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Light4" parent="Puzzle/Lights" instance=ExtResource( 7 )]
@@ -577,7 +556,7 @@ light_energy = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 25 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Light5" parent="Puzzle/Lights" instance=ExtResource( 7 )]
@@ -589,7 +568,7 @@ light_energy = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 27 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Logic" type="Spatial" parent="Puzzle"]
@@ -1036,7 +1015,7 @@ state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 29 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="Light2" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
@@ -1046,7 +1025,7 @@ state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 31 )
+mesh = SubResource( 16 )
 material/0 = null
 
 [node name="Light3" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
@@ -1055,7 +1034,7 @@ script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 33 )
+mesh = SubResource( 18 )
 material/0 = null
 
 [node name="Light4" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
@@ -1065,7 +1044,7 @@ state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 35 )
+mesh = SubResource( 20 )
 material/0 = null
 
 [node name="Light5" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
@@ -1075,7 +1054,7 @@ state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 37 )
+mesh = SubResource( 22 )
 material/0 = null
 
 [node name="Logic" type="Spatial" parent="Puzzle2"]
