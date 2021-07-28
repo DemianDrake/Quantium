@@ -14,7 +14,7 @@ script = ExtResource( 1 )
 item_name = "Quantium"
 max_amount = 0
 scene_path = "res://scenes/assets/props/Quantium_Item.tscn"
-description = "Quantium fragment, as beautiful as myself."
+description = "Leaked Quantium. Must put it back in the C.R.O.N.O.S. and handle it with care to avoid further incidents"
 
 [node name="Quantium" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
