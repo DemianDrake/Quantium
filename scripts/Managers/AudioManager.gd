@@ -8,7 +8,8 @@ var song  = [
 ]
 
 var sfx = {
-	'click': preload("res://sfx/kenney_interfacesounds/switch_006.ogg")
+	'click': preload("res://sfx/kenney_interfacesounds/switch_006.ogg"),
+	'alert': preload("res://sfx/sci-fi-sounds/forceField_000.ogg")
 }
 
 var current_song = 0
