@@ -23,6 +23,7 @@ func button_sfx():
 
 func _on_NewGame_pressed() -> void:
 	button_sfx()
+	LevelManager.Game.current_cutscene = 0
 	LevelManager.change_scene("res://scenes/GUI/cutscenes.tscn")
 	LevelManager.Game.music_fade_and_change(2, 2)
 
