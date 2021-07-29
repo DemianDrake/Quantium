@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/assets/wall/wall2.tscn" type="PackedScene" id=2]
+
+[node name="Wall Passage" type="Spatial"]
+
+[node name="Walls" type="Spatial" parent="."]
+
+[node name="Walls Left" type="Spatial" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.798, 3.58152, 0.140074 )
+
+[node name="Complex Wall" type="Spatial" parent="Walls/Walls Left"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0941446 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Left/Complex Wall" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Left/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Left/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Complex Wall2" type="Spatial" parent="Walls/Walls Left"]
+transform = Transform( 1, 0, -2.90254e-22, 0, 1, 0, -3.38024e-22, 0, 1, -4.47278, 0, -0.0941453 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Left/Complex Wall2" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Left/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Left/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Walls Right" type="Spatial" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -13.798, 4.64058, 9.79587 )
+
+[node name="Complex Wall" type="Spatial" parent="Walls/Walls Right"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0941446 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Right/Complex Wall" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Right/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Right/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Complex Wall2" type="Spatial" parent="Walls/Walls Right"]
+transform = Transform( 1, 0, -2.90254e-22, 0, 1, 0, -3.38024e-22, 0, 1, -4.47278, 0, -0.0941453 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Right/Complex Wall2" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Right/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Right/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Walls Down" type="Spatial" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -13.798, 9.01525, 4.43306 )
+
+[node name="Complex Wall" type="Spatial" parent="Walls/Walls Down"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0941446 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Down/Complex Wall" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Down/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Down/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Complex Wall2" type="Spatial" parent="Walls/Walls Down"]
+transform = Transform( 1, 0, -2.90254e-22, 0, 1, 0, -3.38024e-22, 0, 1, -4.47278, 0, -0.0941453 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Down/Complex Wall2" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Down/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Down/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Walls Up" type="Spatial" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.798, -0.800665, 5.51263 )
+
+[node name="Complex Wall" type="Spatial" parent="Walls/Walls Up"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0941446 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Up/Complex Wall" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Up/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Up/Complex Wall" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
+
+[node name="Complex Wall2" type="Spatial" parent="Walls/Walls Up"]
+transform = Transform( 1, 0, -2.90254e-22, 0, 1, 0, -3.38024e-22, 0, 1, -4.47278, 0, -0.0941453 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mid-Top Wall" parent="Walls/Walls Up/Complex Wall2" instance=ExtResource( 1 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.64648, 0.531263, 6.37029 )
+
+[node name="Mid-Bottom Wall" parent="Walls/Walls Up/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.65111, -0.432285, 6.517 )
+
+[node name="Mid-Bottom Wall2" parent="Walls/Walls Up/Complex Wall2" instance=ExtResource( 2 )]
+transform = Transform( 3.27836e-07, -1.31134e-07, -1.5, 1.72861e-07, -1.5, 1.31134e-07, -1.5, -1.72861e-07, -3.27835e-07, -4.63058, 1.51889, 6.517 )
