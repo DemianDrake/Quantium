@@ -22,7 +22,7 @@ func playscene():
 		alert_anim.play("Alert")
 	current += 1
 
-func _process(delta):
+func _process(_delta):
 	if current == -1:
 		return
 	if anim_tree.get_current_node() == "Start":
@@ -30,4 +30,7 @@ func _process(delta):
 		playscene()
 	elif anim_tree.get_current_node() == "Fade to White":
 		alert_anim.stop()
+	elif anim_tree.get_current_node() == "Ended":
+		LevelManager.change_scene("res://scenes/rooms/tutorial/tutorial.tscn")
+		LevelManager.Game.music_fade_and_change(2, 1)
 		current = -1

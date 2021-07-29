@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/assets/floor/floor1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/assets/Buttons/HoldButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/assets/Buttons/radialRedGrad.tres" type="Texture" id=3]
 [ext_resource path="res://scenes/assets/cronos/CRONOS.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/assets/floor/floor3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/assets/wall/wall1.tscn" type="PackedScene" id=6]
@@ -13,17 +13,36 @@
 [ext_resource path="res://scenes/assets/ceiling/ceiling_wall_intersection.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/assets/wall/wall4.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/assets/wall/wall_intersection2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/assets/Buttons/SpecialButton.tscn" type="PackedScene" id=14]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.815686, 0, 0.980392, 1 )
+albedo_texture = ExtResource( 3 )
+uv1_offset = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.815686, 0, 0.980392, 1 )
+albedo_texture = ExtResource( 3 )
+uv1_offset = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true
 
 [node name="Room 06" type="Spatial"]
 
+[node name="SpecialButtonL" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 0 )
+
+[node name="Button" parent="SpecialButtonL/BaseButton" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="SpecialButtonR" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 12, 0 )
+
+[node name="Button" parent="SpecialButtonR/BaseButton" index="0"]
+material/0 = SubResource( 2 )
+
 [node name="CRONOS" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, -2.22045e-16, 0, 2.22045e-16, 1, 0, 0.05, 0 )
-
-[node name="Right CRONOS Button" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 11.8, 0 )
-
-[node name="Left CRONOS Button" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 11.8, 0 )
 
 [node name="Floor" type="Spatial" parent="."]
 
@@ -501,5 +520,9 @@ transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10, 19.697, -29 )
 [node name="06" parent="Ceiling/Background" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -10, 19.697, -29 )
 
+[editable path="SpecialButtonL"]
+[editable path="SpecialButtonL/BaseButton"]
+[editable path="SpecialButtonR"]
+[editable path="SpecialButtonR/BaseButton"]
 [editable path="CRONOS"]
 [editable path="CRONOS/Quantium"]
