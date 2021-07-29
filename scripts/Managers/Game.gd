@@ -16,6 +16,8 @@ var Level_names = [
 	"Final_level"
 	]
 
+var current_cutscene = -1
+
 var current_level = 0
 var current_world: Node = null
 var loading = false
