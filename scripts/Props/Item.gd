@@ -2,6 +2,7 @@ extends RigidBody
 
 # Default values
 var tmp_transform = null
+export var is_duplicate = true
 export var item_name = 'Empty'
 export var max_amount = 10
 export var scene_path = 'res://path/to/scene'
@@ -23,6 +24,9 @@ func grab(node):
 		parent.remove_child(self)
 	node.add_child(self)
 	
+	if is_duplicate:
+		self.add_to_group("Duplicated")
+		
 	if item_name == 'Quantium':
 		self.mode = RigidBody.MODE_RIGID
 	

@@ -11,6 +11,7 @@ radius = 0.5
 "Quantium",
 ]]
 script = ExtResource( 1 )
+is_duplicate = false
 item_name = "Quantium"
 max_amount = 0
 scene_path = "res://scenes/assets/props/Quantium_Item.tscn"
