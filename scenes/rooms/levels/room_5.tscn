@@ -27,7 +27,7 @@ adjustment_saturation = 1.2
 environment = SubResource( 2 )
 
 [node name="CRONOS_passage" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 21, -50 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 20.3572, -50 )
 
 [node name="Room 06" parent="." instance=ExtResource( 1 )]
 

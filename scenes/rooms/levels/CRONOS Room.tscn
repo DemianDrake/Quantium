@@ -567,8 +567,14 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -25.5026 )
 [node name="06" parent="Ceiling/Central" instance=ExtResource( 7 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -32.7832 )
 
+[node name="07" parent="Ceiling/Central" instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -39.8863 )
+
 [node name="09" parent="Ceiling/Central" instance=ExtResource( 7 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -54.4603 )
+
+[node name="11" parent="Ceiling/Central" instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -50.1902 )
 
 [node name="10" parent="Ceiling/Central" instance=ExtResource( 7 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -61.794 )
@@ -594,10 +600,10 @@ transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10, 19.697, -29 )
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -10, 19.697, -29 )
 
 [node name="07" parent="Ceiling/Background" instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 14.5605, 19.697, -43.7856 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10.6879, 19.697, -43.7856 )
 
 [node name="08" parent="Ceiling/Background" instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -14.8801, 19.697, -43.769 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -10.9253, 19.697, -43.769 )
 
 [node name="09" parent="Ceiling/Background" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10, 19.697, -58.3261 )
