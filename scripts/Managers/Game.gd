@@ -1,8 +1,19 @@
 extends Spatial
 
-var Levels = [
-	preload("res://scenes/Main.tscn"),
-	preload("res://scenes/rooms/tutorial/tutorial.tscn")
+var Levels = {
+	"Main" : preload("res://scenes/Main.tscn"),
+	"Intro" : preload("res://scenes/GUI/cutscenes.tscn"),
+	"Tutorial" : preload("res://scenes/rooms/tutorial/tutorial.tscn"),
+	"Tutorial_2" : preload("res://scenes/rooms/tutorial/tutorial_2.tscn"),
+	"Final_level" : preload("res://scenes/rooms/levels/room_5.tscn")
+	}
+
+var Level_names = [
+	"Main",
+	"Intro",
+	"Tutorial",
+	"Tutorial_2",
+	"Final_level"
 	]
 
 var current_level = 0
@@ -15,7 +26,7 @@ onready var sfx  = $Sfx
 
 func _ready():
 	fade.connect("faded", self, "on_faded")
-	current_world = Levels[0].instance()
+	current_world = Levels[Level_names[0]].instance()
 	$World.add_child(current_world)
 	music.stream = AudioManager.play()
 	music.play()
@@ -63,7 +74,7 @@ func on_faded():
 		$World.remove_child(current_world)
 		current_world.queue_free()
 		current_level += 1
-		current_world = Levels[current_level].instance()
+		current_world = Levels[Level_names[current_level]].instance()
 		$World.add_child(current_world)
 		loading = false
 		fade.fade_out()

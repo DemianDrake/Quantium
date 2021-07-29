@@ -70,5 +70,5 @@ func set_data_from_dict(dict):
 		add_to_group(group)
 
 func _on_collision(body: Node) -> void:
-	print(self.name, " collided with ", body.name)
+#	print(self.name, " collided with ", body.name)
 	$CollideSound.play(0.0)

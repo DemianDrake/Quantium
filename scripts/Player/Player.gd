@@ -14,7 +14,7 @@ const MAX_O2 = 100.0
 const MAX_FALL_SPEED = 45.0
 const MIN_FALL_SPEED = 15.0
 const MAX_FALL_DAMAGE = 100.0
-const PLAYER_NAME = 'Handsome Astronaut'
+const PLAYER_NAME = 'Kepler'
 
 # Nodos
 onready var fpc = get_node("Gimbal_h_cam_FP/Gimbal_v_cam/FP Camera")

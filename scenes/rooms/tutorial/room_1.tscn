@@ -375,12 +375,12 @@ targets_path = [ NodePath("../Door") ]
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
 dialog_mode = "MANUAL"
-dialogues = [ "Oh, I am so beautiful...", "This room is very metallic, many light.", "I should look around, or better yet, I should look at myself!", "There's a door, there might be a giant glowing yellow button to open it.", "The door leads to the void, the rest hasn't been implemented yet xoxo." ]
+dialogues = [ "Where am I?... Ugh, I'm hurt...", "I need to get back to C.R.O.N.O.S. and fix it before it's too late...", "But first I need to treat my wounds and get out of this room" ]
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1324, -1.21511, 4.44237 )
-dialogues = [ "Yay! It opened!" ]
-times = [ 2.0 ]
+dialogues = [ "I should move on and look for a medikit", "Remember your training Kepler, first you must pick up a medikit, and then use it" ]
+times = [ 2.0, 0.0 ]
 
 [node name="CollisionShape" parent="DialogTrigger2" index="0"]
 shape = SubResource( 1 )
