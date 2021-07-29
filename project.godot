@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Quantium"
 run/main_scene="res://scenes/Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://addons/logo/icon.png"
 
 [autoload]
 
