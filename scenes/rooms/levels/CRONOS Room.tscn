@@ -426,7 +426,7 @@ transform = Transform( 20, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, 0, 7,
 [node name="Border Wall1" parent="Walls/Right Wall" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 4.24313, 8.46745 )
 
- [node name="Border Wall2" parent="Walls/Right Wall" instance=ExtResource( 6 )]
+[node name="Border Wall2" parent="Walls/Right Wall" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 16.2431, 8.46745 )
 
 [node name="Border Wall3" parent="Walls/Right Wall" instance=ExtResource( 6 )]
