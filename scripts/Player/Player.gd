@@ -277,7 +277,6 @@ func pickup(delta):
 			if E_hold >= HOLD_TIME:
 				if not holding_item:
 					casted_item.grab(self.get_node("Model/RotationTest/Placeholder"))
-					casted_item.add_to_group("Duplicated")
 
 					held_item = casted_item
 					holding_item = true
