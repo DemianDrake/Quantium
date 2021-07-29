@@ -15,8 +15,7 @@ export var current = -1
 var scene = "Scene "
 
 func _ready():
-	# current = LevelManager.Game.current_cutscene
-	current = 6
+	current = LevelManager.Game.current_cutscene
 	anim_tree.stop()
 
 func set_text():
@@ -35,10 +34,10 @@ func set_text():
 func playscene():
 	background.texture.set_current_frame(current - 1)
 	scene = "Scene %d" % current
-	print(scene)
 	anim_tree.travel(scene)
 	if current == 5:
 		alert_anim.play("Alert")
+		return
 	elif current >= 8:
 		set_text()
 	current += 1
@@ -46,17 +45,18 @@ func playscene():
 func _process(_delta):
 	if current == -1:
 		return
-	if current == 6 or current == 0:
-		anim_tree.start("Start")
 	if anim_tree.get_current_node() == "Start":
 		anim_tree.stop()
 		playscene()
 	elif anim_tree.get_current_node() == "Fade to White":
 		alert_anim.stop()
-	elif anim_tree.get_current_node() == "Ended":
+	elif anim_tree.get_current_node() == "Ended" and current < 6:
 		LevelManager.change_scene("res://scenes/rooms/tutorial/tutorial.tscn")
 		LevelManager.Game.music_fade_and_change(2, 1)
 		current = -1
-	elif anim_tree.get_current_node() == "Back to Main Menu":
+	elif anim_tree.get_current_node() == "Ended" and current > 6:
+		LevelManager.Game.music_fade_and_change(2, 0)
 		LevelManager.change_scene("res://scenes/Main.tscn")
 		current = -1
+	if current == 6 or current == 0:
+		anim_tree.start("Start")
