@@ -479,7 +479,10 @@ func show_info():
 	obj = get_raycast_elem("Item")
 	if is_instance_valid(obj):
 		text = obj.get_description()
-		group = "Item"
+		if held_item == obj:
+			group = "Interactable"
+		else:
+			group = "Item"
 	
 	if text != 'None':
 		gui.show_info(text, group)
