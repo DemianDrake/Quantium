@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/assets/lights/light_2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/assets/floor/side_floor1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/assets/floor/floor1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/assets/tunnel/end_section.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/assets/tunnel/window_section.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/assets/lights/light_1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/assets/floor/side_floor2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/assets/props/Quantium_Item.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/assets/tunnel/intersection.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/assets/tunnel/mid_section.tscn" type="PackedScene" id=12]
+
+[node name="Prize" type="Spatial"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="Entrance" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Entrance Tunnel" parent="Entrance" instance=ExtResource( 12 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="Dead End" parent="Entrance" instance=ExtResource( 7 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, -2.97229 )
+
+[node name="Light" parent="Entrance" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.08299, -0.664243 )
+
+[node name="Floor Tile" type="Spatial" parent="Entrance"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Floor Side" parent="Entrance/Floor Tile" instance=ExtResource( 2 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Entrance/Floor Tile" instance=ExtResource( 2 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Entrance/Floor Tile" instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Floor Tile2" type="Spatial" parent="Entrance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Floor Side" parent="Entrance/Floor Tile2" instance=ExtResource( 2 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.6, -1.8, -1 )
+
+[node name="Floor Side2" parent="Entrance/Floor Tile2" instance=ExtResource( 2 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.6, -1.8, -1 )
+
+[node name="Floor" parent="Entrance/Floor Tile2" instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.8, -1 )
+
+[node name="Intersection" type="Spatial" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 4.445 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Frame" parent="Intersection" instance=ExtResource( 11 )]
+
+[node name="Floor Tile" parent="Intersection" instance=ExtResource( 4 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.24, 0.030714 )
+
+[node name="Dead End" type="Spatial" parent="."]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 4.445 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Dead End" parent="Dead End" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.00264 )
+
+[node name="Light" parent="Dead End" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03797, 2.42585 )
+
+[node name="Barrier" parent="Dead End" instance=ExtResource( 9 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.20731, 1.56845 )
+
+[node name="Dead End2" type="Spatial" parent="."]
+transform = Transform( -6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 0, 0, 4.445 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Dead End" parent="Dead End2" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.00264 )
+
+[node name="Light" parent="Dead End2" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03797, 2.42585 )
+
+[node name="Barrier" parent="Dead End2" instance=ExtResource( 9 )]
+transform = Transform( -6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -1.20731, 1.56845 )
+
+[node name="Quantium_Item" parent="." instance=ExtResource( 10 )]

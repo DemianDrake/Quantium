@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scripts/Props/door.gd" type="Script" id=1]
 [ext_resource path="res://scenes/assets/floor/floor2.tscn" type="PackedScene" id=2]
@@ -85,7 +85,63 @@ albedo_color = Color( 0, 0, 0, 1 )
 material = SubResource( 19 )
 size = Vector2( 0.14, 0.24 )
 
-[node name="room_5_1" type="Spatial"]
+[sub_resource type="SpatialMaterial" id=21]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=22]
+material = SubResource( 21 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=24]
+material = SubResource( 23 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=25]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=26]
+material = SubResource( 25 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=27]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=28]
+material = SubResource( 27 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=29]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=30]
+material = SubResource( 29 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=31]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=32]
+material = SubResource( 31 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=33]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=34]
+material = SubResource( 33 )
+size = Vector2( 0.14, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=35]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=36]
+material = SubResource( 35 )
+size = Vector2( 0.14, 0.24 )
+
+[node name="room_5_2" type="Spatial"]
 
 [node name="Room" type="Spatial" parent="."]
 __meta__ = {
@@ -93,6 +149,7 @@ __meta__ = {
 }
 
 [node name="Half-Room" type="Spatial" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.29113 )
 
 [node name="Floor" type="Spatial" parent="Room/Half-Room"]
 
@@ -196,7 +253,7 @@ transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -
 [node name="Corner Wall" type="Spatial" parent="Room/Mirrored-Half-Room/Walls"]
 
 [node name="Wall" parent="Room/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 5 )]
-transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 3.48712 )
 
 [node name="StaticBody" parent="Room/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 4 )]
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
@@ -401,6 +458,66 @@ transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14
 [node name="Ceiling15" parent="Room/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
 transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
 
+[node name="High Ceiling4" type="Spatial" parent="Room/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0916653, 0.208534, -6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -5.92645, 3.2166, -0.331017 )
+
+[node name="Light2" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -8.1028, 3.2166, -0.331017 )
+
+[node name="Ceiling2" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, 1.18735 )
+
+[node name="Ceiling3" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, -1.8543 )
+
+[node name="Ceiling5" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, 1.18735 )
+
+[node name="Ceiling6" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, -1.8543 )
+
+[node name="Ceiling8" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, 1.18735 )
+
+[node name="Ceiling9" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, -1.8543 )
+
+[node name="Ceiling10" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, 1.18735 )
+
+[node name="Ceiling11" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, -1.8543 )
+
+[node name="Light3" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -14.9156, 3.2166, -0.331017 )
+
+[node name="Light4" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -17.0919, 3.2166, -0.331017 )
+
+[node name="Ceiling4" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, 1.18735 )
+
+[node name="Ceiling7" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, -1.8543 )
+
+[node name="Ceiling12" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, 1.18735 )
+
+[node name="Ceiling13" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, -1.8543 )
+
+[node name="Ceiling14" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, 1.18735 )
+
+[node name="Ceiling15" parent="Room/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
+
 [node name="Middle" type="Spatial" parent="Room"]
 
 [node name="Walls" type="Spatial" parent="Room/Middle"]
@@ -414,10 +531,10 @@ transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -
 [node name="Floor" type="Spatial" parent="Room/Middle"]
 
 [node name="Long Floor Tile" parent="Room/Middle/Floor" instance=ExtResource( 6 )]
-transform = Transform( -6.99382e-08, 0, 2.5, 0, 2.5, 0, -1.6, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
+transform = Transform( -7.43094e-08, 0, 2.5, 0, 2.5, 0, -1.7, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
 
 [node name="Long Floor Tile2" parent="Room/Middle/Floor" instance=ExtResource( 6 )]
-transform = Transform( -6.99382e-08, 0, -2.5, 0, 2.5, 0, 1.6, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
+transform = Transform( -7.43094e-08, 0, -2.5, 0, 2.5, 0, 1.7, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
 
 [node name="Big Floor Tile" parent="Room/Middle/Floor" instance=ExtResource( 2 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 )
@@ -437,7 +554,7 @@ transform = Transform( -7.08124e-08, 0, 1, 0, 1.47, 0, -1.62, 0, -4.37114e-08, -
 script = ExtResource( 1 )
 
 [node name="Door2" type="Spatial" parent="Room/Middle/Doors"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -20, 0, 8.89801 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -20, 0, 14.196 )
 
 [node name="DoorFrame" parent="Room/Middle/Doors/Door2" instance=ExtResource( 9 )]
 transform = Transform( -6.33815e-08, 0, 1, 0, 1.3, 0, -1.45, 0, -4.37114e-08, -2.42046, 0.0735401, 4.56038 )
@@ -446,56 +563,95 @@ transform = Transform( -6.33815e-08, 0, 1, 0, 1.3, 0, -1.45, 0, -4.37114e-08, -2
 transform = Transform( 1.22307e-07, 0, -1, 0, 1.47, 0, 1.62, 0, 7.54979e-08, -2.39801, -1.15476, 5.46096 )
 script = ExtResource( 1 )
 
+[node name="Middle2" type="Spatial" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28325 )
+
+[node name="Walls" type="Spatial" parent="Room/Middle2"]
+
+[node name="Wall2" parent="Room/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.383, 3.16377, 4.30123 )
+
+[node name="Wall4" parent="Room/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.3635, -0.00537005, 4.30123 )
+
+[node name="Wall" parent="Room/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -2.54857, 3.16377, 4.53745 )
+
+[node name="Wall3" parent="Room/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -2.54857, -0.00828421, 4.53745 )
+
+[node name="Floor" type="Spatial" parent="Room/Middle2"]
+
+[node name="Long Floor Tile" parent="Room/Middle2/Floor" instance=ExtResource( 6 )]
+transform = Transform( -7.43094e-08, 0, 2.5, 0, 2.5, 0, -1.7, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
+
+[node name="Long Floor Tile2" parent="Room/Middle2/Floor" instance=ExtResource( 6 )]
+transform = Transform( -7.43094e-08, 0, -2.5, 0, 2.5, 0, 1.7, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
+
+[node name="Big Floor Tile" parent="Room/Middle2/Floor" instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 )
+
+[node name="Big Floor Tile2" parent="Room/Middle2/Floor" instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -12.8579, -1.61836, 4.40909 )
+
 [node name="Puzzle" type="Spatial" parent="."]
 
 [node name="Buttons" type="Spatial" parent="Puzzle"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -1.4, 4.5 )
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11, -1.4, -1.72721 )
 
-[node name="SpecialButton" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6 )
+[node name="SpecialButtonR3" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.58579, 0, 4.58579 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic2") ]
+targets_path = [ NodePath("../../Lights/Light7"), NodePath("../../Lights/Light8"), NodePath("../../Lights/Light9"), NodePath("../../Logic/Logic7"), NodePath("../../Logic/Logic8"), NodePath("../../Logic/Logic9") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton2" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+[node name="SpecialButtonR2" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.707106, 0, 2.29289 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light2"), NodePath("../../Lights/Light"), NodePath("../../Lights/Light3"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic3") ]
+targets_path = [ NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light6"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic6") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton3" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+[node name="SpecialButtonR1" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3, 0, 0 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light3"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light4"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic3"), NodePath("../../Logic/Logic4") ]
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic3") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton4" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+[node name="SpecialButtonC3" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3, 0, -3 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light4"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light5"), NodePath("../../Logic/Logic3"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic5") ]
+targets_path = [ NodePath("../../Lights/Light3"), NodePath("../../Lights/Light6"), NodePath("../../Lights/Light9"), NodePath("../../Logic/Logic3"), NodePath("../../Logic/Logic6"), NodePath("../../Logic/Logic9") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton5" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6 )
+[node name="SpecialButtonC2" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.707105, 0, -5.29289 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light5"), NodePath("../../Lights/Light4"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic5") ]
+targets_path = [ NodePath("../../Lights/Light2"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light8"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic8") ]
+group_allowed = "Player"
+mode = false
+resetable = true
+
+[node name="SpecialButtonC1" parent="Puzzle/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.58579, 0, -7.58578 )
+script = ExtResource( 16 )
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light7"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic7") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
 [node name="Lights" type="Spatial" parent="Puzzle"]
-transform = Transform( -2.62268e-07, 2, 0, -6, -8.74228e-08, 0, 0, 0, 4, -17.3185, 1, 4.5 )
+transform = Transform( 6, -1.56319e-13, 0, 3.12639e-13, 3, 0, 0, 0, 4, -12.3185, -1.4627, -1.5 )
 
 [node name="Light" parent="Puzzle/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, -0.125327, 0, 1.56498 )
 script = ExtResource( 14 )
 state = 1
 
@@ -514,8 +670,9 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Light2" parent="Puzzle/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166667, 0, 0.75 )
+transform = Transform( 1, -3.38813e-21, 0, 1.35525e-20, 1, 0, 0, 0, 1, -0.125327, 0, 0.75 )
 script = ExtResource( 14 )
+state = 1
 
 [node name="OmniLight" parent="Puzzle/Lights/Light2" index="2"]
 light_energy = 0.0
@@ -526,7 +683,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Light3" parent="Puzzle/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333333, 0, 0 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, -0.125326, 0, -0.0526463 )
 script = ExtResource( 14 )
 
 [node name="OmniLight" parent="Puzzle/Lights/Light3" index="2"]
@@ -538,9 +695,14 @@ mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Light4" parent="Puzzle/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166667, 0, -0.75 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.399009, 0, 1.56498 )
 script = ExtResource( 14 )
-state = 1
+
+[node name="SolidEffect_Wide" parent="Puzzle/Lights/Light4/Mesh/Spatial" index="1"]
+transform = Transform( 0.17, -1.32349e-23, 0, 0, -1.00536e-08, 1, 0, -0.23, -4.37114e-08, 0, -0.00657177, 0 )
+
+[node name="SolidEffect_Corner_RB" parent="Puzzle/Lights/Light4/Mesh/Spatial" index="3"]
+transform = Transform( 0.0866026, 0.025, 2.18557e-08, 8.88178e-16, -2.18557e-09, 1, 0.05, -0.0433013, -3.78552e-08, 0.032295, 0, 0.101956 )
 
 [node name="OmniLight" parent="Puzzle/Lights/Light4" index="2"]
 light_energy = 0.0
@@ -551,7 +713,7 @@ mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Light5" parent="Puzzle/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.399009, 0, 0.75 )
 script = ExtResource( 14 )
 
 [node name="OmniLight" parent="Puzzle/Lights/Light5" index="2"]
@@ -562,52 +724,131 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
 mesh = SubResource( 10 )
 material/0 = null
 
+[node name="Light6" parent="Puzzle/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.39901, 0, -0.0526463 )
+script = ExtResource( 14 )
+state = 1
+
+[node name="OmniLight" parent="Puzzle/Lights/Light6" index="2"]
+light_energy = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="Light7" parent="Puzzle/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, 1.56498 )
+script = ExtResource( 14 )
+
+[node name="SolidEffect_Wide" parent="Puzzle/Lights/Light7/Mesh/Spatial" index="1"]
+transform = Transform( 0.17, -1.32349e-23, 0, 0, -1.00536e-08, 1, 0, -0.23, -4.37114e-08, 0, -0.00657177, 0 )
+
+[node name="SolidEffect_Corner_RB" parent="Puzzle/Lights/Light7/Mesh/Spatial" index="3"]
+transform = Transform( 0.0866026, 0.025, 2.18557e-08, 8.88178e-16, -2.18557e-09, 1, 0.05, -0.0433013, -3.78552e-08, 0.032295, 0, 0.101956 )
+
+[node name="OmniLight" parent="Puzzle/Lights/Light7" index="2"]
+light_energy = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="Light8" parent="Puzzle/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, 0.75 )
+script = ExtResource( 14 )
+
+[node name="OmniLight" parent="Puzzle/Lights/Light8" index="2"]
+light_energy = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="Light9" parent="Puzzle/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, -0.0526463 )
+script = ExtResource( 14 )
+state = 1
+
+[node name="OmniLight" parent="Puzzle/Lights/Light9" index="2"]
+light_energy = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle/Lights/Light9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 18 )
+material/0 = null
+
 [node name="Logic" type="Spatial" parent="Puzzle"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1 )
 
 [node name="Logic" type="Spatial" parent="Puzzle/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05953, 0, 3.78911 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
 [node name="Logic2" type="Spatial" parent="Puzzle/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2 )
-script = ExtResource( 17 )
-targets_path = [ NodePath("../Checker") ]
-
-[node name="Logic3" type="Spatial" parent="Puzzle/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1 )
-script = ExtResource( 17 )
-targets_path = [ NodePath("../Checker") ]
-
-[node name="Logic4" type="Spatial" parent="Puzzle/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04542, 0, 0.516603 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
-[node name="Logic5" type="Spatial" parent="Puzzle/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6 )
+[node name="Logic3" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09183, 0, -2.64984 )
 script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic4" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0595341, 0, 3.78911 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic5" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454159, 0, 0.516603 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic6" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918283, 0, -2.64984 )
+script = ExtResource( 17 )
+this_bool = true
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic7" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36529, 0, 3.78911 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic8" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37941, 0, 0.516603 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic9" type="Spatial" parent="Puzzle/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.333, 0, -2.64984 )
+script = ExtResource( 17 )
+this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
 [node name="Checker" type="Spatial" parent="Puzzle/Logic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 script = ExtResource( 18 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../../Room/Middle/Doors/Door2/Door") ]
-previous_path = [ NodePath("../Logic"), NodePath("../Logic2"), NodePath("../Logic3"), NodePath("../Logic4"), NodePath("../Logic5") ]
-expected_state = [ true, true, true, true, true ]
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light6"), NodePath("../../Lights/Light7"), NodePath("../../Lights/Light8"), NodePath("../../Lights/Light9"), NodePath("../../../Room/Middle/Doors/Door2/Door") ]
+previous_path = [ NodePath("../Logic"), NodePath("../Logic2"), NodePath("../Logic3"), NodePath("../Logic4"), NodePath("../Logic5"), NodePath("../Logic6"), NodePath("../Logic7"), NodePath("../Logic8"), NodePath("../Logic9") ]
+expected_state = [ true, true, true, true, true, true, true, true, true ]
 override_mode = true
 override_value = true
 
 [node name="Room2" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1713, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Half-Room" type="Spatial" parent="Room2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.29113 )
 
 [node name="Floor" type="Spatial" parent="Room2/Half-Room"]
 
@@ -711,7 +952,7 @@ transform = Transform( -1.6, 0, -2.26494e-07, 0, 1.5, 0, 2.41593e-07, 0, -1.5, -
 [node name="Corner Wall" type="Spatial" parent="Room2/Mirrored-Half-Room/Walls"]
 
 [node name="Wall" parent="Room2/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 5 )]
-transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.54857, -0.00882871, 0.212436 )
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, -2.58974, -0.00882871, 3.49518 )
 
 [node name="StaticBody" parent="Room2/Mirrored-Half-Room/Walls/Corner Wall" instance=ExtResource( 4 )]
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, -2.53595, 0.702283, -2.57275 )
@@ -720,7 +961,7 @@ transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.3623, 0, 0.280213 )
 
 [node name="Wall2" parent="Room2/Mirrored-Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 5 )]
-transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.009, 0.271848 )
+transform = Transform( -6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0.0286808, -0.009, -2.97839 )
 
 [node name="Border Wall" parent="Room2/Mirrored-Half-Room/Walls/Mirrored Corner Wall" instance=ExtResource( 4 )]
 transform = Transform( -1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, 0, 0.702, 3.14875 )
@@ -916,6 +1157,66 @@ transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14
 [node name="Ceiling15" parent="Room2/Ceiling/High Ceiling3" instance=ExtResource( 8 )]
 transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
 
+[node name="High Ceiling4" type="Spatial" parent="Room2/Ceiling"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0916653, 0.208534, -6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -5.92645, 3.2166, -0.331017 )
+
+[node name="Light2" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -8.1028, 3.2166, -0.331017 )
+
+[node name="Ceiling2" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, 1.18735 )
+
+[node name="Ceiling3" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -3.56523, 3.33974, -1.8543 )
+
+[node name="Ceiling5" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, 1.18735 )
+
+[node name="Ceiling6" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -5.80823, 3.33974, -1.8543 )
+
+[node name="Ceiling8" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, 1.18735 )
+
+[node name="Ceiling9" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -8.04781, 3.33974, -1.8543 )
+
+[node name="Ceiling10" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, 1.18735 )
+
+[node name="Ceiling11" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -10.2998, 3.33974, -1.8543 )
+
+[node name="Light3" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -14.9156, 3.2166, -0.331017 )
+
+[node name="Light4" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -17.0919, 3.2166, -0.331017 )
+
+[node name="Ceiling4" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, 1.18735 )
+
+[node name="Ceiling7" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -12.5544, 3.33974, -1.8543 )
+
+[node name="Ceiling12" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, 1.18735 )
+
+[node name="Ceiling13" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -14.7974, 3.33974, -1.8543 )
+
+[node name="Ceiling14" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, 1.18735 )
+
+[node name="Ceiling15" parent="Room2/Ceiling/High Ceiling4" instance=ExtResource( 8 )]
+transform = Transform( 1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, -17.037, 3.33974, -1.8543 )
+
 [node name="Middle" type="Spatial" parent="Room2"]
 
 [node name="Walls" type="Spatial" parent="Room2/Middle"]
@@ -929,10 +1230,10 @@ transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -
 [node name="Floor" type="Spatial" parent="Room2/Middle"]
 
 [node name="Long Floor Tile" parent="Room2/Middle/Floor" instance=ExtResource( 6 )]
-transform = Transform( -6.99382e-08, 0, 2.5, 0, 2.5, 0, -1.6, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
+transform = Transform( -7.43094e-08, 0, 2.5, 0, 2.5, 0, -1.7, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
 
 [node name="Long Floor Tile2" parent="Room2/Middle/Floor" instance=ExtResource( 6 )]
-transform = Transform( -6.99382e-08, 0, -2.5, 0, 2.5, 0, 1.6, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
+transform = Transform( -7.43094e-08, 0, -2.5, 0, 2.5, 0, 1.7, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
 
 [node name="Big Floor Tile" parent="Room2/Middle/Floor" instance=ExtResource( 2 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 )
@@ -940,142 +1241,245 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 
 [node name="Big Floor Tile2" parent="Room2/Middle/Floor" instance=ExtResource( 2 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -12.8579, -1.61836, 4.40909 )
 
-[node name="Door" type="Spatial" parent="Room2/Middle"]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -19.8287, 0, 8.89746 )
+[node name="Doors" type="Spatial" parent="Room2/Middle"]
 
-[node name="DoorFrame" parent="Room2/Middle/Door" instance=ExtResource( 9 )]
+[node name="Door2" type="Spatial" parent="Room2/Middle/Doors"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -20, 0, 13.898 )
+
+[node name="DoorFrame" parent="Room2/Middle/Doors/Door2" instance=ExtResource( 9 )]
 transform = Transform( -6.33815e-08, 0, 1, 0, 1.3, 0, -1.45, 0, -4.37114e-08, -2.42046, 0.0735401, 4.56038 )
 
-[node name="Door" parent="Room2/Middle/Door" instance=ExtResource( 3 )]
+[node name="Door" parent="Room2/Middle/Doors/Door2" instance=ExtResource( 3 )]
 transform = Transform( 1.22307e-07, 0, -1, 0, 1.47, 0, 1.62, 0, 7.54979e-08, -2.39801, -1.15476, 5.46096 )
 script = ExtResource( 1 )
 
+[node name="Middle2" type="Spatial" parent="Room2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28325 )
+
+[node name="Walls" type="Spatial" parent="Room2/Middle2"]
+
+[node name="Wall2" parent="Room2/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.383, 3.16377, 4.30123 )
+
+[node name="Wall4" parent="Room2/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, -1.6, 0, 1.6, 0, 1.3, 0, -6.99382e-08, -17.3635, -0.00537005, 4.30123 )
+
+[node name="Wall" parent="Room2/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -2.54857, 3.16377, 4.53745 )
+
+[node name="Wall3" parent="Room2/Middle2/Walls" instance=ExtResource( 5 )]
+transform = Transform( -5.68248e-08, 0, 1.6, 0, 1.6, 0, -1.3, 0, -6.99382e-08, -2.54857, -0.00828421, 4.53745 )
+
+[node name="Floor" type="Spatial" parent="Room2/Middle2"]
+
+[node name="Long Floor Tile" parent="Room2/Middle2/Floor" instance=ExtResource( 6 )]
+transform = Transform( -7.43094e-08, 0, 2.5, 0, 2.5, 0, -1.7, 0, -1.09278e-07, -3.35969, -1.62447, 4.39991 )
+
+[node name="Long Floor Tile2" parent="Room2/Middle2/Floor" instance=ExtResource( 6 )]
+transform = Transform( -7.43094e-08, 0, -2.5, 0, 2.5, 0, 1.7, 0, -1.09278e-07, -16.5743, -1.62447, 4.39991 )
+
+[node name="Big Floor Tile" parent="Room2/Middle2/Floor" instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -7.17658, -1.61836, 4.40909 )
+
+[node name="Big Floor Tile2" parent="Room2/Middle2/Floor" instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 2.2, -12.8579, -1.61836, 4.40909 )
+
 [node name="Puzzle2" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1363, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23, 0, 11 )
 
 [node name="Buttons" type="Spatial" parent="Puzzle2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -1.4, 4.5 )
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11, -1.4, -1.72721 )
 
-[node name="SpecialButton" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6 )
+[node name="SpecialButtonD1" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2.98936, 0, -8.98936 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light4"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic4") ]
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light9"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic9") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton2" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+[node name="SpecialButtonD2" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4.45559, 0, -1.45559 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light5"), NodePath("../../Lights/Light"), NodePath("../../Lights/Light3"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic3") ]
+targets_path = [ NodePath("../../Lights/Light7"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light3"), NodePath("../../Logic/Logic7"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic3") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton3" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+[node name="SpecialButtonC2" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.707105, 0, -5.29289 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light3"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light4"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic3"), NodePath("../../Logic/Logic4") ]
+targets_path = [ NodePath("../../Lights/Light2"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light8"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic8") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton4" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+[node name="SpecialButtonR2" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.707106, 0, 2.29289 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light5"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic5") ]
+targets_path = [ NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light6"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic6") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
-[node name="SpecialButton5" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6 )
+[node name="SpecialButtonSquareUL" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.09352, 0, -3.7862 )
 script = ExtResource( 16 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic3") ]
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light5"), NodePath("../../Logic/Logic"), NodePath("../../Logic/Logic4"), NodePath("../../Logic/Logic2"), NodePath("../../Logic/Logic5") ]
+group_allowed = "Player"
+mode = false
+resetable = true
+
+[node name="SpecialButtonSquareDR" parent="Puzzle2/Buttons" instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.07582, 0, 0.792875 )
+script = ExtResource( 16 )
+targets_path = [ NodePath("../../Lights/Light5"), NodePath("../../Lights/Light8"), NodePath("../../Lights/Light9"), NodePath("../../Lights/Light6"), NodePath("../../Logic/Logic8"), NodePath("../../Logic/Logic9"), NodePath("../../Logic/Logic5"), NodePath("../../Logic/Logic6") ]
 group_allowed = "Player"
 mode = false
 resetable = true
 
 [node name="Lights" type="Spatial" parent="Puzzle2"]
-transform = Transform( -2.62268e-07, 2, 0, -6, -8.74228e-08, 0, 0, 0, 4, -17.3185, 1, 4.5 )
+transform = Transform( 6, -1.56319e-13, 0, 3.12639e-13, 3, 0, 0, 0, 4, -12.3185, -1.4627, -1.5 )
 
 [node name="Light" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, -0.125327, 0, 1.56498 )
 script = ExtResource( 14 )
 state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 12 )
+mesh = SubResource( 20 )
 material/0 = null
 
 [node name="Light2" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166667, 0, 0.75 )
+transform = Transform( 1, -3.38813e-21, 0, 1.35525e-20, 1, 0, 0, 0, 1, -0.125327, 0, 0.75 )
 script = ExtResource( 14 )
 state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 14 )
+mesh = SubResource( 22 )
 material/0 = null
 
 [node name="Light3" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333333, 0, 0 )
-script = ExtResource( 14 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 16 )
-material/0 = null
-
-[node name="Light4" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166667, 0, -0.75 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, -0.125326, 0, -0.0526463 )
 script = ExtResource( 14 )
 state = 1
 
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 24 )
+material/0 = null
+
+[node name="Light4" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.399009, 0, 1.56498 )
+script = ExtResource( 14 )
+
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 18 )
+mesh = SubResource( 26 )
 material/0 = null
 
 [node name="Light5" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.399009, 0, 0.75 )
 script = ExtResource( 14 )
 state = 1
 
 [node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
-mesh = SubResource( 20 )
+mesh = SubResource( 28 )
+material/0 = null
+
+[node name="Light6" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.39901, 0, -0.0526463 )
+script = ExtResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 30 )
+material/0 = null
+
+[node name="Light7" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, 1.56498 )
+script = ExtResource( 14 )
+state = 1
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 32 )
+material/0 = null
+
+[node name="Light8" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, 0.75 )
+script = ExtResource( 14 )
+state = 1
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 34 )
+material/0 = null
+
+[node name="Light9" parent="Puzzle2/Lights" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.01644e-20, 0, 4.06576e-20, 1, 0, 0, 0, 1, 0.949836, 0, -0.0526463 )
+script = ExtResource( 14 )
+state = 1
+
+[node name="MeshInstance" type="MeshInstance" parent="Puzzle2/Lights/Light9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122585, 0 )
+mesh = SubResource( 36 )
 material/0 = null
 
 [node name="Logic" type="Spatial" parent="Puzzle2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1 )
 
 [node name="Logic" type="Spatial" parent="Puzzle2/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05953, 0, 3.78911 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
 [node name="Logic2" type="Spatial" parent="Puzzle2/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04542, 0, 0.516603 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
 [node name="Logic3" type="Spatial" parent="Puzzle2/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1 )
-script = ExtResource( 17 )
-targets_path = [ NodePath("../Checker") ]
-
-[node name="Logic4" type="Spatial" parent="Puzzle2/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09183, 0, -2.64984 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
 
+[node name="Logic4" type="Spatial" parent="Puzzle2/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0595341, 0, 3.78911 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
 [node name="Logic5" type="Spatial" parent="Puzzle2/Logic"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0454159, 0, 0.516603 )
+script = ExtResource( 17 )
+this_bool = true
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic6" type="Spatial" parent="Puzzle2/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918283, 0, -2.64984 )
+script = ExtResource( 17 )
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic7" type="Spatial" parent="Puzzle2/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36529, 0, 3.78911 )
+script = ExtResource( 17 )
+this_bool = true
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic8" type="Spatial" parent="Puzzle2/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37941, 0, 0.516603 )
+script = ExtResource( 17 )
+this_bool = true
+targets_path = [ NodePath("../Checker") ]
+
+[node name="Logic9" type="Spatial" parent="Puzzle2/Logic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.333, 0, -2.64984 )
 script = ExtResource( 17 )
 this_bool = true
 targets_path = [ NodePath("../Checker") ]
@@ -1083,9 +1487,9 @@ targets_path = [ NodePath("../Checker") ]
 [node name="Checker" type="Spatial" parent="Puzzle2/Logic"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 script = ExtResource( 18 )
-targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../../Room2/Middle/Door/Door") ]
-previous_path = [ NodePath("../Logic"), NodePath("../Logic2"), NodePath("../Logic3"), NodePath("../Logic4"), NodePath("../Logic5") ]
-expected_state = [ true, true, true, true, true ]
+targets_path = [ NodePath("../../Lights/Light"), NodePath("../../Lights/Light2"), NodePath("../../Lights/Light3"), NodePath("../../Lights/Light4"), NodePath("../../Lights/Light5"), NodePath("../../Lights/Light6"), NodePath("../../Lights/Light7"), NodePath("../../Lights/Light8"), NodePath("../../Lights/Light9"), NodePath("../../../Room2/Middle/Doors/Door2/Door") ]
+previous_path = [ NodePath("../Logic"), NodePath("../Logic2"), NodePath("../Logic3"), NodePath("../Logic4"), NodePath("../Logic5"), NodePath("../Logic6"), NodePath("../Logic7"), NodePath("../Logic8"), NodePath("../Logic9") ]
+expected_state = [ true, true, true, true, true, true, true, true, true ]
 override_mode = true
 override_value = true
 
@@ -1094,3 +1498,7 @@ override_value = true
 [editable path="Puzzle/Lights/Light3"]
 [editable path="Puzzle/Lights/Light4"]
 [editable path="Puzzle/Lights/Light5"]
+[editable path="Puzzle/Lights/Light6"]
+[editable path="Puzzle/Lights/Light7"]
+[editable path="Puzzle/Lights/Light8"]
+[editable path="Puzzle/Lights/Light9"]
