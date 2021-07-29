@@ -27,6 +27,7 @@ surfaces/0 = {
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422501, 0 )
 script = ExtResource( 1 )
+description = "An oxygen tank. My suit should consume it by interacting with it."
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.00659525, 0 )
