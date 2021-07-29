@@ -643,13 +643,13 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -32.7832 )
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -39.8863 )
 
 [node name="09" parent="Ceiling/Central" instance=ExtResource( 7 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -54.4603 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -57.5214 )
 
 [node name="11" parent="Ceiling/Central" instance=ExtResource( 7 )]
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -50.1902 )
 
 [node name="10" parent="Ceiling/Central" instance=ExtResource( 7 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -61.794 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -64.8158 )
 
 [node name="Background" type="Spatial" parent="Ceiling"]
 
