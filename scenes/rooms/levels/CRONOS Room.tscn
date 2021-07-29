@@ -373,6 +373,27 @@ transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, 
 [node name="StaticBody" parent="Walls/Left Wall" instance=ExtResource( 11 )]
 transform = Transform( 1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, -1, 17, 9 )
 
+[node name="Left Wall2" type="Spatial" parent="Walls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -42.0879 )
+
+[node name="Blackwall" parent="Walls/Left Wall2" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, 7.57678, 7, 9 )
+
+[node name="Blackwall2" parent="Walls/Left Wall2" instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, -10.1122, 7, 9 )
+
+[node name="Blackwall3" parent="Walls/Left Wall2" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, -4.37114e-08, -9, 0, 1, -3.93403e-07, -3.7689, 9.81469, 9 )
+
+[node name="Border Wall3" parent="Walls/Left Wall2" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, 16, 4.24313, 8.46745 )
+
+[node name="Border Wall4" parent="Walls/Left Wall2" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, 16, 16.2431, 8.46745 )
+
+[node name="StaticBody" parent="Walls/Left Wall2" instance=ExtResource( 11 )]
+transform = Transform( 1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, -1, 17, 9 )
+
 [node name="Right Wall" type="Spatial" parent="Walls"]
 transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -10, 0, -10 )
 
@@ -396,6 +417,52 @@ transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, 
 transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, 16, 16.2431, 8.46745 )
 
 [node name="StaticBody" parent="Walls/Right Wall" instance=ExtResource( 11 )]
+transform = Transform( 1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, -1, 17, 9 )
+
+[node name="Right Wall2" type="Spatial" parent="Walls"]
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -10, 0, -41.9756 )
+
+[node name="Blackwall" parent="Walls/Right Wall2" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, -7.81153, 7, 9 )
+
+[node name="Blackwall2" parent="Walls/Right Wall2" instance=ExtResource( 1 )]
+transform = Transform( 5, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, 10.1912, 7, 9 )
+
+[node name="Blackwall3" parent="Walls/Right Wall2" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, -4.37114e-08, -9, 0, 1, -3.93403e-07, 3.598, 9.815, 9 )
+
+[node name="Border Wall1" parent="Walls/Right Wall2" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 4.24313, 8.46745 )
+
+[node name="Border Wall2" parent="Walls/Right Wall2" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 16.2431, 8.46745 )
+
+[node name="StaticBody" parent="Walls/Right Wall2" instance=ExtResource( 11 )]
+transform = Transform( 1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, -1, 17, 9 )
+
+[node name="Back Wall" type="Spatial" parent="Walls"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.264434, 0, -52.625 )
+
+[node name="Whitewall" parent="Walls/Back Wall" instance=ExtResource( 12 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 5.96483, 9.31958 )
+visible = false
+
+[node name="Blackwall" parent="Walls/Back Wall" instance=ExtResource( 1 )]
+transform = Transform( 20, 0, 0, 0, -4.37114e-08, -15, 0, 1, -6.55671e-07, 0, 7, 9 )
+
+[node name="Border Wall1" parent="Walls/Back Wall" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 4.24313, 8.46745 )
+
+[node name="Border Wall2" parent="Walls/Back Wall" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, -16, 16.2431, 8.46745 )
+
+[node name="Border Wall3" parent="Walls/Back Wall" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, 16, 4.24313, 8.46745 )
+
+[node name="Border Wall4" parent="Walls/Back Wall" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 4, -1.74846e-07, 0, -1.74846e-07, -4, -10, -1.74846e-07, 7.64274e-15, 16, 16.2431, 8.46745 )
+
+[node name="StaticBody" parent="Walls/Back Wall" instance=ExtResource( 11 )]
 transform = Transform( 1.19249e-07, 0, -10, 0, 10, 0, 10, 0, 1.19249e-07, -1, 17, 9 )
 
 [node name="Front Columns" type="Spatial" parent="Walls"]
@@ -429,7 +496,7 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -19, 15, 9 )
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -19, 21, 9 )
 
 [node name="Back Columns" type="Spatial" parent="Walls"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -20 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -52.3373 )
 
 [node name="Left Column" type="Spatial" parent="Walls/Back Columns"]
 
@@ -479,7 +546,13 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -18.5026 )
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -25.5026 )
 
 [node name="06" parent="Ceiling/Central" instance=ExtResource( 7 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -32.5026 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -32.7832 )
+
+[node name="09" parent="Ceiling/Central" instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -54.4603 )
+
+[node name="10" parent="Ceiling/Central" instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 19.7598, -61.794 )
 
 [node name="Background" type="Spatial" parent="Ceiling"]
 
@@ -500,6 +573,18 @@ transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10, 19.697, -29 )
 
 [node name="06" parent="Ceiling/Background" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -10, 19.697, -29 )
+
+[node name="07" parent="Ceiling/Background" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 14.5605, 19.697, -43.7856 )
+
+[node name="08" parent="Ceiling/Background" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -14.8801, 19.697, -43.769 )
+
+[node name="09" parent="Ceiling/Background" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 10, 19.697, -58.3261 )
+
+[node name="10" parent="Ceiling/Background" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -10, 19.697, -58.3676 )
 
 [editable path="CRONOS"]
 [editable path="CRONOS/Quantium"]
